@@ -1,17 +1,16 @@
 package com.assist.bookingjava.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by prelipcean on 13.07.2017.
  */
 @Entity
-@Table(name = "redservice")
-public class redservice {
+@Table(name = "RedService")
+public class RedService {
     @Id
-    long id_service;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    long ids;
 
     String name;
     String description;
@@ -20,9 +19,9 @@ public class redservice {
     int duration;
 
 
-    public redservice(){}
+    public RedService(){}
 
-    public redservice(String name, String description, int space, int price, int duration) {
+    public RedService(String name, String description, int space, int price, int duration) {
         this.name = name;
         this.description = description;
         this.space = space;
@@ -74,8 +73,8 @@ public class redservice {
 
     @Override
     public String toString() {
-        return "redservice{" +
-                "id_service=" + id_service +
+        return "RedService{" +
+                "ids=" + ids +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", space=" + space +
