@@ -23,6 +23,8 @@ public class alex {
     @Column(name = "email")
     protected String email;
 
+    String eu;
+
     public alex(){
 
     }
