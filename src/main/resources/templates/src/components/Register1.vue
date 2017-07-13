@@ -6,13 +6,15 @@
  	</div>
 	    <div class="form">
 	    	<form> 
-	       		<label for="mail" class="elementEmail">Email address:</label></br>
-	     		<input type="email" id="mailLogin" name="user_email"></br> 
+	    		<label for="name" class="elementName">Your Name:</label></br>
+	    		<input type="text" id="nameRegister" name="user_name"></br> 
+	     		<label for="mail" class="elementEmail">Email address:</label></br>
+	     		<input type="email" id="mailRegister" name="user_email"></br> 
 	     		<label for="password" class="elementPassword">Password: </label></br>
-	     		<input type="password" id="passwordLogin" name="user_password"></br>
+	     		<input type="password" id="passwordRegister" name="user_password"></br>
 	     	</form>
-	     	<button type="submit" id="loginButton">LOGIN</button></br>
-	     	<p class="recoverAccount">Recover password</p>
+	     	<button type="submit" id="registerButton">Sign Up</button></br>
+	     	<p class="haveAccount">You already have an account?</p>
      </div>
   </div>
 </template>
@@ -20,18 +22,17 @@
 
 <style type="text/css">
 
-#mailLogin, #passwordLogin {
+#nameRegister, #mailRegister, #passwordRegister {
 	font-size: 180%;
 	width: 28%;
 }
-#loginButton{
+#registerButton{
 	margin-top: 5%;
 	font-size: 190%;
 	width: 28%;
 	background-color:#DA6CE9;
 	border:0px;
 	color:#ffffff;
-
 }
 .image {
 	
@@ -40,7 +41,12 @@
 
 
 }
+.elementName{
 
+	margin-top: 2%;
+	margin-left: -20%;
+	width: 20%
+}
 .elementEmail{
 	margin-top: 2%;
 	margin-left: -18.5%;
@@ -52,10 +58,9 @@
 	margin-left: -20.6%;
 	width: 20%
 }
-.recoverAccount{
+.haveAccount{
 	margin-top: 2%;
 }
-
 
 /*Responsive*/
 
@@ -69,7 +74,7 @@
 
 <script>
 	export default {
-	  name: 'login',
+	  name: 'register1',
 	  data () {
 	    return {
 	      msg: 'Welcome to Your Vue.js App'

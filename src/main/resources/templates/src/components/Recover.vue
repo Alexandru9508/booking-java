@@ -7,24 +7,25 @@
 	    <div class="form">
 	    	<form> 
 	       		<label for="mail" class="elementEmail">Email address:</label></br>
-	     		<input type="email" id="mailLogin" name="user_email"></br> 
-	     		<label for="password" class="elementPassword">Password: </label></br>
-	     		<input type="password" id="passwordLogin" name="user_password"></br>
+	     		<input type="email" id="mailRecover" name="user_email"></br> 
 	     	</form>
-	     	<button type="submit" id="loginButton">LOGIN</button></br>
-	     	<p class="recoverAccount">Recover password</p>
+	     	<button type="submit" id="recoverButton">RECOVER</button></br>
+	     	
      </div>
   </div>
 </template>
 
 
 <style type="text/css">
-
-#mailLogin, #passwordLogin {
+div{
+	background-color:rgba(255, 255, 255, 0);
+	
+}
+#mailRecover {
 	font-size: 180%;
 	width: 28%;
 }
-#loginButton{
+#recoverButton{
 	margin-top: 5%;
 	font-size: 190%;
 	width: 28%;
@@ -45,16 +46,10 @@
 	margin-top: 2%;
 	margin-left: -18.5%;
 	width: 20%
-}
-.elementPassword{
 
-	margin-top: 2%;
-	margin-left: -20.6%;
-	width: 20%
+
 }
-.recoverAccount{
-	margin-top: 2%;
-}
+
 
 
 /*Responsive*/
@@ -69,7 +64,7 @@
 
 <script>
 	export default {
-	  name: 'login',
+	  name: 'recover',
 	  data () {
 	    return {
 	      msg: 'Welcome to Your Vue.js App'

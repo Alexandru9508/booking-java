@@ -3,7 +3,10 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Home from '@/components/Home'
 import Register from '@/components/Register'
+import Register1 from '@/components/Register1'
 import Login from '@/components/Login'
+import Recover from '@/components/Recover'
+
 
 Vue.use(Router)
 
@@ -20,9 +23,19 @@ export default new Router({
       component: Register
     },
      {
+      path: '/register1',
+      name: 'Register1',
+      component: Register1
+    },
+    {
       path: '/login',
       name: 'Login',
       component: Login
+    },
+     {
+      path: '/recover',
+      name: 'Recover',
+      component: Recover
     }
   ]
 })
