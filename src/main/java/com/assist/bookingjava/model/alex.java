@@ -23,6 +23,8 @@ public class alex {
     @Column(name = "email")
     protected String email;
 
+    String eu;
+
     public alex(){
 
     }
@@ -32,6 +34,7 @@ public class alex {
         this.username = username;
         this.password = password;
         this.email = email;
+        //Comment
     }
 
     public String getUsername() {
