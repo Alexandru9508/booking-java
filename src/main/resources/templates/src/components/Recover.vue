@@ -6,10 +6,10 @@
  	</div>
 	    <div class="form">
 	    	<form> 
-	       		<label for="mail" class="elementEmail">Email address:</label></br>
-	     		<input type="email" id="mailRecover" name="user_email"></br> 
+	       		<label for="mail" class="elementEmail">Email address:</label><br>
+	     		<input type="email" id="mailRecover" name="user_email"><br> 
 	     	</form>
-	     	<button type="submit" id="recoverButton">RECOVER</button></br>
+	     	<button type="submit" id="recoverButton">RECOVER</button><br>
 	     	
      </div>
   </div>
@@ -54,12 +54,7 @@ div{
 
 /*Responsive*/
 
-@media (max-width: 1000px) {
-	.form-group {
-		float: none;
-		margin-right: 0;
-	}
-}
+
 </style>
 
 <script>
