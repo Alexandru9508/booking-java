@@ -1,16 +1,19 @@
 package com.assist.bookingjava.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.annotations.GeneratorType;
+
+import javax.persistence.*;
 
 /**
  * Created by doroftei on 13.07.2017.
  */
 @Entity
+@Table(name = "customer")
 public class Customer {
 
 
     @Id
+            @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
     String username;
@@ -62,5 +65,39 @@ public class Customer {
 
     public void setLogo(String logo) {
         this.logo = logo;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDescriere() {
+        return descriere;
+    }
+
+    public String getNume_companie() {
+        return nume_companie;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    @Override
+    public String toString() {
+
+        return "Customer{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", descriere='" + descriere + '\'' +
+                ", nume_companie='" + nume_companie + '\'' +
+                ", logo='" + logo + '\'' +
+                '}';
     }
 }
