@@ -1,13 +1,9 @@
 package com.assist.bookingjava.controllers;
-
-import com.assist.bookingjava.model.Customer;
-import com.assist.bookingjava.model.alex;
-import com.assist.bookingjava.repository.CustomerRepo;
-import com.assist.bookingjava.repository.UserRepo;
-import com.assist.bookingjava.service.CustService;
-import com.assist.bookingjava.service.service;
+import com.assist.bookingjava.Models.Customer;
+import com.assist.bookingjava.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,13 +15,13 @@ import java.util.List;
  */
 @RestController
 public class HelloController {
-
+    @Autowired
+    CustomerService customerService;
 
     @RequestMapping("/hello")
-    public String sayHi() {
-
-        return "Hi Ionut Alex";
+    public List<Customer> getAllCourses() {
+        return customerService.getCust();
     }
 
-
 }
+
