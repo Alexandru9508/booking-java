@@ -1,5 +1,5 @@
 package com.assist.bookingjava.controllers;
-import com.assist.bookingjava.Models.Customer;
+import com.assist.bookingjava.Models.redcompany;
 import com.assist.bookingjava.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +15,16 @@ public class HelloController {
     CustomerService customerService;
 
     @RequestMapping("/hello")
-    public List<Customer> getAllCourses() {
+    public List<redcompany> getAllCourses() {
         return customerService.getCust();
     }
     @RequestMapping("/hello/add")
     public String addCustomer(){
-        //customerService.addCust(new Customer(4,"4324fafa","gasfa"));
+        //customerService.addCust(new redcompany(4,"4324fafa","gasfa"));
         return "Done";
     }
+
+
 
 }
 
