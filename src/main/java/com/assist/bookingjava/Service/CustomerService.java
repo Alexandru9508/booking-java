@@ -16,11 +16,6 @@ public class CustomerService {
     @Autowired
     private CustomerDao customerDao;
 
-    public List<Customer> getAllCust(long id){
-        List<Customer> customersList=new ArrayList<>();
-        customersList.add(customerDao.findOne(id));
-        return customersList;
-    }
 
     public Customer getCust(long id) {
         return customerDao.findOne(id);
