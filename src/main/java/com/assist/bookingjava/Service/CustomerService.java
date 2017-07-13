@@ -18,9 +18,11 @@ public class CustomerService {
 
 
     public redcompany getCust(long id) {
+
         return customerDao.findOne(id);
     }
     public void addCust(redcompany customer){
+
         customerDao.save(customer);
     }
 

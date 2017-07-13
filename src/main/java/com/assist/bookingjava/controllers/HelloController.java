@@ -1,6 +1,8 @@
 package com.assist.bookingjava.controllers;
+
 import com.assist.bookingjava.Models.redcompany;
 import com.assist.bookingjava.Service.CustomerService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,11 +22,9 @@ public class HelloController {
     }
     @RequestMapping("/hello/add")
     public String addCustomer(){
-        //customerService.addCust(new redcompany(4,"4324fafa","gasfa"));
+        customerService.addCust(new redcompany("alexsd", "asdaafd","sdasas","sdsasdaasdd","dsaaffsds","aassadsd"));
         return "Done";
     }
-
-
 
 }
 
