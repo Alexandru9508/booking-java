@@ -1,15 +1,13 @@
 package com.assist.bookingjava.Models;
 
-import org.hibernate.annotations.GeneratorType;
-
 import javax.persistence.*;
 
 /**
  * Created by doroftei on 13.07.2017.
  */
 @Entity
-@Table(name = "customer")
-public class Customer {
+@Table(name = "redcompany")
+public class redcompany {
 
 
     @Id
@@ -23,10 +21,10 @@ public class Customer {
     String nume_companie;
     String logo;
 
-    public Customer(){}
+    public redcompany(){}
 
 
-    public Customer(String username, String password, String email, String descriere, String nume_companie, String logo) {
+    public redcompany(String username, String password, String email, String descriere, String nume_companie, String logo) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -90,7 +88,7 @@ public class Customer {
     @Override
     public String toString() {
 
-        return "Customer{" +
+        return "redcompany{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
