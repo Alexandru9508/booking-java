@@ -13,39 +13,54 @@ public class Customer {
     @Id
     long id;
 
-    String firsname;
-    String lastname;
+    String username;
+    String password;
+    String email;
+    String descriere;
+    String nume_companie;
+    String logo;
 
-    public Customer(long id, String firsname, String lastname) {
-        this.id = id;
-        this.firsname = firsname;
-        this.lastname = lastname;
-    }
-    public  Customer(){
+    public Customer(){}
 
+
+    public Customer(String username, String password, String email, String descriere, String nume_companie, String logo) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.descriere = descriere;
+        this.nume_companie = nume_companie;
+        this.logo = logo;
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public String getUsername() {
+        return username;
     }
 
-    public String getFirsname() {
-        return firsname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setFirsname(String firsname) {
-        this.firsname = firsname;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getLastname() {
-        return lastname;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setDescriere(String descriere) {
+        this.descriere = descriere;
+    }
+
+    public void setNume_companie(String nume_companie) {
+        this.nume_companie = nume_companie;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
 }
