@@ -28,12 +28,10 @@ public class HelloController {
     }
 
     @RequestMapping("/hello/addUser")
-    public String addCustomer(){
-        customerService.addCompany(new RedCompany("alexd", "asdaad","sdass","sdf","sdf","sdffff"));
+    public String addCustomer() {
+        customerService.addCompany(new RedCompany("alexd", "asdaad", "sdass", "sdf", "sdf", "sdffff"));
         return "Done";
     }
-
-
 
 
     @RequestMapping("/service")
@@ -42,9 +40,9 @@ public class HelloController {
     }
 
     @RequestMapping("/service/add")
-    public String addService(){
-        serviceService.addService(new RedService("alexd", "asdaad",22,55,66));
+    public String addService() {
+        serviceService.addService(new RedService("alexd", "asdaad", 22, 55, 66));
         return "Done";
     }
 
-
+}

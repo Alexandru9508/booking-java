@@ -27,11 +27,6 @@ public class RedCompany {
 
 
 
-
-
-
-
-
     public RedCompany(String username, String password, String email, String descriere, String nume_companie, String logo) {
         this.username = username;
         this.password = password;
