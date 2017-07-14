@@ -13,11 +13,11 @@
 	    	<form> 
 	       		<label type="text" class="elementEmail" placeholder="Enter your email" >Email address:</label></br>
 		</div>
-	     		<input type="email" id="mailLogin" name="user_email"></br> 
+	     		<input type="email" id="mailLogin" servicename="user_email"></br>
 
 	     		<label for="password" class="elementPassword">Password: </label></br>
 
-	     		<input type="password" id="passwordLogin" name="user_password"></br>
+	     		<input type="password" id="passwordLogin" servicename="user_password"></br>
 
 	     	</form>
 	     	<button type="submit" id="loginButton">LOGIN</button></br>
@@ -80,7 +80,7 @@
 
 <script>
 	export default {
-	  name: 'login',
+	  servicename: 'login',
 	  data () {
 	    return {
 	      msg: 'Welcome to Your Vue.js App'

@@ -6,35 +6,45 @@ import javax.persistence.*;
  * Created by doroftei on 13.07.2017.
  */
 @Entity
-@Table(name = "RedCompany")
+@Table(name = "redcompany")
 public class RedCompany {
 
 
     @Id
-            @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    long idcompany;
+
+
 
     String username;
     String password;
     String email;
-    String descriere;
-    String nume_companie;
+    String description;
+    String companyname;
     String logo;
 
     public RedCompany(){}
+
+
+
+
+
+
 
 
     public RedCompany(String username, String password, String email, String descriere, String nume_companie, String logo) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.descriere = descriere;
-        this.nume_companie = nume_companie;
+        this.description = descriere;
+        this.companyname = nume_companie;
         this.logo = logo;
     }
 
-    public long getId() {
-        return id;
+
+
+    public long getIdcompany() {
+        return idcompany;
     }
 
     public String getUsername() {
@@ -53,12 +63,12 @@ public class RedCompany {
         this.email = email;
     }
 
-    public void setDescriere(String descriere) {
-        this.descriere = descriere;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setNume_companie(String nume_companie) {
-        this.nume_companie = nume_companie;
+    public void setCompanyname(String companyname) {
+        this.companyname = companyname;
     }
 
     public void setLogo(String logo) {
@@ -73,12 +83,12 @@ public class RedCompany {
         return email;
     }
 
-    public String getDescriere() {
-        return descriere;
+    public String getDescription() {
+        return description;
     }
 
-    public String getNume_companie() {
-        return nume_companie;
+    public String getCompanyname() {
+        return companyname;
     }
 
     public String getLogo() {
@@ -89,12 +99,12 @@ public class RedCompany {
     public String toString() {
 
         return "RedCompany{" +
-                "id=" + id +
+                "idcompany=" + idcompany +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", descriere='" + descriere + '\'' +
-                ", nume_companie='" + nume_companie + '\'' +
+                ", servicedescription='" + description + '\'' +
+                ", companyname='" + companyname + '\'' +
                 ", logo='" + logo + '\'' +
                 '}';
     }
