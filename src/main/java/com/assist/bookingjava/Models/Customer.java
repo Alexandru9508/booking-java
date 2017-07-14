@@ -8,12 +8,12 @@ import javax.persistence.*;
  * Created by doroftei on 13.07.2017.
  */
 @Entity
-@Table(name = "customer")
+@Table(name = "redcompany")
 public class Customer {
 
 
     @Id
-            @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
     String username;

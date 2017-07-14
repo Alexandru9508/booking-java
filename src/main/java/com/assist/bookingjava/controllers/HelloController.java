@@ -16,12 +16,14 @@ public class HelloController {
 
     @RequestMapping("/hello")
     public List<Customer> getAllCourses() {
+
         return customerService.getCust();
     }
     @RequestMapping("/hello/add")
     public String addCustomer(){
-        //customerService.addCust(new Customer(4,"4324fafa","gasfa"));
+        customerService.addCust(new Customer("alexd", "asdaad","sdass","sdsaasdd","dsaasds","aasdsd"));
         return "Done";
+
     }
 
 }
