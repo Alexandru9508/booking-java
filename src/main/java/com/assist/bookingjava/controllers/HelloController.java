@@ -36,7 +36,6 @@ public class HelloController {
     }
 
 
-
     @RequestMapping("/service")
     public List<RedService> getAllService() {
 
@@ -48,7 +47,5 @@ public class HelloController {
         serviceService.addService(new RedService("alexd", "asdaad", 22, 55, 66));
         return "Done";
     }
-
-
 
 }

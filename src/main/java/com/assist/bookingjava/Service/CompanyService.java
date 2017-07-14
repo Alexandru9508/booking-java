@@ -35,4 +35,8 @@ public class CompanyService {
         return companyDao.findOne(idcompany);
     }
 
+    public void deleteCompany(Long idcompany) {
+        companyDao.delete(idcompany);
+    }
+
 }

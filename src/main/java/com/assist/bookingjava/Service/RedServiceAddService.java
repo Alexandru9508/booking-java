@@ -3,6 +3,7 @@ package com.assist.bookingjava.Service;
 import com.assist.bookingjava.DataBase.AddServiceDao;
 import com.assist.bookingjava.DataBase.CompanyDao;
 import com.assist.bookingjava.Models.RedCompany;
+
 import com.assist.bookingjava.Models.RedServiceTime;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,6 +32,8 @@ public class RedServiceAddService {
         addServiceDao.findAll().forEach(services :: add);
         return services;
     }
+
+
 
 
 }
