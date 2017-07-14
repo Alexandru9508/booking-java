@@ -17,7 +17,9 @@ public class CompanyService {
     private CompanyDao customerDao;
 
 
+ 
     public RedCompany getCompany(long id) {
+ 
         return customerDao.findOne(id);
     }
     public void addCompany(RedCompany company){

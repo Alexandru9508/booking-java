@@ -1,4 +1,6 @@
 package com.assist.bookingjava.controllers;
+
+import org.springframework.web.bind.annotation.RequestMapping;
 import com.assist.bookingjava.Models.RedCompany;
 import com.assist.bookingjava.Models.RedService;
 import com.assist.bookingjava.Service.CompanyService;
@@ -46,5 +48,3 @@ public class HelloController {
     }
 
 
-
-}
