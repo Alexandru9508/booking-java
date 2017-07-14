@@ -25,4 +25,9 @@ public class BookingService {
         bookingDao.findAll().forEach(booking :: add);
         return booking;
     }
+
+
+    public void deleteBooking(Long idbooking) {
+        bookingDao.delete(idbooking);
+    }
 }
