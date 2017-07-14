@@ -7,7 +7,7 @@
 	    <div class="form">
 	    	<form> 
 	       		<label for="mail" class="elementEmail">Email address:</label><br>
-	     		<input type="email" id="mailRecover" name="user_email"><br> 
+	     		<input type="email" id="mailRecover" servicename="user_email"><br>
 	     	</form>
 	     	<button type="submit" id="recoverButton">RECOVER</button><br>
 	     	
@@ -59,7 +59,7 @@ div{
 
 <script>
 	export default {
-	  name: 'recover',
+	  servicename: 'recover',
 	  data () {
 	    return {
 	      msg: 'Welcome to Your Vue.js App'
