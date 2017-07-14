@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'hello',
+  servicename: 'hello',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

@@ -21,21 +21,25 @@ public class HelloController {
     ServiceService serviceService;
 
     @RequestMapping("/hello")
-    public List<RedCompany> getAllCourses() {
-        return customerService.getCust();
+    public List<RedCompany> getAllCompany() {
+        return customerService.getAllCompany();
     }
 
-    @RequestMapping("/hello/add")
+    @RequestMapping("/hello/addUser")
     public String addCustomer(){
-        customerService.addCust(new RedCompany("alexd", "asdaad","sdass","sdsaasdd","dsaasds","aasdsd"));
+        customerService.addCompany(new RedCompany("alexd", "asdaad","sdass","sdf","sdf","sdffff"));
         return "Done";
     }
+
+
+
 
     @RequestMapping("/service")
     public List<RedService> getAllService() {
         return serviceService.getService();
     }
-    @RequestMapping("/Service/add")
+
+    @RequestMapping("/service/add")
     public String addService(){
         serviceService.addService(new RedService("alexd", "asdaad",22,55,66));
         return "Done";
