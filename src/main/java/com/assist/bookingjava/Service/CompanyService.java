@@ -4,6 +4,7 @@ import com.assist.bookingjava.DataBase.CompanyDao;
 import com.assist.bookingjava.Models.RedCompany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,12 @@ public class CompanyService {
     public void addCompany(RedCompany company){
         customerDao.save(company);
     }
+
+    public void addRegister(RedCompany company){
+        customerDao.save(company );
+
+    }
+     
 
     public List<RedCompany> getAllCompany() {
         List<RedCompany> comapny = new ArrayList<>();

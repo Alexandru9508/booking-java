@@ -28,6 +28,9 @@ public class ServiceService {
         serviceDao.save(service);
     }
 
+    public void deleteService (long idservice){
+        serviceDao.delete(idservice);
+    }
 
 
 

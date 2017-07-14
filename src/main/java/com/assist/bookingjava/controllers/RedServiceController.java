@@ -1,39 +1,24 @@
 package com.assist.bookingjava.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import com.assist.bookingjava.Models.RedCompany;
 import com.assist.bookingjava.Models.RedService;
 import com.assist.bookingjava.Service.CompanyService;
 import com.assist.bookingjava.Service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 /**
- * Created by frunza on 07.07.2017.
+ * Created by prelipcean on 14.07.2017.
  */
 @RestController
-public class HelloController {
-
-    @Autowired
-    CompanyService customerService;
+public class RedServiceController {
 
     @Autowired
     ServiceService serviceService;
-
-    @RequestMapping("/hello")
-    public List<RedCompany> getAllCompany() {
-        return customerService.getAllCompany();
-    }
-
-    @RequestMapping("/hello/addUser")
-    public String addCustomer() {
-        customerService.addCompany(new RedCompany("alexd", "asdaad", "sdass", "sdf", "sdf", "sdffff"));
-        return "Done";
-    }
-
-
+/*
     @RequestMapping("/service")
     public List<RedService> getAllService() {
         return serviceService.getService();
@@ -49,11 +34,5 @@ public class HelloController {
     public String deleteService(@RequestParam long idservice) {
         serviceService.deleteService(idservice);
         return "Task deleted";
-    }
-
-
-
-
+    }*/
 }
-
-

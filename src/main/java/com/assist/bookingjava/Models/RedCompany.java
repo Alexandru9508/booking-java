@@ -15,7 +15,7 @@ public class RedCompany {
     long idcompany;
 
 
-
+    //unique=true)
     String username;
     String password;
     String email;
@@ -41,7 +41,11 @@ public class RedCompany {
         this.logo = logo;
     }
 
-
+    public RedCompany(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 
     public long getIdcompany() {
         return idcompany;
