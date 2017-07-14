@@ -1,5 +1,7 @@
 package com.assist.bookingjava.Models;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import javax.persistence.*;
 
 /**
