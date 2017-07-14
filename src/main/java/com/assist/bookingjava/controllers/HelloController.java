@@ -35,7 +35,7 @@ public class HelloController {
         return "Done";
     }
 
-
+/*
     @RequestMapping("/service")
     public List<RedService> getAllService() {
 
@@ -48,4 +48,23 @@ public class HelloController {
         return "Done";
     }
 
+<<<<<<< HEAD
+
+    @RequestMapping("/service/delete")
+    public String deleteService(@RequestParam long idservice) {
+        serviceService.deleteService(idservice);
+        return "Task deleted";
+    }
+*/
+
+
+
 }
+
+
+
+
+
+
+
+
