@@ -40,7 +40,7 @@ public class RedCompanyController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{idcompany}")
-    public void deleteTopic(@PathVariable Long idcompany) {
+    public void deleteCompany(@PathVariable Long idcompany) {
         companyService.deleteCompany(idcompany);
     }
 
