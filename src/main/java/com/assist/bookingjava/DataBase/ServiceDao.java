@@ -9,5 +9,6 @@ import java.util.List;
  * Created by prelipcean on 13.07.2017.
  */
 public interface ServiceDao extends CrudRepository<RedService,Long> {
-      List<RedService> findByIds(Long ids);
+      List<RedService> findByIdservice(Long idservice);
+
 }

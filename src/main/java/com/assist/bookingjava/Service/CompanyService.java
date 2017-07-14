@@ -17,19 +17,19 @@ public class CompanyService {
     private CompanyDao customerDao;
 
 
-
-
-    public RedCompany getCust(long id) {
+ 
+    public RedCompany getCompany(long id) {
+ 
         return customerDao.findOne(id);
     }
-    public void addCust(RedCompany customer){
-        customerDao.save(customer);
+    public void addCompany(RedCompany company){
+        customerDao.save(company);
     }
 
-    public List<RedCompany> getCust() {
-        List<RedCompany> courses = new ArrayList<>();
-         customerDao.findAll().forEach(courses :: add);
-        return courses;
+    public List<RedCompany> getAllCompany() {
+        List<RedCompany> comapny = new ArrayList<>();
+         customerDao.findAll().forEach(comapny :: add);
+        return comapny;
     }
 
 }

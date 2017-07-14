@@ -6,14 +6,19 @@ import javax.persistence.*;
  * Created by prelipcean on 13.07.2017.
  */
 @Entity
-@Table(name = "RedService")
+@Table(name = "red_service")
 public class RedService {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long ids;
+    long idservice;
 
-    String name;
-    String description;
+    @ManyToOne
+    @JoinColumn(name = "idcompany")
+    private RedCompany idcompany;
+
+
+    String servicename;
+    String servicedescription;
     int space;
     int price;
     int duration;
@@ -22,19 +27,19 @@ public class RedService {
     public RedService(){}
 
     public RedService(String name, String description, int space, int price, int duration) {
-        this.name = name;
-        this.description = description;
+        this.servicename = name;
+        this.servicedescription = description;
         this.space = space;
         this.price = price;
         this.duration = duration;
     }
 
-    public String getName() {
-        return name;
+    public String getServicename() {
+        return servicename;
     }
 
-    public String getDescription() {
-        return description;
+    public String getServicedescription() {
+        return servicedescription;
     }
 
     public int getSpace() {
@@ -49,14 +54,28 @@ public class RedService {
         return duration;
     }
 
-
-
-    public void setName(String name) {
-        this.name = name;
+    public long getIdservice() {
+        return idservice;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public RedCompany getIdcompany() {
+        return idcompany;
+    }
+
+    public void setIdservice(long idservice) {
+        this.idservice = idservice;
+    }
+
+    public void setIdcompany(RedCompany idcompany) {
+        this.idcompany = idcompany;
+    }
+
+    public void setServicename(String servicename) {
+        this.servicename = servicename;
+    }
+
+    public void setServicedescription(String servicedescription) {
+        this.servicedescription = servicedescription;
     }
 
     public void setSpace(int space) {
@@ -74,9 +93,9 @@ public class RedService {
     @Override
     public String toString() {
         return "RedService{" +
-                "ids=" + ids +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                "idservice=" + idservice +
+                ", servicename='" + servicename + '\'' +
+                ", servicedescription='" + servicedescription + '\'' +
                 ", space=" + space +
                 ", price=" + price +
                 ", duration=" + duration +
