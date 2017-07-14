@@ -22,6 +22,7 @@ public class RedServiceAddService {
         return addServiceDao.findOne(id);
     }
     public void addServiceDao(RedServiceTime service){
+
         addServiceDao.save(service);
     }
 

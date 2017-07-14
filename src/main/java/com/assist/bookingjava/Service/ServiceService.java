@@ -17,9 +17,10 @@ public class ServiceService {
 
     @Autowired
     private ServiceDao serviceDao;
+    final   List<RedService> serv = new ArrayList<>();
+
 
     public List<RedService> getService() {
-        List<RedService> serv = new ArrayList<>();
         serviceDao.findAll().forEach(serv :: add);
         return serv;
     }
@@ -27,7 +28,6 @@ public class ServiceService {
     public void addService(RedService service){
         serviceDao.save(service);
     }
-
 
 
 
