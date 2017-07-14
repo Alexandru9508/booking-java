@@ -1,30 +1,21 @@
 <template>
 
- <div> 
+ <div class="form-group"> 
  	<div class="image">
  		<img src="../assets/bookingLogo.png" />
  	</div>
-
- 	<div class="alert alert-danger" v-if="error">
- 	<p>{{ error }}</p>
- 	</div>
-
-	    <div class="form-group">
+	    <div class="form">
 	    	<form> 
-	       		<label type="text" class="elementEmail" placeholder="Enter your email" >Email address:</label></br>
-		</div>
-	     		<input type="email" id="mailLogin" servicename="user_email"></br>
-
+	       		<label for="mail" class="elementEmail">Email address:</label></br>
+	     		<input type="email" id="mailLogin" name="user_email"></br> 
 	     		<label for="password" class="elementPassword">Password: </label></br>
-
-	     		<input type="password" id="passwordLogin" servicename="user_password"></br>
-
+	     		<input type="password" id="passwordLogin" name="user_password"></br>
 	     	</form>
 	     	<button type="submit" id="loginButton">LOGIN</button></br>
-
 	     	<div class="goToRecover">
     			<router-link to="Recover">Recover password</router-link>
 			</div>
+     </div>
   </div>
 </template>
 
@@ -79,12 +70,5 @@
 </style>
 
 <script>
-	export default {
-	  servicename: 'login',
-	  data () {
-	    return {
-	      msg: 'Welcome to Your Vue.js App'
-	    }
-	  }
-	}
+	
 </script>
