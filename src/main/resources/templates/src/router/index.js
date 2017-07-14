@@ -2,7 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Home from '@/components/Home'
-import Register from '@/components/Register'
+import AddService from '@/components/AddService'
+import UploadLogo from '@/components/UploadLogo'
+import BookingPersonDetails from '@/components/BookingPersonDetails'
 
 Vue.use(Router)
 
@@ -14,9 +16,19 @@ export default new Router({
 		component: Home
 	},
 	{
-		path: '/register',
-		name: 'Register',
-		component: Register
+		path: '/addService',
+		name: 'AddService',
+		component: AddService
+	},
+	{
+		path: '/uploadLogo',
+		name: 'UploadLogo',
+		component: UploadLogo
+	},
+	{
+		path: '/bookingPersonDetails',
+		name: 'BookingPersonDetails',
+		component: BookingPersonDetails
 	}
 	]
 })
