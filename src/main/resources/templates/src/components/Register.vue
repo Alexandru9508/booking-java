@@ -6,12 +6,12 @@
  	</div>
 	    <div class="form">
 	    	<form> 
-	    		<label for="name" class="elementName">Your Name:</label></br>
-	    		<input type="text" id="nameRegister" name="user_name"></br> 
+	    		<label for="servicename" class="elementName">Your Name:</label></br>
+	    		<input type="text" id="nameRegister" servicename="user_name"></br>
 	     		<label for="mail" class="elementEmail">Email address:</label></br>
-	     		<input type="email" id="mailRegister" name="user_email"></br> 
+	     		<input type="email" id="mailRegister" servicename="user_email"></br>
 	     		<label for="password" class="elementPassword">Password: </label></br>
-	     		<input type="password" id="passwordRegister" name="user_password"></br>
+	     		<input type="password" id="passwordRegister" servicename="user_password"></br>
 	     	</form>
 	     	<button type="submit" id="registerButton">Sign Up</button></br>
 	     	
@@ -77,7 +77,7 @@
 
 <script>
 	export default {
-	  name: 'register',
+	  servicename: 'register',
 	  data () {
 	    return {
 	      msg: 'Welcome to Your Vue.js App'
