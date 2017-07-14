@@ -1,4 +1,6 @@
 package com.assist.bookingjava.controllers;
+
+import org.springframework.web.bind.annotation.RequestMapping;
 import com.assist.bookingjava.Models.RedCompany;
 import com.assist.bookingjava.Models.RedService;
 import com.assist.bookingjava.Service.CompanyService;
@@ -44,8 +46,6 @@ public class HelloController {
         serviceService.addService(new RedService("alexd", "asdaad",22,55,66));
         return "Done";
     }
-
-
 
 }
 
