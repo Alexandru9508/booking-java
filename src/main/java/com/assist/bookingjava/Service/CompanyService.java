@@ -31,10 +31,8 @@ public class CompanyService {
         return comapny;
     }
     //update:description,logo,companyName;
-    @RequestMapping(value = "/update/{idcompany}",method = RequestMethod.GET)
-    public RedCompany updateComapny(@PathVariable ("idcompany") Long idcompany){
+    public RedCompany updateComapny(Long idcompany){
         return companyDao.findOne(idcompany);
     }
-    //getPwdForEmail
 
 }
