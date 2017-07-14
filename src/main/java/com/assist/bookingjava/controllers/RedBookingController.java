@@ -1,6 +1,7 @@
 package com.assist.bookingjava.controllers;
 
 import com.assist.bookingjava.DataBase.BookingDao;
+import com.assist.bookingjava.Models.RedBooking;
 import com.assist.bookingjava.Service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,20 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class RedBookingController {
-    @Autowired
-    BookingDao bookingDao;
 
     @Autowired
     BookingService bookingService;
 
-
+    //DeleteBooking
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{idbooking}")
     public void deleteBooking(@PathVariable Long idcompany) {
         bookingService.deleteBooking(idcompany);
     }
-
-
     //addBooking
-    //DeleteBooking
+    @RequestMapping("/booking/add")
+    public  void addBooking(RedBooking booking){
+        bookingService.addBooking(booking);
+    }
     //allBookings
 }
