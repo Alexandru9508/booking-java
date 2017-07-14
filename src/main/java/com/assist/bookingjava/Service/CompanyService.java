@@ -4,6 +4,9 @@ import com.assist.bookingjava.DataBase.CompanyDao;
 import com.assist.bookingjava.Models.RedCompany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,22 +17,24 @@ import java.util.List;
 @Service
 public class CompanyService {
     @Autowired
-    private CompanyDao customerDao;
+    private CompanyDao companyDao;
 
-
- 
-    public RedCompany getCompany(long id) {
- 
-        return customerDao.findOne(id);
+    //add
+    public void addCompany(RedCompany company)
+    {
+        companyDao.save(company);
     }
-    public void addCompany(RedCompany company){
-        customerDao.save(company);
-    }
-
+    //allCompany
     public List<RedCompany> getAllCompany() {
         List<RedCompany> comapny = new ArrayList<>();
-         customerDao.findAll().forEach(comapny :: add);
+         companyDao.findAll().forEach(comapny :: add);
         return comapny;
     }
+    //update:description,logo,companyName;
+    @RequestMapping(value = "/update/{idcompany}",method = RequestMethod.GET)
+    public RedCompany updateComapny(@PathVariable ("idcompany") Long idcompany){
+        return companyDao.findOne(idcompany);
+    }
+    //getPwdForEmail
 
 }
