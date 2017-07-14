@@ -27,17 +27,12 @@ public class RedCompany {
 
 
 
-
-
-
-
-
-    public RedCompany(String username, String password, String email, String descriere, String nume_companie, String logo) {
+    public RedCompany(String username, String password, String email, String description, String companyname, String logo) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.description = descriere;
-        this.companyname = nume_companie;
+        this.description = description;
+        this.companyname = companyname;
         this.logo = logo;
     }
 
@@ -46,6 +41,17 @@ public class RedCompany {
         this.password = password;
         this.email = email;
     }
+
+    public void RedCompanyUpdate(String username, String password, String email, String description, String companyname, String logo,Long id) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.description = description;
+        this.companyname = companyname;
+        this.logo = logo;
+        this.idcompany=id;
+    }
+
 
     public long getIdcompany() {
         return idcompany;
