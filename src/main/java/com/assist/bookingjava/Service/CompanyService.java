@@ -46,6 +46,5 @@ public class CompanyService {
     public RedCompany updateComapny(Long idcompany){
         return companyDao.findOne(idcompany);
     }
-    //getPwdForEmail
 
 }

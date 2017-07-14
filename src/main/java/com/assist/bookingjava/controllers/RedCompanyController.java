@@ -43,4 +43,13 @@ public class RedCompanyController {
     }
     //getPwdForEmail
 
+    @RequestMapping("/hello/getPass/{id}")
+    public String sendEmail(@PathVariable Long id){
+        RedCompany company;
+        company=companyService.updateComapny(id);
+        return company.getPassword();
+    }
+
+
+
 }

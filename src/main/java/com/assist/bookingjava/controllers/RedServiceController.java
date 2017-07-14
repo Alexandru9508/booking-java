@@ -4,9 +4,7 @@ import com.assist.bookingjava.Models.RedService;
 import com.assist.bookingjava.Service.CompanyService;
 import com.assist.bookingjava.Service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,7 +16,7 @@ public class RedServiceController {
 
     @Autowired
     ServiceService serviceService;
-/*
+
     @RequestMapping("/service")
     public List<RedService> getAllService() {
         return serviceService.getService();
@@ -30,9 +28,9 @@ public class RedServiceController {
         return "Done";
     }
 
-    @RequestMapping("/service/delete")
-    public String deleteService(@RequestParam long idservice) {
+    @RequestMapping(method = RequestMethod.DELETE , value = "/service/delete/{idservice}")
+    public String deleteService(@PathVariable long idservice) {
         serviceService.deleteService(idservice);
         return "Task deleted";
-    }*/
+    }
 }
