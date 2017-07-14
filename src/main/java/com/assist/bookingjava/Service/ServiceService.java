@@ -18,6 +18,7 @@ public class ServiceService {
     @Autowired
     private ServiceDao serviceDao;
 
+
     public List<RedService> getService() {
         List<RedService> serv = new ArrayList<>();
         serviceDao.findAll().forEach(serv :: add);
@@ -28,10 +29,9 @@ public class ServiceService {
         serviceDao.save(service);
     }
 
-    public void deleteService (long idservice){
+    public void deleteService (Long idservice){
         serviceDao.delete(idservice);
     }
-
 
 
 

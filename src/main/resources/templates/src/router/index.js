@@ -8,6 +8,8 @@ import BookingPersonDetails from '@/components/BookingPersonDetails'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Recover from '@/components/Recover'
+import Bookingservices from '@/components/Bookingservices'
+import Companyname from '@/components/Companyname'
 
 
 Vue.use(Router)
@@ -53,6 +55,16 @@ export default new Router({
       path: '/recover',
       name: 'Recover',
       component: Recover
+    },
+    {
+      path: '/bookingservices',
+      name: 'Bookingservices',
+      component: Bookingservices
+    },
+    {
+      path: '/companyname',
+      name: 'Companyname',
+      component: Companyname
     }
 	]
   

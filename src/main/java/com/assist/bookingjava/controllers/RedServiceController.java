@@ -24,13 +24,13 @@ public class RedServiceController {
 
     @RequestMapping("/service/add")
     public String addService() {
-        serviceService.addService(new RedService("alexd", "asdaad", 22, 55, 66));
+        serviceService.addService(new RedService("ALEX", "AAAA", 20, 30, 40));
         return "Done";
     }
 
-    @RequestMapping(method = RequestMethod.DELETE , value = "/service/delete/{idservice}")
-    public String deleteService(@PathVariable long idservice) {
+    @RequestMapping(method = RequestMethod.DELETE, value = "/serviceDelete/{idservice}")
+    public void deleteTopic(@PathVariable Long idservice) {
         serviceService.deleteService(idservice);
-        return "Task deleted";
     }
+
 }

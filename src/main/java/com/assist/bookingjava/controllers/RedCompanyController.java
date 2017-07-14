@@ -51,5 +51,11 @@ public class RedCompanyController {
     }
 
 
+    @RequestMapping(method = RequestMethod.DELETE, value = "/hello/delete/{idcompany}")
+    public void deleteTopic(@PathVariable Long idcompany) {
+        companyService.deleteCompany(idcompany);
+
+    }
+
 
 }

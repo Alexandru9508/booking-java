@@ -38,13 +38,17 @@ public class CompanyService {
 
     public List<RedCompany> getAllCompany() {
         List<RedCompany> comapny = new ArrayList<>();
-         companyDao.findAll().forEach(comapny :: add);
+        companyDao.findAll().forEach(comapny :: add);
         return comapny;
     }
     //update:description,logo,companyName;
 
     public RedCompany updateComapny(Long idcompany){
         return companyDao.findOne(idcompany);
+    }
+
+    public void deleteCompany(Long idcompany) {
+        companyDao.delete(idcompany);
     }
 
 }
