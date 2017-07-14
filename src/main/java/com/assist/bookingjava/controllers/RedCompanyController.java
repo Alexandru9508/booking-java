@@ -38,4 +38,10 @@ public class RedCompanyController {
         company=companyService.updateComapny(id);
         return company.getPassword();
     }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{idcompany}")
+    public void deleteTopic(@PathVariable Long idcompany) {
+        companyService.deleteCompany(idcompany);
+    }
+
 }

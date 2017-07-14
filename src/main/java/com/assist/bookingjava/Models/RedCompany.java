@@ -116,4 +116,7 @@ public class RedCompany {
                 ", logo='" + logo + '\'' +
                 '}';
     }
+
+
+
 }

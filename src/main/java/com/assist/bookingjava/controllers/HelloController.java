@@ -7,6 +7,7 @@ import com.assist.bookingjava.Service.CompanyService;
 import com.assist.bookingjava.Service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  */
 @RestController
 public class HelloController {
+
 
     @Autowired
     CompanyService customerService;
@@ -36,6 +38,7 @@ public class HelloController {
 
     @RequestMapping("/service")
     public List<RedService> getAllService() {
+
         return serviceService.getService();
     }
 
