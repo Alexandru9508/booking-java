@@ -11,7 +11,7 @@ public class RedCompany {
 
 
     @Id
-            @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     long idcompany;
 
 
