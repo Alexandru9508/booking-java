@@ -5,10 +5,15 @@ import Home from '@/components/Home'
 import AddService from '@/components/AddService'
 import UploadLogo from '@/components/UploadLogo'
 import BookingPersonDetails from '@/components/BookingPersonDetails'
+import Register from '@/components/Register'
+import Login from '@/components/Login'
+import Recover from '@/components/Recover'
+
 
 Vue.use(Router)
 
 export default new Router({
+
 	routes: [
 	{
 		path: '/',
@@ -29,6 +34,26 @@ export default new Router({
 		path: '/bookingPersonDetails',
 		name: 'BookingPersonDetails',
 		component: BookingPersonDetails
-	}
+	},{
+      path: '/',
+      name: 'Home',
+      component: Home
+  },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+     {
+      path: '/recover',
+      name: 'Recover',
+      component: Recover
+    }
 	]
+  
 })

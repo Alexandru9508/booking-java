@@ -10,6 +10,6 @@
 
 <script>
 export default {
-  name: 'home'
+  servicename: 'home'
 }
 </script>
