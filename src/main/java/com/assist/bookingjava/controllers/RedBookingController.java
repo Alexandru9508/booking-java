@@ -22,7 +22,10 @@ public class RedBookingController {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{idbooking}")
     public void deleteBooking(@PathVariable Long idcompany) {
-        bookingService.deleteBooking(idcompany);
+        if(idcompany!=null) {
+            bookingService.deleteBooking(idcompany);
+            System.out.println("Deleted!");
+        }
     }
 
 
