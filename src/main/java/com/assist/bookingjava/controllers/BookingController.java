@@ -28,7 +28,6 @@ public class BookingController {
             System.out.println("Deleted!");
         }
     }
-
     //addBooking
     @RequestMapping("/booking/add")
     public  void addBooking(Booking booking){
