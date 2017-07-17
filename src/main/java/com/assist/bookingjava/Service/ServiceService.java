@@ -17,17 +17,12 @@ public class ServiceService {
 
     @Autowired
     private ServiceDao serviceDao;
-<<<<<<< HEAD
 
 
-    public List<RedService> getService() {
-        List<RedService> serv = new ArrayList<>();
-=======
     final   List<ServiceCompany> serv = new ArrayList<>();
 
 
     public List<ServiceCompany> getService() {
->>>>>>> stroia
         serviceDao.findAll().forEach(serv :: add);
         return serv;
     }
