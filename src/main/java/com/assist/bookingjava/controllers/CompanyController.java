@@ -20,12 +20,6 @@ public class CompanyController {
     @Autowired
     CompanyService companyService;
 
-    @Autowired
-            CompanyDao companyDao;
-
-
-    Company company=new Company("Ionut","test","doroftei@yonut");
-    //add:name,email,psw
 
    //add:name,email,password
     @RequestMapping("/addCompany")
@@ -67,21 +61,9 @@ public class CompanyController {
 
     @RequestMapping("/get-by-email/{email}")
     @ResponseBody
-    public String getByEmail(String email) {
-        String userId = "";
-        try {
-
-            Company companyUser = companyDao.findByEmail(email);
-
-        }
-        catch (Exception ex) {
-            return "User not found";
-        }
-        return "The user pass is: " + company.getPassword();
+    public String getByEmail(@PathVariable  String email) {
+            Company companyUser = companyService.recoverPassword(email);
+        return "The user pass is: " + companyUser.getPassword();
     }
-
-
-
-
 
 }

@@ -42,9 +42,11 @@ public class CompanyService {
     public Company updateComapany(Long idcompany){
         return companyDao.findOne(idcompany);
     }
-
+    
     public void deleteCompany(Long idcompany) {
         companyDao.delete(idcompany);
     }
-
+    public Company recoverPassword(String email){
+        return companyDao.findByEmail(email);
+    }
 }
