@@ -14,7 +14,7 @@
 				<form class=" serviceForm">
 <!-- 					<h6 style="color:grey; text-align: left;">SERVICE DETAILS</h6>
  -->
-					<div class="clearfix">
+					<div class="clearfix" style="margin-top:50px;">
 						<div class="form-group float-left">
 							<a class="logoImage" href="#">
 								<img src="../assets/image-logo.png">
