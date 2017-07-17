@@ -3,6 +3,7 @@ package com.assist.bookingjava.controllers;
 
 
 
+import com.assist.bookingjava.DataBase.CompanyDao;
 import com.assist.bookingjava.Models.Company;
 import com.assist.bookingjava.Service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,12 @@ public class CompanyController {
     @Autowired
     CompanyService companyService;
 
+    @Autowired
+            CompanyDao companyDao;
 
+
+    Company company=new Company("Ionut","test","doroftei@yonut");
+    //add:name,email,psw
 
    //add:name,email,password
     @RequestMapping("/addCompany")
@@ -34,9 +40,11 @@ public class CompanyController {
         Company company;
         company= companyService.updateComapany(id);
         company.CompanyUpdate(company.getUsername(),company.getPassword(),company.getEmail(),
-                description,companyname,logo,company.getIdcompany());
-       companyService.addCompany(company);
-       return company;
+
+                "NfdfdewDescription","CASA","urllll",company.getIdcompany());
+        companyService.addCompany(company);
+        return company;
+
     }
     //getPwdForEmail
     @RequestMapping("/getPassword/{id}")
@@ -56,6 +64,24 @@ public class CompanyController {
         }
             return "Error!";
     }
+
+    @RequestMapping("/get-by-email/{email}")
+    @ResponseBody
+    public String getByEmail(String email) {
+        String userId = "";
+        try {
+
+            Company companyUser = companyDao.findByEmail(email);
+
+        }
+        catch (Exception ex) {
+            return "User not found";
+        }
+        return "The user pass is: " + company.getPassword();
+    }
+
+
+
 
 
 }

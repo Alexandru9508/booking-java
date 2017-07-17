@@ -1,19 +1,19 @@
 package com.assist.bookingjava.Service;
 
-import com.assist.bookingjava.DataBase.CompanyDao;
-import com.assist.bookingjava.Models.Company;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+        import com.assist.bookingjava.DataBase.CompanyDao;
+        import com.assist.bookingjava.Models.Company;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.stereotype.Service;
 
-import org.springframework.web.bind.annotation.RequestParam;
+        import org.springframework.web.bind.annotation.RequestParam;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+        import org.springframework.web.bind.annotation.PathVariable;
+        import org.springframework.web.bind.annotation.RequestMapping;
+        import org.springframework.web.bind.annotation.RequestMethod;
 
 
-import java.util.ArrayList;
-import java.util.List;
+        import java.util.ArrayList;
+        import java.util.List;
 
 /**
  * Created by doroftei on 13.07.2017.
