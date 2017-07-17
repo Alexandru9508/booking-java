@@ -41,12 +41,8 @@ public class Company {
         this.password = password;
         this.email = email;
     }
-<<<<<<< HEAD:src/main/java/com/assist/bookingjava/Models/RedCompany.java
 
-    public void RedCompanyUpdate(String username, String password, String email, String description, String companyname, String logo,Long id) {
-=======
     public void CompanyUpdate(String username, String password, String email, String description, String companyname, String logo,Long id) {
->>>>>>> stroia:src/main/java/com/assist/bookingjava/Models/Company.java
         this.username = username;
         this.password = password;
         this.email = email;

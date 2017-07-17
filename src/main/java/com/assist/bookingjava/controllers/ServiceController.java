@@ -1,6 +1,6 @@
 package com.assist.bookingjava.controllers;
 
-import com.assist.bookingjava.Models.RedService;
+
 import com.assist.bookingjava.Models.ServiceCompany;
 import com.assist.bookingjava.Service.CompanyService;
 import com.assist.bookingjava.Service.ServiceService;
@@ -13,7 +13,7 @@ import java.util.List;
  * Created by prelipcean on 14.07.2017.
  */
 @RestController
-public class RedServiceController {
+public class ServiceController {
 
     @Autowired
     ServiceService serviceService;

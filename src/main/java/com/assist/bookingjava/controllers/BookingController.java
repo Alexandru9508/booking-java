@@ -1,7 +1,7 @@
 package com.assist.bookingjava.controllers;
 
-import com.assist.bookingjava.DataBase.BookingDao;
-import com.assist.bookingjava.Models.RedBooking;
+
+import com.assist.bookingjava.Models.Booking;
 import com.assist.bookingjava.Service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,37 +13,25 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by doroftei on 14.07.2017.
  */
 @RestController
-<<<<<<< HEAD:src/main/java/com/assist/bookingjava/controllers/RedBookingController.java
-public class RedBookingController {
-=======
+
 public class BookingController {
-    @Autowired
-    BookingDao bookingDao;
->>>>>>> stroia:src/main/java/com/assist/bookingjava/controllers/BookingController.java
 
     @Autowired
     BookingService bookingService;
 
-<<<<<<< HEAD:src/main/java/com/assist/bookingjava/controllers/RedBookingController.java
+
     //DeleteBooking
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{idbooking}")
     public void deleteBooking(@PathVariable Long idcompany) {
-        if(idcompany!=null) {
+        if (idcompany != null) {
             bookingService.deleteBooking(idcompany);
             System.out.println("Deleted!");
         }
-=======
-
-    @RequestMapping(method = RequestMethod.DELETE, value = "/bookingdelete/{idbooking}")
-    public void deleteBooking(@PathVariable Long idbooking) {
-
-            bookingService.deleteBooking(idbooking);
-
->>>>>>> stroia:src/main/java/com/assist/bookingjava/controllers/BookingController.java
     }
+
     //addBooking
     @RequestMapping("/booking/add")
-    public  void addBooking(RedBooking booking){
+    public  void addBooking(Booking booking){
         bookingService.addBooking(booking);
     }
     //allBookings
