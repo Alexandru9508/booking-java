@@ -1,7 +1,7 @@
 package com.assist.bookingjava.controllers;
 
 import com.assist.bookingjava.DataBase.CompanyDao;
-import com.assist.bookingjava.Models.RedCompany;
+import com.assist.bookingjava.Models.Company;
 import com.assist.bookingjava.Service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
  * Created by doroftei on 14.07.2017.
  */
 @RestController
-public class RedCompanyController {
+public class CompanyController {
     @Autowired
     CompanyService companyService;
 
-    RedCompany company=new RedCompany("Ionut","test","doroftei@yonut");
+    Company company=new Company("Ionut","test","doroftei@yonut");
     //add:name,email,psw
     @RequestMapping("/hello/addCompany")
     public String addNewCompany() {
@@ -23,10 +23,10 @@ public class RedCompanyController {
     }
     //update:description,logo,companyName;
     @RequestMapping("/hello/updateCompany/{id}")
-    public RedCompany updateCompany(@PathVariable Long id) {
-        RedCompany company;
+    public Company updateCompany(@PathVariable Long id) {
+        Company company;
         company= companyService.updateComapny(id);
-        company.RedCompanyUpdate(company.getUsername(),company.getPassword(),company.getEmail(),
+        company.CompanyUpdate(company.getUsername(),company.getPassword(),company.getEmail(),
                 "NfdfdewDescription","CASA","urllll",company.getIdcompany());
        companyService.addCompany(company);
        return company;
@@ -34,18 +34,14 @@ public class RedCompanyController {
     //getPwdForEmail
     @RequestMapping("/hello/getPass/{id}")
     public String sendEmail(@PathVariable Long id){
-        RedCompany company;
+        Company company;
         company=companyService.updateComapny(id);
         return company.getPassword();
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{idcompany}")
     public void deleteCompany(@PathVariable Long idcompany) {
-        if(idcompany!=null) {
-            companyService.deleteCompany(idcompany);
-            System.out.println("Deleted");
-        }
-
+        companyService.deleteCompany(idcompany);
     }
 
 }

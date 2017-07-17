@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by alex on 14.07.2017.
  */
 @Entity
-@Table(name = "redservicetime")
-public class RedServiceTime {
+@Table(name = "servicetime")
+public class ServiceTime {
 
     @Id
             @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,14 +21,14 @@ public class RedServiceTime {
 
     @ManyToOne
     @JoinColumn(name = "idservice")
-    private RedService redService;
+    private ServiceCompany service;
 
 
 
 
-    public RedServiceTime(){}
+    public ServiceTime(){}
 
-    public RedServiceTime(Long id, String dayStart, String dayStop, String hourStart, String hourStop, Long id_service) {
+    public ServiceTime(Long id, String dayStart, String dayStop, String hourStart, String hourStop, Long id_service) {
         this.id = id;
         this.dayStart = dayStart;
         this.dayStop = dayStop;
@@ -87,14 +87,14 @@ public class RedServiceTime {
 
     @Override
     public String toString() {
-        return "RedServiceAdd{" +
+        return "ServiceAdd{" +
                 "id=" + id +
                 ", dayStart='" + dayStart + '\'' +
                 ", dayStop='" + dayStop + '\'' +
                 ", hourStart='" + hourStart + '\'' +
                 ", hourStop='" + hourStop + '\'' +
                 ", id_service=" + id_service +
-                ", redService=" + redService +
+                ", Service=" + service +
                 '}';
     }
 }

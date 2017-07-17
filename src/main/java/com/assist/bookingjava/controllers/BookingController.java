@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by doroftei on 14.07.2017.
  */
 @RestController
-public class RedBookingController {
+public class BookingController {
     @Autowired
     BookingDao bookingDao;
 
@@ -20,12 +20,11 @@ public class RedBookingController {
     BookingService bookingService;
 
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{idbooking}")
-    public void deleteBooking(@PathVariable Long idcompany) {
-        if(idcompany!=null) {
-            bookingService.deleteBooking(idcompany);
-            System.out.println("Deleted!");
-        }
+    @RequestMapping(method = RequestMethod.DELETE, value = "/bookingdelete/{idbooking}")
+    public void deleteBooking(@PathVariable Long idbooking) {
+
+            bookingService.deleteBooking(idbooking);
+
     }
 
 

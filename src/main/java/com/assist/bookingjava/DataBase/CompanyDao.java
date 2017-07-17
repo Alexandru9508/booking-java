@@ -3,7 +3,7 @@ package com.assist.bookingjava.DataBase;
 
 
 
-import com.assist.bookingjava.Models.RedCompany;
+import com.assist.bookingjava.Models.Company;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -13,6 +13,6 @@ import java.util.List;
  */
 
 
-public interface CompanyDao extends CrudRepository<RedCompany,Long>{
-    List<RedCompany>findByIdcompany(Long id);
+public interface CompanyDao extends CrudRepository<Company,Long>{
+    List<Company>findByIdcompany(Long id);
 }

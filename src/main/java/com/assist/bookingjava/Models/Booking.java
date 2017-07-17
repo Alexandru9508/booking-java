@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by doroftei on 14.07.2017.
  */
 @Entity
-@Table(name = "redbooking")
-public class RedBooking {
+@Table(name = "booking")
+public class Booking {
      @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
      long idbooking;
@@ -18,9 +18,9 @@ public class RedBooking {
      String bookingHour;
      @ManyToOne
     @JoinColumn(name = "idservice")
-    private RedService service;
+    private ServiceCompany service;
 
-    public RedBooking(long idbooking, String customerName, String customerEmail, String customerPhone, String bookingDay, String bookingHour, RedService service) {
+    public Booking(long idbooking, String customerName, String customerEmail, String customerPhone, String bookingDay, String bookingHour, ServiceCompany service) {
         this.idbooking = idbooking;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
@@ -78,11 +78,11 @@ public class RedBooking {
         this.bookingHour = bookingHour;
     }
 
-    public RedService getService() {
+    public ServiceCompany getService() {
         return service;
     }
 
-    public void setService(RedService service) {
+    public void setService(ServiceCompany service) {
         this.service = service;
     }
 }
