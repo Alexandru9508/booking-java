@@ -22,14 +22,15 @@ public class CompanyController {
 
 
    //add:name,email,password
-    @RequestMapping("/addCompany")
+    @RequestMapping(value="/addCompany", method = RequestMethod.POST)
     @ResponseBody
     public String addNewCompany(String name, String email, String password) {
         companyService.addCompany(new Company(name,password,email));
         return "Done";
     }
+
     //update:description,logo,companyName;
-    @RequestMapping("/updateCompany/{id}")
+    @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
     public Company updateCompany(@PathVariable Long id,String description,String companyname, String logo) {
         Company company;
         company= companyService.updateComapany(id);
@@ -39,8 +40,9 @@ public class CompanyController {
         return company;
 
     }
+
     //getPwdForEmail
-    @RequestMapping("/getPassword/{id}")
+    @RequestMapping(value = "/getPassword/{id}", method = RequestMethod.GET)
     public String sendEmail(@PathVariable Long id){
         Company company;
         company=companyService.updateComapany(id);
@@ -48,7 +50,7 @@ public class CompanyController {
     }
 
 
-    @RequestMapping("/delete/{idcompany}")
+    @RequestMapping(value = "/delete/{idcompany}", method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteCompany(@PathVariable Long idcompany) {
         if(idcompany!=null) {
