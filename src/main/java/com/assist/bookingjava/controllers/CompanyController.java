@@ -10,10 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by prelipcean on 14.07.2017.
- */
-
 
 /**
  * Created by doroftei on 14.07.2017.
@@ -24,25 +20,25 @@ public class CompanyController {
     CompanyService companyService;
 
 
-    Company company=new Company("Ionut","test","doroftei@yonut");
-   //add:name,email,psw
+
+   //add:name,email,password
     @RequestMapping("/hello/addCompany")
-    public String addNewCompany() {
-        companyService.addCompany(company);
+    @ResponseBody
+    public String addNewCompany(String name, String email, String password) {
+        companyService.addCompany(new Company(name,email,password));
         return "Done";
     }
     //update:description,logo,companyName;
     @RequestMapping("/hello/updateCompany/{id}")
-    public Company updateCompany(@PathVariable Long id) {
+    public Company updateCompany(@PathVariable Long id,String description,String companyname, String logo) {
         Company company;
         company= companyService.updateComapany(id);
         company.CompanyUpdate(company.getUsername(),company.getPassword(),company.getEmail(),
-                "NfdfdewDescription","CASA","urllll",company.getIdcompany());
+                description,companyname,logo,company.getIdcompany());
        companyService.addCompany(company);
        return company;
     }
     //getPwdForEmail
-
     @RequestMapping("/hello/getPass/{id}")
     public String sendEmail(@PathVariable Long id){
         Company company;
@@ -57,7 +53,6 @@ public class CompanyController {
             companyService.deleteCompany(idcompany);
             System.out.println("Deleted");
         }
-
     }
 
 
