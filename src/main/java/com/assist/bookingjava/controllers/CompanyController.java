@@ -2,13 +2,8 @@ package com.assist.bookingjava.controllers;
 
 
 
-import com.assist.bookingjava.DataBase.CompanyDao;
-<<<<<<< HEAD:src/main/java/com/assist/bookingjava/controllers/RedCompanyController.java
 
-import com.assist.bookingjava.Models.RedCompany;
-=======
 import com.assist.bookingjava.Models.Company;
->>>>>>> stroia:src/main/java/com/assist/bookingjava/controllers/CompanyController.java
 import com.assist.bookingjava.Service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,12 +23,9 @@ public class CompanyController {
     @Autowired
     CompanyService companyService;
 
-<<<<<<< HEAD:src/main/java/com/assist/bookingjava/controllers/RedCompanyController.java
-    RedCompany company=new RedCompany("ioon","test","doroftei@yonut");
-=======
+
     Company company=new Company("Ionut","test","doroftei@yonut");
->>>>>>> stroia:src/main/java/com/assist/bookingjava/controllers/CompanyController.java
-    //add:name,email,psw
+   //add:name,email,psw
     @RequestMapping("/hello/addCompany")
     public String addNewCompany() {
         companyService.addCompany(company);
@@ -61,16 +53,11 @@ public class CompanyController {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{idcompany}")
     public void deleteCompany(@PathVariable Long idcompany) {
-<<<<<<< HEAD:src/main/java/com/assist/bookingjava/controllers/RedCompanyController.java
         if(idcompany!=null) {
             companyService.deleteCompany(idcompany);
             System.out.println("Deleted");
         }
 
-
-=======
-        companyService.deleteCompany(idcompany);
->>>>>>> stroia:src/main/java/com/assist/bookingjava/controllers/CompanyController.java
     }
 
 
