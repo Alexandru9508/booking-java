@@ -28,10 +28,7 @@ public class CompanyService {
     {
         companyDao.save(company);
     }
-
-
     //allCompany
-
     public List<Company> getAllCompany() {
         List<Company> comapny = new ArrayList<>();
         companyDao.findAll().forEach(comapny :: add);
@@ -49,4 +46,12 @@ public class CompanyService {
     public Company recoverPassword(String email){
         return companyDao.findByEmail(email);
     }
+    public Company getId(String name){
+        return companyDao.findByCompanyname(name);
+    }
+    public Company login (String email, String password) {
+        Company company = companyDao.findByEmailAndPassword(email, password);
+        return company;
+    }
+
 }
