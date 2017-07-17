@@ -15,4 +15,5 @@ import java.util.List;
 
 public interface CompanyDao extends CrudRepository<Company,Long>{
     List<Company>findByIdcompany(Long id);
+
 }
