@@ -13,11 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by doroftei on 14.07.2017.
  */
 @RestController
+<<<<<<< HEAD:src/main/java/com/assist/bookingjava/controllers/RedBookingController.java
 public class RedBookingController {
+=======
+public class BookingController {
+    @Autowired
+    BookingDao bookingDao;
+>>>>>>> stroia:src/main/java/com/assist/bookingjava/controllers/BookingController.java
 
     @Autowired
     BookingService bookingService;
 
+<<<<<<< HEAD:src/main/java/com/assist/bookingjava/controllers/RedBookingController.java
     //DeleteBooking
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{idbooking}")
     public void deleteBooking(@PathVariable Long idcompany) {
@@ -25,6 +32,14 @@ public class RedBookingController {
             bookingService.deleteBooking(idcompany);
             System.out.println("Deleted!");
         }
+=======
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/bookingdelete/{idbooking}")
+    public void deleteBooking(@PathVariable Long idbooking) {
+
+            bookingService.deleteBooking(idbooking);
+
+>>>>>>> stroia:src/main/java/com/assist/bookingjava/controllers/BookingController.java
     }
     //addBooking
     @RequestMapping("/booking/add")

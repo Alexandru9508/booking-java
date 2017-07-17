@@ -1,10 +1,10 @@
 package com.assist.bookingjava.Service;
 
 import com.assist.bookingjava.DataBase.ServiceDao;
-import com.assist.bookingjava.Models.RedCompany;
-import com.assist.bookingjava.Models.RedService;
+import com.assist.bookingjava.Models.ServiceCompany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,15 +17,22 @@ public class ServiceService {
 
     @Autowired
     private ServiceDao serviceDao;
+<<<<<<< HEAD
 
 
     public List<RedService> getService() {
         List<RedService> serv = new ArrayList<>();
+=======
+    final   List<ServiceCompany> serv = new ArrayList<>();
+
+
+    public List<ServiceCompany> getService() {
+>>>>>>> stroia
         serviceDao.findAll().forEach(serv :: add);
         return serv;
     }
 
-    public void addService(RedService service){
+    public void addService(ServiceCompany service){
         serviceDao.save(service);
     }
 

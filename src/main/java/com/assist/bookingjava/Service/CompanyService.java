@@ -1,7 +1,7 @@
 package com.assist.bookingjava.Service;
 
 import com.assist.bookingjava.DataBase.CompanyDao;
-import com.assist.bookingjava.Models.RedCompany;
+import com.assist.bookingjava.Models.Company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class CompanyService {
     private CompanyDao companyDao;
 
     //add
-    public void addCompany(RedCompany company)
+    public void addCompany(Company company)
     {
         companyDao.save(company);
     }
@@ -35,15 +35,24 @@ public class CompanyService {
 
 
     //allCompany
+<<<<<<< HEAD
 
     public List<RedCompany> getAllCompany() {
         List<RedCompany> comapny = new ArrayList<>();
+=======
+    public List<Company> getAllCompany() {
+        List<Company> comapny = new ArrayList<>();
+>>>>>>> stroia
         companyDao.findAll().forEach(comapny :: add);
         return comapny;
     }
     //update:description,logo,companyName;
+<<<<<<< HEAD
 
     public RedCompany updateComapny(Long idcompany){
+=======
+    public Company updateComapny(Long idcompany){
+>>>>>>> stroia
         return companyDao.findOne(idcompany);
     }
 

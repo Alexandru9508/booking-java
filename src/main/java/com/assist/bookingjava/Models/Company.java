@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by doroftei on 13.07.2017.
  */
 @Entity
-@Table(name = "redcompany")
-public class RedCompany {
+@Table(name = "company")
+public class Company {
 
 
     @Id
@@ -23,11 +23,11 @@ public class RedCompany {
     String companyname;
     String logo;
 
-    public RedCompany(){}
+    public Company(){}
 
 
 
-    public RedCompany(String username, String password, String email, String description, String companyname, String logo) {
+    public Company(String username, String password, String email, String description, String companyname, String logo) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -36,13 +36,17 @@ public class RedCompany {
         this.logo = logo;
     }
 
-    public RedCompany(String username, String password, String email) {
+    public Company(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
     }
+<<<<<<< HEAD:src/main/java/com/assist/bookingjava/Models/RedCompany.java
 
     public void RedCompanyUpdate(String username, String password, String email, String description, String companyname, String logo,Long id) {
+=======
+    public void CompanyUpdate(String username, String password, String email, String description, String companyname, String logo,Long id) {
+>>>>>>> stroia:src/main/java/com/assist/bookingjava/Models/Company.java
         this.username = username;
         this.password = password;
         this.email = email;
