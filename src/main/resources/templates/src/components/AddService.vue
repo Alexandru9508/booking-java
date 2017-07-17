@@ -17,26 +17,59 @@
 			<div class="form_container clearfix">
 				<form class="serviceForm">
 					<h6 style="color:grey; text-align: left; margin-top: 50px; margin-bottom:50px;">SERVICE DETAILS</h6>
-
+					<!-- service name -->
 					<div class="clearfix">
 						<div class="form-group form-group-service-name float-left">
 							<label for="exampleInputServiceName"><h5>Service name</h5></label>
-							<input type="text" required class="form-control">
+							<div class="column is-12">
+						    
+						        <p class="control has-icon has-icon-right">
+						            <input name="name" v-model="name" v-validate.initial="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="form-control">
+						            
+						            <i v-show="errors.has('name')" class="fa fa-warning"></i>
+						            
+						            
+						            <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
+						            
+						        </p>
+						    </div>
 						</div>
-
+							<!-- service duratin -->
 						<div class="form-group form-group-service-duration float-right">
 							<label for="exampleInputServicDuration"><h5>Service duration</h5></label>
-							<input type="number" required class="form-control">
+							
+							<div class="column is-12">
+					        
+					        <p class="control has-icon has-icon-right">
+					            <input name="duration" v-model.number="duration" v-validate="'required|numeric'" :class="{'input': true, 'is-danger': errors.has('duration') }" type="number" placeholder="" class="form-control">
+					            <i v-show="errors.has('duration')" class="fa fa-warning"></i>
+					            <span v-show="errors.has('duration')" class="help is-danger">{{ errors.first('duration') }}</span>
+					        </p>
+					    </div>
 						</div>
+						<!-- service description -->
 						<div class="clearfix">
 							<div class="form-group  form-group-service-description float-left">
 								<label for="exampleTextarea"><h5>Service description</h5></label>
 								<textarea class="form-control" id="exampleTextarea" rows="5" required></textarea>
 							</div>
-
+							<!-- service space -->
 							<div class="form-group form-group-spaces float-right">
 								<label for="exampleInputSpaces"><h5>Spaces</h5></label>
-								<input type="text" class="form-control" required>
+								<div class="column is-12">
+						    
+						        <p class="control has-icon has-icon-right">
+						            <input name="spaces" v-model="spaces" v-validate.initial="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('spaces') }" type="text" placeholder="" class="form-control">
+						            
+						            <i v-show="errors.has('spaces')" class="fa fa-warning"></i>
+						            
+						            
+						            <span v-show="errors.has('spaces')" class="help is-danger">{{ errors.first('spaces') }}</span>
+						            
+						        </p>
+						    </div>
+
+								<!-- service Price -->
 
 								<label for="exampleInputPrice"><h5>Price</h5></label>
 								<input type="text" class="form-control" required>
@@ -246,7 +279,10 @@
 	margin-top: 80px;
 	margin-right: -82px;
 }
-
+/*eroarea la culoare*/
+p{
+color:#990000;
+}
 .round-button {
     /* display:block */;
     width:80px;
