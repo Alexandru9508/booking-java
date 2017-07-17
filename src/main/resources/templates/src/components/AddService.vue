@@ -1,18 +1,22 @@
 <template>
 	<div class="container-fluid">
-		<div class="header clearfix">
+		<div class="header clearfix"style="">
 			<h2 class="addNewService">Add new service</h2>
 			
+			<a class="addCServiceCircle round-button" href="#">
+				<!-- <img src="../assets/Selection_002.png"> -->
+				<span style="margin-top: 14px;">+</span>
+			</a>
 			<a class="addCServiceCircle" href="#">
-				<img src="../assets/Selection_002.png">
-				<span>Add service</span>
+				<!-- <img src="../assets/Selection_002.png"> -->
+				<span id="add-service-text">Add service</span>
 			</a>
 		</div>
 
 		<div class="row">
 			<div class="form_container clearfix">
-				<form class=" serviceForm">
-					<h6 style="color:grey; text-align: left;">SERVICE DETAILS</h6>
+				<form class="serviceForm">
+					<h6 style="color:grey; text-align: left; margin-top: 50px; margin-bottom:50px;">SERVICE DETAILS</h6>
 
 					<div class="clearfix">
 						<div class="form-group form-group-service-name float-left">
@@ -24,19 +28,20 @@
 							<label for="exampleInputServicDuration"><h5>Service duration</h5></label>
 							<input type="number" required class="form-control">
 						</div>
+						<div class="clearfix">
+							<div class="form-group  form-group-service-description float-left">
+								<label for="exampleTextarea"><h5>Service description</h5></label>
+								<textarea class="form-control" id="exampleTextarea" rows="5" required></textarea>
+							</div>
 
-						<div class="form-group  form-group-service-description float-left">
-							<label for="exampleTextarea"><h5>Service description</h5></label>
-							<textarea class="form-control" id="exampleTextarea" rows="5" required></textarea>
-						</div>
+							<div class="form-group form-group-spaces float-right">
+								<label for="exampleInputSpaces"><h5>Spaces</h5></label>
+								<input type="text" class="form-control" required>
 
-						<div class="form-group form-group-spaces float-right">
-							<label for="exampleInputSpaces"><h5>Spaces</h5></label>
-							<input type="text" class="form-control" required>
-
-							<label for="exampleInputPrice"><h5>Price</h5></label>
-							<input type="text" class="form-control" required>
-						</div>
+								<label for="exampleInputPrice"><h5>Price</h5></label>
+								<input type="text" class="form-control" required>
+							</div>
+						</div>	
 					</div>
 
 					<h6 style="color:grey; text-align: left;">AVAILABILITY</h6>
@@ -88,7 +93,7 @@
 					     </span> -->
 					     <tr>
 					     	<td v-for="(value, key) in test">
-					     		<span v-for="(value1, key1) in value">{{value['monday']}}</span>
+					     		<span v-for="(value1, key1) in value">{{key1}}</span>
 					     	</td>
 					     </tr>
 
@@ -105,6 +110,8 @@
 		</div>	
 	</div>
 
+	<!-- <componenta></componenta>
+	 -->
 </template>
 
 <script>
@@ -235,24 +242,34 @@
 </script>
 
 <style scoped>
+#add-service-text{
+	margin-top: 80px;
+	margin-right: -82px;
+}
+
+.round-button {
+    /* display:block */;
+    width:80px;
+    height:80px;
+    line-height:50px;
+    border: 1px solid #f5f5f5;
+    border-radius: 50%;
+    color:white;
+    text-align:center;
+    text-decoration:none;
+    background: #ce7ede;
+    box-shadow: 0 0 3px gray;
+    font-size:40px;
+    font-weight:lighter;
+}
+.round-button:hover {
+    background: #bf6cce;
+}
 
 .tabledata {
 	border: 1px solid #ce7ede;
 	margin-bottom: 100px;
 }
-/*h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}*/
 
 a {
 	color: #ce7ede;
@@ -283,8 +300,9 @@ a {
 	width: 100%;
 }
 .header{
-	width: 50%;
+	width: 51%;
 	margin: auto;
+	margin-top:50px
 }
 
 .form_container {
