@@ -35,26 +35,20 @@ public class CompanyService {
 
 
     //allCompany
-<<<<<<< HEAD
 
-    public List<RedCompany> getAllCompany() {
-        List<RedCompany> comapny = new ArrayList<>();
-=======
+
     public List<Company> getAllCompany() {
-        List<Company> comapny = new ArrayList<>();
->>>>>>> stroia
-        companyDao.findAll().forEach(comapny :: add);
-        return comapny;
+        List<Company> comapany = new ArrayList<>();
+
+        companyDao.findAll().forEach(comapany :: add);
+        return comapany;
     }
     //update:description,logo,companyName;
-<<<<<<< HEAD
 
-    public RedCompany updateComapny(Long idcompany){
-=======
-    public Company updateComapny(Long idcompany){
->>>>>>> stroia
-        return companyDao.findOne(idcompany);
-    }
+        public Company updateComapny (Long idcompany){
+            return companyDao.findOne(idcompany);
+        }
+
 
     public void deleteCompany(Long idcompany) {
         companyDao.delete(idcompany);

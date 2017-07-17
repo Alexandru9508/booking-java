@@ -28,11 +28,7 @@ public class CompanyController {
     @Autowired
     CompanyService companyService;
 
-<<<<<<< HEAD:src/main/java/com/assist/bookingjava/controllers/RedCompanyController.java
-    RedCompany company=new RedCompany("ioon","test","doroftei@yonut");
-=======
     Company company=new Company("Ionut","test","doroftei@yonut");
->>>>>>> stroia:src/main/java/com/assist/bookingjava/controllers/CompanyController.java
     //add:name,email,psw
     @RequestMapping("/hello/addCompany")
     public String addNewCompany() {
@@ -43,7 +39,7 @@ public class CompanyController {
     @RequestMapping("/hello/updateCompany/{id}")
     public Company updateCompany(@PathVariable Long id) {
         Company company;
-        company= companyService.updateComapny(id);
+        company= companyService(id);
         company.CompanyUpdate(company.getUsername(),company.getPassword(),company.getEmail(),
                 "NfdfdewDescription","CASA","urllll",company.getIdcompany());
        companyService.addCompany(company);

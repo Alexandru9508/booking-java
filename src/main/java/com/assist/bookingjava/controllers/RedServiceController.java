@@ -1,6 +1,7 @@
 package com.assist.bookingjava.controllers;
 
 import com.assist.bookingjava.Models.RedService;
+import com.assist.bookingjava.Models.ServiceCompany;
 import com.assist.bookingjava.Service.CompanyService;
 import com.assist.bookingjava.Service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,13 @@ public class RedServiceController {
     ServiceService serviceService;
 
     @RequestMapping("/service")
-    public List<RedService> getAllService() {
+    public List<ServiceCompany> getAllService() {
         return serviceService.getService();
     }
 
     @RequestMapping("/service/add")
     public String addService() {
-        serviceService.addService(new RedService("ALEX", "AAAA", 20, 30, 40));
+        serviceService.addService(new ServiceCompany("ALEX", "AAAA", 20, 30, 40));
         return "Done";
     }
 
