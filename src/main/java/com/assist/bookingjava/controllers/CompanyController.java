@@ -3,6 +3,7 @@ package com.assist.bookingjava.controllers;
 
 
 
+import com.assist.bookingjava.DataBase.CompanyDao;
 import com.assist.bookingjava.Models.Company;
 import com.assist.bookingjava.Service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,6 @@ public class CompanyController {
     CompanyService companyService;
 
 
-
    //add:name,email,password
     @RequestMapping("/addCompany")
     @ResponseBody
@@ -34,9 +34,11 @@ public class CompanyController {
         Company company;
         company= companyService.updateComapany(id);
         company.CompanyUpdate(company.getUsername(),company.getPassword(),company.getEmail(),
-                description,companyname,logo,company.getIdcompany());
-       companyService.addCompany(company);
-       return company;
+
+                "NfdfdewDescription","CASA","urllll",company.getIdcompany());
+        companyService.addCompany(company);
+        return company;
+
     }
     //getPwdForEmail
     @RequestMapping("/getPassword/{id}")
@@ -57,5 +59,11 @@ public class CompanyController {
             return "Error!";
     }
 
+    @RequestMapping("/get-by-email/{email}")
+    @ResponseBody
+    public String getByEmail(@PathVariable  String email) {
+            Company companyUser = companyService.recoverPassword(email);
+        return "The user pass is: " + companyUser.getPassword();
+    }
 
 }

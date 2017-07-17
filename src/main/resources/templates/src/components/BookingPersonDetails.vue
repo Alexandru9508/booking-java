@@ -12,12 +12,12 @@
 		<div class="row">
 			<div class="form_container clearfix">
 				<form class=" serviceForm">
-					<h2 class="titleService">Make your booking</h2>
+					<h2 class="titleService" style="margin-top: 50px; margin-bottom:50px;">Make your booking</h2>
 <!-- 					<h6 style="color:grey; text-align: center;">SERVICE DETAILS</h6>
 
   --> 	
   									<span style="color: grey;">PERSONAL DETAILS</span>
-					<div class="clearfix">
+					<div class="clearfix" style="margin-top:50px;">
 						<div class="form-group float-left">
 							<!-- <a class="logoImage" href="#">
 								<img src="../assets/image-logo.png">
@@ -29,14 +29,14 @@
 							
 							</a> -->
 							<label for="exampleInputServiceName"><h5>Name</h5></label>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control box-size" required>
 						
 								<!-- <button @click="open"></button> -->
 						</div>
 
-						<div class="form-group form-group-company-name "><!--daca este vreo problema , adauga float-right dupa company name-->
+						<div class="form-group form-group-company-name float-right"><!--daca este vreo problema , adauga float-right dupa company name-->
 							<label for="exampleInputCompanyName"><h5>Email</h5></label>
-							<input type="text" class="form-control" required>
+							<input type="text" class="form-control box-size" required>
 						</div>
 
 						<div class="form-group  form-group-service-description float-left">
@@ -47,11 +47,11 @@
 
 							<!-- <button class="btn btn-primary save" type="submit">Save</button> -->
 							<label for="exampleInputPrice"><h5>Phone Number</h5></label>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control box-size" required>
 						</div>
 
 						<div class="form-group form-group-company-description float-right">
-							<button type="button" class="btn btn-next">NEXT</button>
+							<button type="submit" class="form-control btn btn-next">NEXT</button>
 							<!-- <label for="exampleInputCompanyDescription"><h5>Company description</h5></label>
 							<textarea class="form-control" id="exampleTextarea" rows="5"></textarea> -->
 							<!-- <input type="text" class="form-control"> -->
@@ -61,9 +61,6 @@
 
 						</div>
 					</div>
-
-					<!-- <h6 style="color:grey; text-align: left;">AVAILABILITY</h6> -->
-
 				</form>	
 			</div>
 		</div>	
@@ -88,6 +85,10 @@
 </script>
 
 <style scoped>
+.box-size{
+	width: 100%;
+
+}
 
 .titleService{
 	text-align: center;
@@ -95,38 +96,15 @@
 	font-weight: bold;
 }
 
-/* .uploadLogo{
-	background-color: #e6e6e6;
-	margin-top: 20px;
-	width: 280px;
-	border-color: grey;
-}
-.uploadLogo:hover{
-	background-color: #cac7c7;
-	cursor: pointer;
-} */
-/* .sign-out{
-	margin-top: 12px;
-    margin: auto;
-    float: left;
-    padding: 1.5rem 3rem;
-    background-color: #dadada;
-    border-color: grey;
-} */
-/* .sign-out:hover{
-	background-color: #cac7c7;
-	cursor: pointer;
-} */
-
 .btn-next{
-	margin-top: 35px;
+	margin-top: 39px;
 	color: white;
     /*margin: auto;*/
-    /* float: right; */
-    padding: 0.6rem 6rem;
-    background-color: #d07edf;
+    float: right;
+    /* padding: 0.6rem 11.5rem;
+         */    background-color: #d07edf;
     border-color: grey;
-    /* width: 100%; */
+     width: 100%;
     /*background-color: rgb(208, 126, 223);
     border-color: grey;*/
 }
@@ -139,43 +117,13 @@
 .tabledata {
 	border: 1px solid #ce7ede;
 }
-/*h1, h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}*/
 
 a {
 	color: #ce7ede;
 	text-decoration: none;
 }
-/* .addNewService{
-	display: inline-block;
-	color: #ce7ede;
-	font-weight: bold;
-	text-align: left;
-	float: left;
-	padding-left: 160px;
-} */
 
-
-/* .addCServiceCircle{
-	display: inline-block;
-	float: right;
-	padding-left: 100px;
-} */
-
-/* .addCServiceCircle span {
-	display: block;
-} */
 
 .clearfix {
 	display: table;
@@ -197,7 +145,7 @@ a {
 
 	/*float: left;*/
 	
-	width: 49%;
+	width: 40%;
 	display: table;
 }
 
