@@ -15,11 +15,13 @@ public class Company {
     long idcompany;
 
 
-    //unique=true)
+    @Column(unique = true)
     String username;
     String password;
+    @Column(unique = true)
     String email;
     String description;
+    @Column(unique = true)
     String companyname;
     String logo;
 

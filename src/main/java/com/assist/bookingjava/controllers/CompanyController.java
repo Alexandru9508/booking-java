@@ -30,16 +30,6 @@ public class CompanyController {
     }
 
     //update:description,logo,companyName;
- /*
-    @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
-    public Company updateCompany(@PathVariable Long id,String description,String companyname, String logo) {
-        Company company;
-        company= companyService.updateComapany(id);
-        company.CompanyUpdate(company.getUsername(),company.getPassword(),company.getEmail(),
-                description,companyname,logo,company.getIdcompany());
-        companyService.addCompany(company);
-        return company;
-*/
 
     @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
     public String updateCompany(@PathVariable Long id,String description,String companyname, String logo) {
