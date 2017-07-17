@@ -28,12 +28,13 @@ public class ServiceCompany {
 
     public ServiceCompany(){}
 
-    public ServiceCompany(String name, String description, int space, int price, int duration) {
+    public ServiceCompany(String name, String description, int space, int price, int duration,String Companyid) {
         this.servicename = name;
         this.servicedescription = description;
         this.space = space;
         this.price = price;
         this.duration = duration;
+        this.idcompany=new Company(Companyid,"","");
     }
 
     public String getServicename() {

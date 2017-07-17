@@ -16,4 +16,6 @@ import java.util.List;
 public interface CompanyDao extends CrudRepository<Company,Long>{
     List<Company>findByIdcompany(Long id);
     public Company findByEmail(String email);
+    public Company findByEmailAndPassword(String email, String password);
+    public Company findByCompanyname(String name);
 }
