@@ -1,7 +1,7 @@
 package com.assist.bookingjava.Service;
 
 import com.assist.bookingjava.DataBase.BookingDao;
-import com.assist.bookingjava.Models.RedBooking;
+import com.assist.bookingjava.Models.Booking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +16,18 @@ public class BookingService {
     @Autowired
     BookingDao bookingDao;
 
-    public void addBooking(RedBooking booking){
+    public void addBooking(Booking booking){
         bookingDao.save(booking);
     }
 
-    public List<RedBooking> getAllBooking() {
-        List<RedBooking> booking = new ArrayList<>();
+    public List<Booking> getAllBooking() {
+        List<Booking> booking = new ArrayList<>();
         bookingDao.findAll().forEach(booking :: add);
         return booking;
+    }
+
+
+    public void deleteBooking(Long idbooking) {
+        bookingDao.delete(idbooking);
     }
 }

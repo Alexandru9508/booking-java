@@ -8,15 +8,15 @@ import javax.persistence.*;
  * Created by prelipcean on 13.07.2017.
  */
 @Entity
-@Table(name = "redservice")
-public class RedService {
+@Table(name = "companyService")
+public class ServiceCompany {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long idservice;
 
     @ManyToOne
     @JoinColumn(name = "idcompany")
-    private RedCompany idcompany;
+    private Company idcompany;
 
 
     String servicename;
@@ -26,9 +26,9 @@ public class RedService {
     int duration;
 
 
-    public RedService(){}
+    public ServiceCompany(){}
 
-    public RedService(String name, String description, int space, int price, int duration) {
+    public ServiceCompany(String name, String description, int space, int price, int duration) {
         this.servicename = name;
         this.servicedescription = description;
         this.space = space;
@@ -60,7 +60,7 @@ public class RedService {
         return idservice;
     }
 
-    public RedCompany getIdcompany() {
+    public Company getIdcompany() {
         return idcompany;
     }
 
@@ -68,7 +68,7 @@ public class RedService {
         this.idservice = idservice;
     }
 
-    public void setIdcompany(RedCompany idcompany) {
+    public void setIdcompany(Company idcompany) {
         this.idcompany = idcompany;
     }
 
@@ -94,7 +94,7 @@ public class RedService {
 
     @Override
     public String toString() {
-        return "RedService{" +
+        return "ServiceCompany{" +
                 "idservice=" + idservice +
                 ", servicename='" + servicename + '\'' +
                 ", servicedescription='" + servicedescription + '\'' +
