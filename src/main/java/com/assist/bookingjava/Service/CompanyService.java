@@ -39,7 +39,7 @@ public class CompanyService {
     }
     //update:description,logo,companyName;
 
-    public Company updateComapny(Long idcompany){
+    public Company updateComapany(Long idcompany){
         return companyDao.findOne(idcompany);
     }
 
