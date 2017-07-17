@@ -15,8 +15,6 @@ import java.util.List;
 public class CompanyController {
     @Autowired
     CompanyService companyService;
-
-
    //add:name,email,password
     @RequestMapping(value="/addCompany", method = RequestMethod.POST)
     @ResponseBody
@@ -28,9 +26,7 @@ public class CompanyController {
         }
         return "Data Saved!";
     }
-
     //update:description,logo,companyName;
-
     @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
     public String updateCompany(@PathVariable Long id,String description,String companyname, String logo) {
         try {
@@ -46,27 +42,15 @@ public class CompanyController {
 
     }
 
-    //getPwdForEmail
-
-    @RequestMapping(value = "/getPassword/{id}", method = RequestMethod.GET)
-    public String sendEmail(@PathVariable Long id){
-        Company company;
-        company=companyService.updateComapany(id);
-        return company.getPassword();
-    }
-
-
-
-
-    //@RequestMapping("/delete/{idcompany}")
-    @RequestMapping(value = "/delete/{idcompany}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deleteCompany/{idcompany}", method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteCompany(@PathVariable Long idcompany) {
-        if(idcompany!=null) {
+        try {
             companyService.deleteCompany(idcompany);
-            return "Deleted";
+        }catch (Exception err){
+            return "Failed";
         }
-            return "Error!";
+            return "Company deleted!";
     }
 
     @RequestMapping(value = "/recover/{email}", method = RequestMethod.GET)
