@@ -35,7 +35,7 @@ public class CompanyController {
     @RequestMapping("/hello/updateCompany/{id}")
     public Company updateCompany(@PathVariable Long id) {
         Company company;
-        company= companyService.updateComapny(id);
+        company= companyService.updateComapany(id);
         company.CompanyUpdate(company.getUsername(),company.getPassword(),company.getEmail(),
                 "NfdfdewDescription","CASA","urllll",company.getIdcompany());
        companyService.addCompany(company);
@@ -46,7 +46,7 @@ public class CompanyController {
     @RequestMapping("/hello/getPass/{id}")
     public String sendEmail(@PathVariable Long id){
         Company company;
-        company=companyService.updateComapny(id);
+        company=companyService.updateComapany(id);
         return company.getPassword();
     }
 

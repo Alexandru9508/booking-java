@@ -19,10 +19,8 @@ public class ServiceService {
     private ServiceDao serviceDao;
 
 
-    final   List<ServiceCompany> serv = new ArrayList<>();
-
-
     public List<ServiceCompany> getService() {
+        List<ServiceCompany> serv = new ArrayList<>();
         serviceDao.findAll().forEach(serv :: add);
         return serv;
     }
