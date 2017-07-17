@@ -9,7 +9,7 @@
 	  	  		<!-- email -->
 	    		<form> 
 		       		<div class="column is-12">
-    			<label class="label" for="email">Email address:</label>
+    			<label class="labelEmail" for="email">Email address:</label>
     			<p :class="{ 'control': true }">
         		<input v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" class="inputEmail">
         		</p>
@@ -26,7 +26,7 @@
 		     		<input type="password" class="passwordLogin" name="user_password"></br>
  -->
  				<div class="column is-12">
-            <label class="label">Password</label>
+            <label class="labelPassword">Password</label>
             <p class="control has-icon has-icon-right">
                 <input name="password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" placeholder="" class="inputEmail">
                 <p>
@@ -84,15 +84,21 @@ p{
 
 }
 
-.label{
+.labelEmail{
 	margin-top: 2%;
-	margin-left: -20.5%;
-	width: 20%
+	margin-left: -19%;
+	width: 20%	
 }
 .elementPassword{
 
 	margin-top: 2%;
 	margin-left: -20.6%;
+	width: 20%
+}
+.labelPassword{
+
+	margin-top: 2%;
+	margin-left: -22%;
 	width: 20%
 }
 .goToRecover{
