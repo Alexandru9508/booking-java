@@ -34,8 +34,7 @@ public class CompanyController {
         Company company;
         company= companyService.updateComapany(id);
         company.CompanyUpdate(company.getUsername(),company.getPassword(),company.getEmail(),
-
-                "NfdfdewDescription","CASA","urllll",company.getIdcompany());
+                description,companyname,logo,company.getIdcompany());
         companyService.addCompany(company);
         return company;
 
