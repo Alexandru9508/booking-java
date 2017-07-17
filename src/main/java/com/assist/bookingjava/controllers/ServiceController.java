@@ -19,6 +19,7 @@ public class ServiceController {
 
     @Autowired
     ServiceService serviceService;
+    CompanyService companyService;
 
     @RequestMapping("/service")
     public List<ServiceCompany> getAllService() {
@@ -26,8 +27,8 @@ public class ServiceController {
     }
 
     @RequestMapping("/service/add")
-    public String addService() {
-        serviceService.addService(new ServiceCompany("ALEX", "AAAA", 20, 30, 40));
+    public String addService(String name,String description, int space, int price, int duration,String id) {
+        serviceService.addService(new ServiceCompany(name, description, space, price, duration,id));
         return "Done";
     }
 
