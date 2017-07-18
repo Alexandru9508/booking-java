@@ -66,9 +66,9 @@ export default {
 	data: function (){
 		return {
 			user: {
-				name:'',
-				email: '',
-				password: ''
+				// name:'',
+				// email: '',
+				// password: ''
 			},
 			
 		};

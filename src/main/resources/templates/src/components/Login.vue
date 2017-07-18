@@ -24,34 +24,31 @@
             <label class="labelPassword">Password</label>
             <p class="control has-icon has-icon-right">
                 <input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" name="password" placeholder="" class="inputEmail">
-                <p>
+                </p>
                 <p>
                 <i v-show="errors.has('password')" class="fa fa-warning"></i>
   
                 <span v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</span>
                 </p>
-            </p>
+            
         </div>
-	     	</form>
+	     	
 	     	<!-- button -->
 	     	<button type="submit" id="submit" @click="submit()">LOGIN</button></br>
 	     	
 	   		 <div class="goToLogin">
-    			<router-link to="login">recover password</router-link>
+    			<router-link to="login">Recover password</router-link>
 			</div>
-			</div>
-     </div>
-  </div>
+		</div>
+	</div>
 </template>
 
+
 <script>
-<<<<<<< HEAD
-// import Vue from 'vue'
-// import VuePassword from 'vue-password'
-
-
 
 export default {
+	
+
 	data: function (){
 		return {
 			user: {
@@ -75,7 +72,7 @@ export default {
 		 //    })
 		 // },
 		 submit() {
-             this.$http.post('http://192.168.150.242:8080/register', this.user)
+		    this.$http.post('http://192.168.150.242:9000/login', this.user)
 		    .then( function (response)  {
 		    	console.log('response: ', response);
 		    })
@@ -88,34 +85,6 @@ export default {
 		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
 		 // },
 		
-=======
-	import axios from 'axios';
-	export default {
-
-		data: function (){
-			return {
-				user: {
-					email: '',
-					password: ''
-				},
-
-			};
-		},
-		methods: {
-			submit() {
-				axios.get('http://192.168.150.242:8080/login')
-				.then( function (response)  {
-					console.log('response: ', response);
-				})
-				.catch(function (error) {
-					console.log('error: ', error);
-				})
-			}
-
-		}
-	}
-
->>>>>>> fa968126cf560d6b8dc1bdfa7bf6203f6f4872a2
 
 	},
 	
@@ -124,6 +93,9 @@ export default {
 </script>
 
 <style type="text/css">
+link {
+    text-decoration: none;
+}
 p{
 	color:#990000;
 }
@@ -185,4 +157,3 @@ p{
 	}
 }
 </style>
-
