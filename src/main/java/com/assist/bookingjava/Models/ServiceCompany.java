@@ -35,6 +35,13 @@ public class ServiceCompany {
         this.duration = duration;
         this.idcompany=new Company(Companyid,"","", "","", "", "");
     }
+    public ServiceCompany(long id,String servicename,String servicedescription, int space, int price, int duration){
+        this.idservice=id;
+        this.servicename=servicename;
+        this.servicedescription=servicedescription;
+        this.price=price;
+        this.duration = duration;
+    }
 
     public String getServicename() {
         return servicename;
