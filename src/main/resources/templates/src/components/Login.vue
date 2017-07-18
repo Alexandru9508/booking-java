@@ -9,9 +9,9 @@
 	  	  		<!-- email -->
 	    		<form> 
 		       		<div class="column is-12">
-    			<label class="labelEmail" for="email">Email address:</label>
+    			<label class="label" for="email">Email address:</label>
     			<p :class="{ 'control': true }">
-        		<input v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" class="inputEmail">
+        		<input v-model="user.email" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" class="inputEmail">
         		</p>
         		<p>
         		<span v-show="errors.has('email')" class="help">{{ errors.first('email') }}</span>
@@ -26,9 +26,9 @@
 		     		<input type="password" class="passwordLogin" name="user_password"></br>
  -->
  				<div class="column is-12">
-            <label class="labelPassword">Password</label>
+            <label class="label">Password</label>
             <p class="control has-icon has-icon-right">
-                <input name="password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" placeholder="" class="inputEmail">
+                <input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" placeholder="" class="inputEmail">
                 <p>
                 <p>
                 <i v-show="errors.has('password')" class="fa fa-warning"></i>
@@ -42,7 +42,7 @@
 
 		     	</form>
 		     	<!-- button -->
-		     	<button type="submit" id="loginButton">LOGIN</button></br>
+		     	<button type="submit" id="submit ">LOGIN</button></br>
 		     	<div class="goToRecover">
 	    			<router-link to="Recover">Recover password</router-link>
 				</div>
@@ -84,21 +84,15 @@ p{
 
 }
 
-.labelEmail{
+.label{
 	margin-top: 2%;
-	margin-left: -19%;
-	width: 20%	
+	margin-left: -20.5%;
+	width: 20%
 }
 .elementPassword{
 
 	margin-top: 2%;
 	margin-left: -20.6%;
-	width: 20%
-}
-.labelPassword{
-
-	margin-top: 2%;
-	margin-left: -22%;
 	width: 20%
 }
 .goToRecover{
@@ -117,5 +111,51 @@ p{
 </style>
 
 <script>
+	import axios from 'axios';
+
+export default {
+	data: function (){
+		return {
+			user: {
+				email: '',
+				password: ''
+			},
+			
+		};
+	},
+	methods: {
+		// submit() {
+		//     axios.get('http://192.168.150.242:8080/hello')
+		//     .then( function (response)  {
+		//     	console.log('response: ', response);
+		//     	debugger;
+		//     })
+		//     .catch(function (error) {
+		//       console.log('error: ', error);
+		//       debugger;
+		//     })
+		//  },
+		 submit() {
+		    axios.post('http://192.168.150.242:8080/login', this.user)
+		    .then( function (response)  {
+		    	console.log('response: ', response);
+		    	this.email = response.user
+		    })
+		    .catch(function (error) {
+		      console.log('error: ', error);
+		    })
+		 },
+		 // showValue(event, index){
+		 // 	this.serviceAvailability[index] = true;
+		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
+		 // },
+		
+
+	},
 	
+}
+
+	
+	
+</script>
 </script>

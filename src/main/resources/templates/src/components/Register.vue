@@ -12,7 +12,7 @@
 	     <div class="column is-12">
         <label class="labelName">Name</label>
         <p class="control has-icon has-icon-right">
-            <input name="name" v-model="name" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="inputName">
+            <input name="name" v-model="user.name" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="inputName">
             <i v-show="errors.has('name')" class="fa fa-warning"></i>
             </p>
             <p>
@@ -25,7 +25,7 @@
 		    <div class="column is-12">
     			<label class="labelEmail" for="email">Email address:</label>
     			<p :class="{ 'control': true }">
-        		<input v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" class="inputEmail">
+        		<input v-model="user.email" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" class="inputEmail">
         		</p>
         		<p>
         		<span v-show="errors.has('email')" class="help">{{ errors.first('email') }}</span>
@@ -35,7 +35,7 @@
 			 <div class="column is-12">
             <label class="labelPassword">Password</label>
             <p class="control has-icon has-icon-right">
-                <input name="password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" placeholder="" class="inputEmail">
+                <input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" placeholder="" class="inputEmail">
                 <p>
                 <p>
                 <i v-show="errors.has('password')" class="fa fa-warning"></i>
@@ -46,7 +46,7 @@
         </div>
 	     	</form>
 	     	<!-- button -->
-	     	<button type="submit" id="registerButton">Sign Up</button></br>
+	     	<button type="submit" id="submit">Sign Up</button></br>
 	     	
 	   		 <div class="goToLogin">
     			<router-link to="login">You already have an account?</router-link>
@@ -73,7 +73,7 @@ p{
 	font-size: 180%;
 	width: 28%;
 }
-#registerButton{
+#sumit{
 	margin-top: 5%;
 	font-size: 190%;
 	width: 28%;
@@ -126,18 +126,46 @@ import Vue from 'vue'
 import VuePassword from 'vue-password'
 
 
- 
+
 export default {
-  name: 'scopes-example',
-  methods: {
-    validateForm(scope) {
-      this.$validator.validateAll(scope).then(result => {
-        if (result) {
-          // eslint-disable-next-line
-          alert('Form Submitted!');
-        }
-      });
-    }
-  }
-};
+	data: function (){
+		return {
+			user: {
+				name:'',
+				email: '',
+				password: ''
+			},
+			
+		};
+	},
+	methods: {
+		submit() {
+		    axios.get('http://192.168.150.242:8080/hello')
+		    .then( function (response)  {
+		    	console.log('response: ', response);
+		    	debugger;
+		    })
+		    .catch(function (error) {
+		      console.log('error: ', error);
+		      debugger;
+		    })
+		 },
+		 // submit() {
+		 //    axios.post('http://192.168.150.242:8080/login', this.user)
+		 //    .then( function (response)  {
+		 //    	console.log('response: ', response);
+		 //    })
+		 //    .catch(function (error) {
+		 //      console.log('error: ', error);
+		 //    })
+		 // },
+		 // showValue(event, index){
+		 // 	this.serviceAvailability[index] = true;
+		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
+		 // },
+		
+
+	},
+	
+}
 </script>
