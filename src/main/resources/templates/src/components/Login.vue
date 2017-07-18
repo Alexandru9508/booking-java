@@ -123,12 +123,8 @@ p{
 .all{
 	text-align: center;
 }
-.image {
-	
-	margin-top:8.2%;
-	margin-bottom: 4%;
-
-
+.image {	
+	margin-top:1%;
 }
 .labelName {
 	margin-top: 2%;

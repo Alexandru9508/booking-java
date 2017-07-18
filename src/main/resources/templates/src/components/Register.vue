@@ -4,7 +4,8 @@
  	<div class="form-group">
  	 <div class="all">
  	<div class="image">
- 		<img src="../assets/bookingLogo.png" />
+ 		
+ 		<img src="../assets/bookingLogo.png">
  	</div>
 	    <div class="form">
 	    	<form> 
@@ -123,32 +124,31 @@ p{
 	width: 28%;
 }
 #submit{
-	margin-top: 5%;
+	margin-top: 1%;
 	font-size: 190%;
 	width: 28%;
 	background-color:#DA6CE9;
 	border:0px;
+	border-radius: 5%;
 	color:#ffffff;
 }
 .all{
 	text-align: center;
 }
-.image {
-	
-	margin-top:8.2%;
-	margin-bottom: 4%;
-
-
+.image {	
+	margin-top:1%;
 }
+
 .labelName {
-	margin-top: 2%;
+	
 	margin-left: -24%;
 	width: 20%
 }
 .labelEmail{
-	margin-top: 2%;
+	
 	margin-left: -19%;
 	width: 20%	
+
 }
 .labelPassword{
 	margin-top: 2%;
@@ -156,7 +156,8 @@ p{
 	width: 20%
 }
 .goToLogin{
-	margin-top: 2%;
+	margin-top: 1%;
+
 }
 
 /*Responsive*/
