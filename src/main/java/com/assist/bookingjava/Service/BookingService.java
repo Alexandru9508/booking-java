@@ -16,18 +16,22 @@ public class BookingService {
     @Autowired
     BookingDao bookingDao;
 
+    public List<Booking> AllBookings(){
+        List<Booking>bookings=new ArrayList<>();
+        bookingDao.findAll().
+                forEach(bookings::add);
+        return bookings;
+    }
+
+    public List<Booking> AllBookingsForService(String name){
+        List<Booking>bookings=new ArrayList<>();
+        bookingDao.findByService_Servicename(name).
+        forEach(bookings::add);
+        return bookings;
+    }
+
     public void addBooking(Booking booking){
         bookingDao.save(booking);
     }
 
-    public List<Booking> getAllBooking() {
-        List<Booking> booking = new ArrayList<>();
-        bookingDao.findAll().forEach(booking :: add);
-        return booking;
-    }
-
-
-    public void deleteBooking(Long idbooking) {
-        bookingDao.delete(idbooking);
-    }
 }

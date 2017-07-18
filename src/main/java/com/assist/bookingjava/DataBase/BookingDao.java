@@ -9,5 +9,5 @@ import java.util.List;
  * Created by doroftei on 14.07.2017.
  */
 public interface BookingDao extends CrudRepository<Booking,Long> {
-    List<Booking> findByIdbooking(Long idbooking);
+    List<Booking>findByService_Servicename(String name);
 }

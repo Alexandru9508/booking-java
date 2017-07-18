@@ -33,12 +33,31 @@
 
 						<div class="form-group form-group-company-name "><!--daca este vreo problema , adauga float-right dupa company name-->
 							<label for="exampleInputCompanyName"><h5>Company name</h5></label>
-							<input type="text" class="form-control" required>
+							<div class="column is-12">
+						    
+						        <p class="control has-icon has-icon-right">
+						            <input name="name" v-model="name" v-validate.initial="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="form-control">
+						            
+						            <i v-show="errors.has('name')" class="fa fa-warning"></i>
+						            
+						            
+						            <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
+						            
+						        </p>
+						    </div>
+							
 						</div>
 
 						<div class="form-group  form-group-service-description float-left">
 							<label for="exampleTextarea"><h5>Service description</h5></label>
-							<textarea class="form-control" id="exampleTextarea" rows="5" required></textarea>
+							<p class="control has-icon has-icon-right">
+								<textarea name="description" v-model="description"  v-validate.initial="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('description') }" type="text" placeholder="" class="form-control" id="exampleTextarea" rows="5" required></textarea>
+								<i v-show="errors.has('description')" class="fa fa-warning"></i>
+						            
+						            
+						            <span v-show="errors.has('description')" class="help is-danger">{{ errors.first('description') }}</span>
+						            </p>
+
 							<button class="btn btn-primary sign-out" type="submit">Sign out</button>
 							<button type="button" class="btn btn-success">Save</button>
 

@@ -34,8 +34,12 @@
             <version>9.4-1206-jdbc42</version>
         </dependency>
 
-         
-        
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.3m</version>
+        </dependency>
+
 
     </dependencies>
 

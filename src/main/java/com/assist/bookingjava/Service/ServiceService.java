@@ -24,9 +24,18 @@ public class ServiceService {
                 .forEach(services::add);
         return services;
     }
-
+    public List<ServiceCompany> getAllServices(){
+        List<ServiceCompany> services=new ArrayList<>();
+        serviceDao.findAll().forEach(services::add);
+        return services;
+    }
     public void AddService(ServiceCompany serviceCompany){
         serviceDao.save(serviceCompany);
     }
-
+    public void Delete(Long id){
+        serviceDao.delete(id);
+    }
+    public ServiceCompany findOne(Long id){
+        return serviceDao.findOne(id);
+    }
 }

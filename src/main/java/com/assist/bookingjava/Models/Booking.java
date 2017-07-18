@@ -20,16 +20,22 @@ public class Booking {
     @JoinColumn(name = "idservice")
     private ServiceCompany service;
 
-    public Booking(long idbooking, String customerName, String customerEmail, String customerPhone, String bookingDay, String bookingHour, ServiceCompany service) {
-        this.idbooking = idbooking;
+     public Booking(){}
+    public Booking( String customerName, String customerEmail, String customerPhone, String bookingDay, String bookingHour, Long service) {
         this.customerName = customerName;
         this.customerEmail = customerEmail;
         this.customerPhone = customerPhone;
         this.bookingDay = bookingDay;
         this.bookingHour = bookingHour;
-        this.service = service;
+        this.service=new ServiceCompany(service,"","",0,0,0);
     }
-
+    public Booking(String customerName, String customerEmail, String customerPhone, String bookingDay, String bookingHour){
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.customerPhone = customerPhone;
+        this.bookingDay = bookingDay;
+        this.bookingHour = bookingHour;
+    }
     public long getIdbooking() {
         return idbooking;
     }

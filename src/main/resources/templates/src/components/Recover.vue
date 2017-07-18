@@ -24,50 +24,6 @@
 </template>
 
 
-
-<script>
-export default {
-	data: function (){
-		return {
-			user: {
-				email: '',
-				// password: ''
-			},
-			
-		};
-	},
-	methods: {
-		submit() {
-		    axios.get('http://192.168.150.242:8080/hello')
-		    .then( function (response)  {
-		    	console.log('response: ', response);
-		    	debugger;
-		    })
-		    .catch(function (error) {
-		      console.log('error: ', error);
-		      debugger;
-		    })
-		 },
-		 // submit() {
-		 //    axios.post('http://192.168.150.242:8080/login', this.user)
-		 //    .then( function (response)  {
-		 //    	console.log('response: ', response);
-		 //    })
-		 //    .catch(function (error) {
-		 //      console.log('error: ', error);
-		 //    })
-		 // },
-		 // showValue(event, index){
-		 // 	this.serviceAvailability[index] = true;
-		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
-		 // },
-		
-
-	},
-	
-}
-</script>
-
 <style type="text/css">
 /*div{
 	background-color:rgba(255, 255, 255, 0);
@@ -116,4 +72,48 @@ p{
 }
 
 </style>
+
+
+<script>
+export default {
+	data: function (){
+		return {
+			user: {
+				email: '',
+				// // password: ''
+			},
+			
+		};
+	},
+	methods: {
+		submit() {
+		     this.$http.get('http://192.168.150.242:9000/recover', this.user)
+		    .then( function (response)  {
+		    	console.log('response: ', response);
+		    	
+		    })
+		    .catch(function (error) {
+		      console.log('error: ', error);
+		     
+		    })
+		 },
+		 // submit() {
+		 //     this.$http.post('http://192.168.150.242:9000/recover', this.user)
+		 //    .then( function (response)  {
+		 //    	console.log('response: ', response);
+		 //    })
+		 //    .catch(function (error) {
+		 //      console.log('error: ', error);
+		 //    })
+		 // },
+		 // showValue(event, index){
+		 // 	this.serviceAvailability[index] = true;
+		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
+		 // },
+		
+
+	},
+	
+}
+</script>
 

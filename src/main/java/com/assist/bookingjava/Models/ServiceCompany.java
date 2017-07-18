@@ -15,7 +15,6 @@ public class ServiceCompany {
     long idservice;
 
     @ManyToOne
-    @JoinColumn(name = "idcompany")
     private Company idcompany;
 
 
@@ -28,13 +27,20 @@ public class ServiceCompany {
 
     public ServiceCompany(){}
 
-    public ServiceCompany(String name, String description, int space, int price, int duration,String Companyid) {
+    public ServiceCompany(String name, String description, int space, int price, int duration,Long Companyid) {
         this.servicename = name;
         this.servicedescription = description;
         this.space = space;
         this.price = price;
         this.duration = duration;
-        this.idcompany=new Company("","", "","", Companyid, "");
+        this.idcompany=new Company(Companyid,"","", "","", "", "");
+    }
+    public ServiceCompany(long id,String servicename,String servicedescription, int space, int price, int duration){
+        this.idservice=id;
+        this.servicename=servicename;
+        this.servicedescription=servicedescription;
+        this.price=price;
+        this.duration = duration;
     }
 
     public String getServicename() {

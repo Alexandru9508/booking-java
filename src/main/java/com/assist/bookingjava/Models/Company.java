@@ -43,15 +43,14 @@ public class Company {
         this.password = password;
         this.email = email;
     }
-
-    public void CompanyUpdate(String username, String password, String email, String description, String companyname, String logo,Long id) {
+    public Company(Long idcompany,String username, String password, String email, String description, String companyname, String logo){
+        this.idcompany=idcompany;
         this.username = username;
         this.password = password;
         this.email = email;
         this.description = description;
         this.companyname = companyname;
         this.logo = logo;
-        this.idcompany=id;
     }
 
 
