@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by alex on 14.07.2017.
  */
-public class ServiceAddService {
+public class ServiceTimeService {
 
     @Autowired
     private AddServiceDao addServiceDao;

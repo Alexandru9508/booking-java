@@ -1,54 +1,44 @@
 <template>
+	<div class="form-group"> 
+		<div class="all">
+			<div class="image">
+				<img src="../assets/bookingLogo.png" >
+			</div>
+			<div class="form">
+				<!-- email -->
+				<form> 
+					<div class="column is-12">
+						<label class="label" for="email">Email address:</label>
+						<p :class="{ 'control': true }">
+							<input v-model="user.email" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" class="inputEmail">
+						</p>
+						<p>
+							<span v-show="errors.has('email')" class="help">{{ errors.first('email') }}</span>
+						</p>
+					</div>
+			     	<div class="column is-12">
+		     		<label class="label">Password</label>
+		     		<p class="control has-icon has-icon-right">
+		     			<input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" name="password" type="password" placeholder="" class="inputEmail">
+		     			<p>
+		     				<p>
+		     					<i v-show="errors.has('password')" class="fa fa-warning"></i>
 
- <div class="form-group"> 
- 	<div class="all">
- 		<div class="image">
- 			<img src="../assets/bookingLogo.png" >
- 		</div>
-	  	  <div class="form">
-	  	  		<!-- email -->
-	    		<form> 
-		       		<div class="column is-12">
-    			<label class="labelEmail" for="email">Email address:</label>
-    			<p :class="{ 'control': true }">
-        		<input v-model="user.email" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" class="inputEmail">
-        		</p>
-        		<p>
-        		<span v-show="errors.has('email')" class="help">{{ errors.first('email') }}</span>
-    			</p>
-				</div>
+		     					<span v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</span>
+		     				</p>
+		     			</p>
+		     		</p>
+		     	</div>
 
-
-
-		     		
-		     		<!-- password -->
-		     		<!-- <label for="password" class="elementPassword">Password: </label></br>
-		     		<input type="password" class="passwordLogin" name="user_password"></br>
- -->
- 				<div class="column is-12">
-            <label class="labelPassword">Password</label>
-            <p class="control has-icon has-icon-right">
-                <input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" name="password" type="password" placeholder="" class="inputEmail">
-                <p>
-                <p>
-                <i v-show="errors.has('password')" class="fa fa-warning"></i>
-  
-                <span v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</span>
-                </p>
-            </p>
-        	</div>
-
-
-
-		     	</form>
 		     	<!-- button -->
 		     	<button type="button" id="submit" @click="submit()">LOGIN</button></br>
 		     	<div class="goToRecover">
-	    			<router-link to="Recover">Recover password</router-link>
-				</div>
-	     </div>
-	  </div>
-  </div>
+		     		<router-link to="Recover">Recover password</router-link>
+		     	</div>
+		     </form>
+		 </div>
+		</div>
+	</div>
 </template>
 <script>
 	import axios from 'axios';
@@ -76,6 +66,7 @@
 		 }
 		}
 	}
+
 
 
 </script>
@@ -140,4 +131,3 @@ p{
 		margin-right: 0;
 	}
 }
-</style>

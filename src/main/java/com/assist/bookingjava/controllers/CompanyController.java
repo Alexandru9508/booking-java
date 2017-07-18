@@ -3,6 +3,7 @@ package com.assist.bookingjava.controllers;
 import com.assist.bookingjava.DataBase.CompanyDao;
 import com.assist.bookingjava.Models.Company;
 import com.assist.bookingjava.Service.CompanyService;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,11 +17,14 @@ public class CompanyController {
     @Autowired
     CompanyService companyService;
    //add:name,email,password
-    @RequestMapping(value="/addCompany", method = RequestMethod.POST)
+    @RequestMapping(value="/register", method = RequestMethod.POST)
     @ResponseBody
     public String addNewCompany(String name, String email, String password) {
         try{
-        companyService.addCompany(new Company(name,password,email));
+            String salt = BCrypt.gensalt(12);
+            String hashed_password = BCrypt.hashpw(password,salt);
+
+        companyService.addCompany(new Company(name,hashed_password,email));
         }catch (Exception ex) {
             return "User already exists!";
         }
@@ -28,7 +32,7 @@ public class CompanyController {
     }
     //update:description,logo,companyName;
     @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
-    public String updateCompany(@PathVariable Long id,String description,String companyname, String logo) {
+    public String updateCompany(@PathVariable Long id, String description, String companyname, String logo) {
         try {
             Company company;
             company = companyService.updateComapany(id);
@@ -42,7 +46,7 @@ public class CompanyController {
 
     }
 
-    @RequestMapping(value = "/deleteCompany/{idcompany}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deleteCompany/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteCompany(@PathVariable Long idcompany) {
         try {
@@ -64,5 +68,13 @@ public class CompanyController {
         }
         return "The user pass is: "+ companyUser.getPassword();
     }
+    @RequestMapping(value = "/info/{name}",method = RequestMethod.GET)
+    public Company infoCompany(@PathVariable String name){
+        return companyService.getOneCompany(name);
+    }
 
+    @RequestMapping(value = "/allCompanys",method = RequestMethod.GET)
+        public List<Company> getAllCompany() {
+        return companyService.getAllCompany();
+        }
 }

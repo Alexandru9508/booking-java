@@ -1,6 +1,7 @@
 package com.assist.bookingjava.controllers;
 
 
+import com.assist.bookingjava.Models.Company;
 import com.assist.bookingjava.Models.ServiceCompany;
 import com.assist.bookingjava.Service.CompanyService;
 import com.assist.bookingjava.Service.ServiceService;
@@ -19,22 +20,16 @@ public class ServiceController {
 
     @Autowired
     ServiceService serviceService;
-    CompanyService companyService;
 
-    @RequestMapping("/service")
-    public List<ServiceCompany> getAllService() {
-        return serviceService.getService();
+    @RequestMapping(value = "/company/{name}/services", method = RequestMethod.GET)
+    public List<ServiceCompany> getAll(@PathVariable String name){
+        return serviceService.getAll(name);
     }
 
-    @RequestMapping("/service/add")
-    public String addService(String name,String description, int space, int price, int duration,String id) {
-        serviceService.addService(new ServiceCompany(name, description, space, price, duration,id));
-        return "Done";
-    }
-
-    @RequestMapping(method = RequestMethod.DELETE, value = "/serviceDelete/{idservice}")
-    public void deleteTopic(@PathVariable Long idservice) {
-        serviceService.deleteService(idservice);
+    @RequestMapping(value = "/company/{name}/service/{id}",method = RequestMethod.POST)
+    public void addServices(@RequestBody  ServiceCompany companyService,@PathVariable String name){
+        companyService.setIdcompany (new Company("","", "","", name, ""));
+        serviceService.AddService(companyService);
     }
 
 }

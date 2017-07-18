@@ -19,11 +19,6 @@ export default new Router({
 
 	routes: [
 	{
-		path: '/',
-		name: 'Home',
-		component: Home
-	},
-	{
 		path: '/addService',
 		name: 'AddService',
 		component: AddService

@@ -34,7 +34,7 @@ public class ServiceCompany {
         this.space = space;
         this.price = price;
         this.duration = duration;
-        this.idcompany=new Company(Companyid,"","");
+        this.idcompany=new Company("","", "","", Companyid, "");
     }
 
     public String getServicename() {
