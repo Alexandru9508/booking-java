@@ -46,7 +46,7 @@
         </div>
 	     	</form>
 	     	<!-- button -->
-	     	<button type="submit" id="submit">Sign Up</button></br>
+	     	<button type="submit" id="submit" @click="submit()">Sign Up</button></br>
 	     	
 	   		 <div class="goToLogin">
     			<router-link to="login">You already have an account?</router-link>
@@ -73,7 +73,7 @@ p{
 	font-size: 180%;
 	width: 28%;
 }
-#sumit{
+#submit{
 	margin-top: 5%;
 	font-size: 190%;
 	width: 28%;
@@ -102,7 +102,6 @@ p{
 	width: 20%	
 }
 .labelPassword{
-
 	margin-top: 2%;
 	margin-left: -22%;
 	width: 20%
@@ -139,26 +138,26 @@ export default {
 		};
 	},
 	methods: {
-		submit() {
-		    axios.get('http://192.168.150.242:8080/hello')
-		    .then( function (response)  {
-		    	console.log('response: ', response);
-		    	debugger;
-		    })
-		    .catch(function (error) {
-		      console.log('error: ', error);
-		      debugger;
-		    })
-		 },
-		 // submit() {
-		 //    axios.post('http://192.168.150.242:8080/login', this.user)
+		// submit() {
+		 //    axios.get('http://192.168.150.242:8080/hello')
 		 //    .then( function (response)  {
 		 //    	console.log('response: ', response);
+		 //    	debugger;
 		 //    })
 		 //    .catch(function (error) {
 		 //      console.log('error: ', error);
+		 //      debugger;
 		 //    })
 		 // },
+		 submit() {
+		    axios.post('http://192.168.150.242:8080/login', this.user)
+		    .then( function (response)  {
+		    	console.log('response: ', response);
+		    })
+		    .catch(function (error) {
+		      console.log('error: ', error);
+		    })
+		 },
 		 // showValue(event, index){
 		 // 	this.serviceAvailability[index] = true;
 		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
@@ -168,4 +167,5 @@ export default {
 	},
 	
 }
+
 </script>
