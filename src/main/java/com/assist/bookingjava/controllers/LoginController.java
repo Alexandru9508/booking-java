@@ -17,15 +17,9 @@ public class LoginController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public Company login(String email, String password){
-        Company company;
-        try {
+        
+        Company company =companyService.login(email,password);
 
-          company  = companyService.login(email, password);
-
-        }catch (Exception err){
-
-            return new Company();
-        }
         return company;
 
     }

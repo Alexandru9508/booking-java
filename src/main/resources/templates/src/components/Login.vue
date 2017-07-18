@@ -74,7 +74,7 @@ export default {
 		 //    })
 		 // },
 		 submit() {
-		    axios.post('http://192.168.150.242:8080/register', this.user)
+             this.$http.post('http://192.168.150.242:8080/register', this.user)
 		    .then( function (response)  {
 		    	console.log('response: ', response);
 		    })
