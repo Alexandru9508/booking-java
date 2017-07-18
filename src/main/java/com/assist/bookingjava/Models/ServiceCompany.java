@@ -15,7 +15,6 @@ public class ServiceCompany {
     long idservice;
 
     @ManyToOne
-    @JoinColumn(name = "idcompany")
     private Company idcompany;
 
 
