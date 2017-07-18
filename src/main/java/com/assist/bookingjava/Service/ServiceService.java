@@ -26,7 +26,8 @@ public class ServiceService {
     }
 
     public void addService(ServiceCompany service){
-        serviceDao.save(service);
+        serviceDao.save(
+                service);
     }
 
     public void deleteService (Long idservice){

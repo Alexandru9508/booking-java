@@ -1,19 +1,12 @@
 package com.assist.bookingjava.controllers;
 
-
-
-
+import com.assist.bookingjava.DataBase.CompanyDao;
 import com.assist.bookingjava.Models.Company;
 import com.assist.bookingjava.Service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-/**
- * Created by prelipcean on 14.07.2017.
- */
-
 
 /**
  * Created by doroftei on 14.07.2017.
@@ -24,26 +17,38 @@ public class CompanyController {
     CompanyService companyService;
 
 
-    Company company=new Company("Ionut","test","doroftei@yonut");
-   //add:name,email,psw
-    @RequestMapping("/hello/addCompany")
-    public String addNewCompany() {
-        companyService.addCompany(company);
-        return "Done";
+   //add:name,email,password
+    @RequestMapping(value="/addCompany", method = RequestMethod.POST)
+    @ResponseBody
+    public String addNewCompany(String name, String email, String password) {
+        try{
+        companyService.addCompany(new Company(name,password,email));
+        }catch (Exception ex) {
+            return "User already exists!";
+        }
+        return "Data Saved!";
     }
+
     //update:description,logo,companyName;
-    @RequestMapping("/hello/updateCompany/{id}")
-    public Company updateCompany(@PathVariable Long id) {
-        Company company;
-        company= companyService.updateComapany(id);
-        company.CompanyUpdate(company.getUsername(),company.getPassword(),company.getEmail(),
-                "NfdfdewDescription","CASA","urllll",company.getIdcompany());
-       companyService.addCompany(company);
-       return company;
+
+    @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
+    public String updateCompany(@PathVariable Long id,String description,String companyname, String logo) {
+        try {
+            Company company;
+            company = companyService.updateComapany(id);
+            company.CompanyUpdate(company.getUsername(), company.getPassword(), company.getEmail(),
+                    description, companyname, logo, company.getIdcompany());
+            companyService.addCompany(company);
+        }catch (Exception ex) {
+            return "Error";
+        }
+        return"Succes";
+
     }
+
     //getPwdForEmail
 
-    @RequestMapping("/hello/getPass/{id}")
+    @RequestMapping(value = "/getPassword/{id}", method = RequestMethod.GET)
     public String sendEmail(@PathVariable Long id){
         Company company;
         company=companyService.updateComapany(id);
@@ -51,14 +56,29 @@ public class CompanyController {
     }
 
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{idcompany}")
-    public void deleteCompany(@PathVariable Long idcompany) {
+
+
+    //@RequestMapping("/delete/{idcompany}")
+    @RequestMapping(value = "/delete/{idcompany}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public String deleteCompany(@PathVariable Long idcompany) {
         if(idcompany!=null) {
             companyService.deleteCompany(idcompany);
-            System.out.println("Deleted");
+            return "Deleted";
         }
-
+            return "Error!";
     }
 
+    @RequestMapping(value = "/recover/{email}", method = RequestMethod.GET)
+    @ResponseBody
+    public String getByEmail(@PathVariable  String email) {
+        Company companyUser;
+        try {
+          companyUser = companyService.recoverPassword(email);
+        }catch (Exception er){
+            return "Email not found";
+        }
+        return "The user pass is: "+ companyUser.getPassword();
+    }
 
 }
