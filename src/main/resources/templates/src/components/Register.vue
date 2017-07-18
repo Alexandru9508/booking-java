@@ -12,7 +12,7 @@
 	     <div class="column is-12">
         <label class="labelName">Name</label>
         <p class="control has-icon has-icon-right">
-            <input name="name" v-model="user.name" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="inputName">
+            <input name="username" v-model="user.username" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="inputName">
             <i v-show="errors.has('name')" class="fa fa-warning"></i>
             </p>
             <p>
@@ -66,9 +66,9 @@ export default {
 	data: function (){
 		return {
 			user: {
-				// name:'',
-				// email: '',
-				// password: ''
+				username:'',
+				email: '',
+				password: ''
 			},
 			
 		};
@@ -86,7 +86,7 @@ export default {
 		 //    })
 		 // },
 		 submit() {
-		    axios.post('http://192.168.150.242:8080/register', this.user)
+		     this.$http.post('http://192.168.150.242:9000/register', this.user)
 		    .then( function (response)  {
 		    	console.log('response: ', response);
 		    })
