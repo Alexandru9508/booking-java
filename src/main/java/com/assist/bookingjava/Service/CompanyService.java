@@ -46,12 +46,12 @@ public class CompanyService {
     public Company recoverPassword(String email){
         return companyDao.findByEmail(email);
     }
-    public Company getId(String name){
-        return companyDao.findByCompanyname(name);
-    }
     public Company login (String email, String password) {
         Company company = companyDao.findByEmailAndPassword(email, password);
         return company;
+    }
+    public Company getOneCompany(String name){
+        return companyDao.findByCompanyname(name);
     }
 
 }

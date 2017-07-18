@@ -18,24 +18,15 @@ public class ServiceService {
     @Autowired
     private ServiceDao serviceDao;
 
-
-    public List<ServiceCompany> getService() {
-        List<ServiceCompany> serv = new ArrayList<>();
-        serviceDao.findAll().forEach(serv :: add);
-        return serv;
+    public List<ServiceCompany> getAll(String name){
+        List<ServiceCompany> services=new ArrayList<>();
+        serviceDao.findByIdcompany_Companyname(name)
+                .forEach(services::add);
+        return services;
     }
 
-    public void addService(ServiceCompany service){
-        serviceDao.save(
-                service);
+    public void AddService(ServiceCompany serviceCompany){
+        serviceDao.save(serviceCompany);
     }
-
-    public void deleteService (Long idservice){
-        serviceDao.delete(idservice);
-    }
-
-
-
-
 
 }
