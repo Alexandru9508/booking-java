@@ -36,8 +36,8 @@ public class CompanyService {
     }
     //update:description,logo,companyName;
 
-    public Company updateComapany(Long idcompany){
-        return companyDao.findOne(idcompany);
+    public Company updateComapany(Company company){
+        return companyDao.save(company);
     }
     
     public void deleteCompany(Long idcompany) {

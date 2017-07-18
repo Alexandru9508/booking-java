@@ -18,13 +18,13 @@ public class CompanyController {
     CompanyService companyService;
    //add:name,email,password
     @RequestMapping(value="/register", method = RequestMethod.POST)
-    @ResponseBody
-    public String addNewCompany(String name, String email, String password) {
+    public String addNewCompany(@RequestBody Company company) {
         try{
-            String salt = BCrypt.gensalt(12);
-            String hashed_password = BCrypt.hashpw(password,salt);
 
-        companyService.addCompany(new Company(name,hashed_password,email));
+            String salt = BCrypt.gensalt(12);
+            String hashed_password = BCrypt.hashpw(company.getPassword(),salt);
+            companyService.addCompany(new Company(company.getUsername(),hashed_password,company.getEmail()));
+
         }catch (Exception ex) {
             return "User already exists!";
         }
@@ -32,18 +32,13 @@ public class CompanyController {
     }
     //update:description,logo,companyName;
     @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
-    public String updateCompany(@PathVariable Long id, String description, String companyname, String logo) {
+    public String updateCompany(@RequestBody Company company) {
         try {
-            Company company;
-            company = companyService.updateComapany(id);
-            company.CompanyUpdate(company.getUsername(), company.getPassword(), company.getEmail(),
-                    description, companyname, logo, company.getIdcompany());
-            companyService.addCompany(company);
+            companyService.updateComapany(company);
         }catch (Exception ex) {
             return "Error";
         }
         return"Succes";
-
     }
 
     @RequestMapping(value = "/deleteCompany/{id}", method = RequestMethod.DELETE)

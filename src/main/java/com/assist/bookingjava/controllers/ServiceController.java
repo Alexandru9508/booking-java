@@ -26,8 +26,8 @@ public class ServiceController {
         return serviceService.getAll(name);
     }
 
-    @RequestMapping(value = "/company/{name}/service/{id}",method = RequestMethod.POST)
-    public void addServices(@RequestBody  ServiceCompany companyService,@PathVariable String name){
+    @RequestMapping(value = "/company/{name}/service",method = RequestMethod.POST)
+    public void addServices(@RequestParam  ServiceCompany companyService,@PathVariable String name){
         companyService.setIdcompany (new Company("","", "","", name, ""));
         serviceService.AddService(companyService);
     }

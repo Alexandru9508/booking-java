@@ -44,15 +44,6 @@ public class Company {
         this.email = email;
     }
 
-    public void CompanyUpdate(String username, String password, String email, String description, String companyname, String logo,Long id) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.description = description;
-        this.companyname = companyname;
-        this.logo = logo;
-        this.idcompany=id;
-    }
 
 
     public long getIdcompany() {
