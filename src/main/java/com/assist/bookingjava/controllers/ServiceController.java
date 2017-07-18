@@ -42,4 +42,9 @@ public class ServiceController {
         return serviceService.findOne(id);
     }
 
+    @RequestMapping(value = "/company/services",method = RequestMethod.GET)
+    public List<ServiceCompany> allServices(){
+        return  serviceService.getAllServices();
+    }
+
 }
