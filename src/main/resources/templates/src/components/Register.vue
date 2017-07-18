@@ -46,7 +46,7 @@
         </div>
 	     	</form>
 	     	<!-- button -->
-	     	<button type="submit" id="submit" @click="submit()">Sign Up</button></br>
+	     	<button type="submit" id="submit" @click="submit()">Register</button></br>
 	     	
 	   		 <div class="goToLogin">
     			<router-link to="login">You already have an account?</router-link>
@@ -57,8 +57,8 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VuePassword from 'vue-password'
+// import Vue from 'vue'
+// import VuePassword from 'vue-password'
 
 
 
