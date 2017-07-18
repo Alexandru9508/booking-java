@@ -60,6 +60,7 @@ export default {
 		};
 	},
 	methods: {
+		
 		// submit() {
 		 //    axios.get('http://192.168.150.242:8080/hello')
 		 //    .then( function (response)  {
