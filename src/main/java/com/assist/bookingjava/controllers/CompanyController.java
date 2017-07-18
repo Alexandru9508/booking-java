@@ -16,7 +16,7 @@ public class CompanyController {
     @Autowired
     CompanyService companyService;
    //add:name,email,password
-    @RequestMapping(value="/addCompany", method = RequestMethod.POST)
+    @RequestMapping(value="/register", method = RequestMethod.POST)
     @ResponseBody
     public String addNewCompany(String name, String email, String password) {
         try{
@@ -28,7 +28,7 @@ public class CompanyController {
     }
     //update:description,logo,companyName;
     @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
-    public String updateCompany(@PathVariable Long id,String description,String companyname, String logo) {
+    public String updateCompany(@PathVariable Long id, String description, String companyname, String logo) {
         try {
             Company company;
             company = companyService.updateComapany(id);
@@ -42,7 +42,7 @@ public class CompanyController {
 
     }
 
-    @RequestMapping(value = "/deleteCompany/{idcompany}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deleteCompany/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteCompany(@PathVariable Long idcompany) {
         try {
@@ -64,5 +64,13 @@ public class CompanyController {
         }
         return "The user pass is: "+ companyUser.getPassword();
     }
+    @RequestMapping(value = "/info/{name}",method = RequestMethod.GET)
+    public Company infoCompany(@PathVariable String name){
+        return companyService.getOneCompany(name);
+    }
 
+    @RequestMapping(value = "/allCompanys",method = RequestMethod.GET)
+        public List<Company> getAllCompany() {
+        return companyService.getAllCompany();
+        }
 }

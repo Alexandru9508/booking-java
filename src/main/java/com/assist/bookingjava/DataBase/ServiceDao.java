@@ -10,5 +10,6 @@ import java.util.List;
  */
 public interface ServiceDao extends CrudRepository<ServiceCompany,Long> {
       List<ServiceCompany> findByIdservice(Long idservice);
+      List<ServiceCompany> findByIdcompany_Companyname(String name);
 
 }

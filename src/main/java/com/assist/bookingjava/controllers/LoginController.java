@@ -16,13 +16,15 @@ public class LoginController {
     CompanyService companyService;
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String login(String email, String password){
+    public Company login(String email, String password){
+        Company company;
         try {
-            Company company = companyService.login(email, password);
-            if (company.getEmail().equals(email) && company.getPassword().equals(password));
+
+          company  = companyService.login(email, password);
         }catch (Exception err){
-            return "Faild"+" "+err.getMessage();
+
+            return new Company();
         }
-        return "Succes!";
+        return company;
     }
 }
