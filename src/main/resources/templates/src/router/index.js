@@ -10,6 +10,7 @@ import Login from '@/components/Login'
 import Recover from '@/components/Recover'
 import Bookingservices from '@/components/Bookingservices'
 import Companyname from '@/components/Companyname'
+import Companylist from '@/components/Companylist'
 
 
 Vue.use(Router)
@@ -65,6 +66,11 @@ export default new Router({
       path: '/companyname',
       name: 'Companyname',
       component: Companyname
+    },
+    {
+      path: '/companylist',
+      name: 'Companylist',
+      component: Companylist
     }
 	]
   
