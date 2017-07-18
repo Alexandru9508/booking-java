@@ -21,10 +21,12 @@ public class LoginController {
         try {
 
           company  = companyService.login(email, password);
+
         }catch (Exception err){
 
             return new Company();
         }
         return company;
+
     }
 }
