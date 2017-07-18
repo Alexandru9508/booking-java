@@ -45,10 +45,6 @@
 
 
 <script>
-// import Vue from 'vue'
-// import VuePassword from 'vue-password'
-
-
 
 export default {
 	
@@ -161,4 +157,3 @@ p{
 	}
 }
 </style>
-
