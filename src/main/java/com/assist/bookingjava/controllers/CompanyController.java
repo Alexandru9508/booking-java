@@ -3,6 +3,7 @@ package com.assist.bookingjava.controllers;
 import com.assist.bookingjava.DataBase.CompanyDao;
 import com.assist.bookingjava.Models.Company;
 import com.assist.bookingjava.Service.CompanyService;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,11 @@ public class CompanyController {
     @RequestMapping(value="/register", method = RequestMethod.POST)
     public String addNewCompany(@RequestBody Company company) {
         try{
-        companyService.addCompany(company);
+
+            String salt = BCrypt.gensalt(12);
+            String hashed_password = BCrypt.hashpw(company.getPassword(),salt);
+            companyService.addCompany(new Company(company.getUsername(),hashed_password,company.getEmail()));
+
         }catch (Exception ex) {
             return "User already exists!";
         }
