@@ -1,51 +1,60 @@
 <template>
-	<div class="form-group"> 
-		<div class="all">
-			<div class="image">
-				<img src="../assets/bookingLogo.png" >
+
+ 
+ 	<div class="form-group">
+ 	 <div class="all">
+ 	<div class="image">
+ 		<img src="../assets/bookingLogo.png" />
+ 	</div>
+	   
+
+	    	<!-- email -->
+	     		
+		    <div class="column is-12">
+    			<label class="labelEmail" for="email">Email address:</label>
+    			<p :class="{ 'control': true }">
+        		<input v-model="user.email" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" class="inputEmail">
+        		</p>
+        		<p>
+        		<span v-show="errors.has('email')" class="help">{{ errors.first('email') }}</span>
+    			</p>
 			</div>
-			<div class="form">
-				<!-- email -->
-				<form> 
-					<div class="column is-12">
-						<label class="label" for="email">Email address:</label>
-						<p :class="{ 'control': true }">
-							<input v-model="user.email" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" class="inputEmail">
-						</p>
-						<p>
-							<span v-show="errors.has('email')" class="help">{{ errors.first('email') }}</span>
-						</p>
-					</div>
-			     	<div class="column is-12">
-		     		<label class="label">Password</label>
-		     		<p class="control has-icon has-icon-right">
-		     			<input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" name="password" type="password" placeholder="" class="inputEmail">
-		     			<p>
-		     				<p>
-		     					<i v-show="errors.has('password')" class="fa fa-warning"></i>
-
-		     					<span v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</span>
-		     				</p>
-		     			</p>
-		     		</p>
-		     	</div>
-
-		     	<!-- button -->
-		     	<button type="button" id="submit" @click="submit()">LOGIN</button></br>
-		     	<div class="goToRecover">
-		     		<router-link to="Recover">Recover password</router-link>
-		     	</div>
-		     </form>
-		 </div>
-		</div>
-	</div>
+	     		<!-- password -->
+			 <div class="column is-12">
+            <label class="labelPassword">Password</label>
+            <p class="control has-icon has-icon-right">
+                <input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" name="password" placeholder="" class="inputEmail">
+                <p>
+                <p>
+                <i v-show="errors.has('password')" class="fa fa-warning"></i>
+  
+                <span v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</span>
+                </p>
+            </p>
+        </div>
+	     	</form>
+	     	<!-- button -->
+	     	<button type="submit" id="submit" @click="submit()">LOGIN</button></br>
+	     	
+	   		 <div class="goToLogin">
+    			<router-link to="login">recover password</router-link>
+			</div>
+			</div>
+     </div>
+  </div>
 </template>
+
 <script>
-	import axios from 'axios';
-	export default {
+// import Vue from 'vue'
+// import VuePassword from 'vue-password'
+
+
+
+export default {
 	data: function (){
 		return {
 			user: {
+				// name:'',
 				email: '',
 				password: ''
 			},
@@ -53,21 +62,35 @@
 		};
 	},
 	methods: {
-		submit() {
-		    axios.get('http://192.168.150.242:8080/login')
+		// submit() {
+		 //    axios.get('http://192.168.150.242:8080/hello')
+		 //    .then( function (response)  {
+		 //    	console.log('response: ', response);
+		 //    	debugger;
+		 //    })
+		 //    .catch(function (error) {
+		 //      console.log('error: ', error);
+		 //      debugger;
+		 //    })
+		 // },
+		 submit() {
+		    axios.post('http://192.168.150.242:8080/register', this.user)
 		    .then( function (response)  {
 		    	console.log('response: ', response);
-		    	debugger;
 		    })
 		    .catch(function (error) {
 		      console.log('error: ', error);
-		      debugger;
 		    })
-		 }
-		}
-	}
+		 },
+		 // showValue(event, index){
+		 // 	this.serviceAvailability[index] = true;
+		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
+		 // },
+		
 
-
+	},
+	
+}
 
 </script>
 
@@ -75,8 +98,12 @@
 p{
 	color:#990000;
 }
-.passwordLogin {
-	font-size: 100%;
+.inputPassword {
+	font-size: 180%;
+	width: 28%;
+}
+.inputName {
+	font-size: 180%;
 	width: 28%;
 }
 .inputEmail {
@@ -90,7 +117,6 @@ p{
 	background-color:#DA6CE9;
 	border:0px;
 	color:#ffffff;
-
 }
 .all{
 	text-align: center;
@@ -99,29 +125,27 @@ p{
 	
 	margin-top:8.2%;
 	margin-bottom: 4%;
+
+
 }
-
-.labelPassword{
+.labelName {
 	margin-top: 2%;
-	margin-left: -20.5%;
+	margin-left: -24%;
 	width: 20%
-
-}.labelEmail{
+}
+.labelEmail{
 	margin-top: 2%;
 	margin-left: -19%;
+	width: 20%	
+}
+.labelPassword{
+	margin-top: 2%;
+	margin-left: -22%;
 	width: 20%
 }
-
-.elementPassword{
-
-	margin-top: 2%;
-	margin-left: -20.6%;
-	width: 20%
-}
-.goToRecover{
+.goToLogin{
 	margin-top: 2%;
 }
-
 
 /*Responsive*/
 
@@ -131,3 +155,5 @@ p{
 		margin-right: 0;
 	}
 }
+</style>
+
