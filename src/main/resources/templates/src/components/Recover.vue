@@ -1,31 +1,43 @@
 <template>
 
- <div> 
- 	<div class="image">
- 		<img src="../assets/bookingLogo.png" />
- 	</div>
-	    <div class="form">
-	    	<form> 
-	       		<label for="mail" class="elementEmail">Email address:</label><br>
-	     		<input type="email" id="mailRecover" servicename="user_email"><br>
-	     	</form>
-	     	<button type="submit" id="recoverButton">RECOVER</button><br>
-	     	
-     </div>
+ <div class="form-group"> 
+	 <div class="all">
+	 	<div class="image">
+	 		<img src="../assets/bookingLogo.png" />
+	 	</div>
+		   
+		    	
+		    <div class="column is-12">
+    			<label class="labelEmail" for="email">Email address:</label>
+    			<p :class="{ 'control': true }">
+        		<input v-model="user.email" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" id="email">
+        		</p>
+        		<p>
+        		<span v-show="errors.has('email')" class="help">{{ errors.first('email') }}</span>
+    			</p>
+			</div>
+		     	<button type="submit" id="submit">RECOVER</button><br>
+		     	
+	     </div>
+	   </div>
   </div>
 </template>
 
 
 <style type="text/css">
-div{
+/*div{
 	background-color:rgba(255, 255, 255, 0);
 	
+}*/
+p{
+	color:#990000;
 }
-#mailRecover {
+#email {
 	font-size: 180%;
 	width: 28%;
 }
-#recoverButton{
+
+#submit{
 	margin-top: 5%;
 	font-size: 190%;
 	width: 28%;
@@ -34,36 +46,72 @@ div{
 	color:#ffffff;
 
 }
+.all{
+	text-align: center;
+}
 .image {
 	
 	margin-top:8.2%;
 	margin-bottom: 4%;
-
-
 }
 
-.elementEmail{
+.labelEmail{
 	margin-top: 2%;
-	margin-left: -18.5%;
+	margin-left: -19%;
 	width: 20%
-
-
 }
 
 
 
 /*Responsive*/
-
+@media (max-width: 1000px) {
+	.form-group {
+		float: none;
+		margin-right: 0;
+	}
+}
 
 </style>
 
 <script>
-	export default {
-	  servicename: 'recover',
-	  data () {
-	    return {
-	      msg: 'Welcome to Your Vue.js App'
-	    }
-	  }
-	}
+export default {
+	data: function (){
+		return {
+			user: {
+				email: '',
+				// password: ''
+			},
+			
+		};
+	},
+	methods: {
+		// submit() {
+		//     axios.get('http://192.168.150.242:8080/hello')
+		//     .then( function (response)  {
+		//     	console.log('response: ', response);
+		//     	debugger;
+		//     })
+		//     .catch(function (error) {
+		//       console.log('error: ', error);
+		//       debugger;
+		//     })
+		//  },
+		 submit() {
+		    axios.post('http://192.168.150.242:8080/login', this.user)
+		    .then( function (response)  {
+		    	console.log('response: ', response);
+		    })
+		    .catch(function (error) {
+		      console.log('error: ', error);
+		    })
+		 },
+		 // showValue(event, index){
+		 // 	this.serviceAvailability[index] = true;
+		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
+		 // },
+		
+
+	},
+	
+}
 </script>

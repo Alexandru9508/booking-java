@@ -1,22 +1,56 @@
 <template>
 
- <div> 
+ 
+ 	<div class="form-group">
+ 	 <div class="all">
  	<div class="image">
  		<img src="../assets/bookingLogo.png" />
  	</div>
 	    <div class="form">
 	    	<form> 
-	    		<label for="servicename" class="elementName">Your Name:</label></br>
-	    		<input type="text" id="nameRegister" servicename="user_name"></br>
-	     		<label for="mail" class="elementEmail">Email address:</label></br>
-	     		<input type="email" id="mailRegister" servicename="user_email"></br>
-	     		<label for="password" class="elementPassword">Password: </label></br>
-	     		<input type="password" id="passwordRegister" servicename="user_password"></br>
+	    	<!-- Numele -->
+	     <div class="column is-12">
+        <label class="labelName">Name</label>
+        <p class="control has-icon has-icon-right">
+            <input name="name" v-model="user.name" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="inputName">
+            <i v-show="errors.has('name')" class="fa fa-warning"></i>
+            </p>
+            <p>
+            <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
+        </p>
+    </div>
+
+	    	<!-- email -->
+	     		
+		    <div class="column is-12">
+    			<label class="labelEmail" for="email">Email address:</label>
+    			<p :class="{ 'control': true }">
+        		<input v-model="user.email" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" class="inputEmail">
+        		</p>
+        		<p>
+        		<span v-show="errors.has('email')" class="help">{{ errors.first('email') }}</span>
+    			</p>
+			</div>
+	     		<!-- password -->
+			 <div class="column is-12">
+            <label class="labelPassword">Password</label>
+            <p class="control has-icon has-icon-right">
+                <input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" placeholder="" class="inputEmail">
+                <p>
+                <p>
+                <i v-show="errors.has('password')" class="fa fa-warning"></i>
+  
+                <span v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</span>
+                </p>
+            </p>
+        </div>
 	     	</form>
-	     	<button type="submit" id="registerButton">Sign Up</button></br>
+	     	<!-- button -->
+	     	<button type="submit" id="submit">Sign Up</button></br>
 	     	
 	   		 <div class="goToLogin">
     			<router-link to="login">You already have an account?</router-link>
+			</div>
 			</div>
      </div>
   </div>
@@ -24,18 +58,31 @@
 
 
 <style type="text/css">
-
-#nameRegister, #mailRegister, #passwordRegister {
+p{
+	color:#990000;
+}
+.inputPassword {
 	font-size: 180%;
 	width: 28%;
 }
-#registerButton{
+.inputName {
+	font-size: 180%;
+	width: 28%;
+}
+.inputEmail {
+	font-size: 180%;
+	width: 28%;
+}
+#sumit{
 	margin-top: 5%;
 	font-size: 190%;
 	width: 28%;
 	background-color:#DA6CE9;
 	border:0px;
 	color:#ffffff;
+}
+.all{
+	text-align: center;
 }
 .image {
 	
@@ -44,21 +91,20 @@
 
 
 }
-.elementName{
-
+.labelName {
 	margin-top: 2%;
-	margin-left: -20%;
+	margin-left: -24%;
 	width: 20%
 }
-.elementEmail{
+.labelEmail{
 	margin-top: 2%;
-	margin-left: -18.5%;
-	width: 20%
+	margin-left: -19%;
+	width: 20%	
 }
-.elementPassword{
+.labelPassword{
 
 	margin-top: 2%;
-	margin-left: -20.6%;
+	margin-left: -22%;
 	width: 20%
 }
 .goToLogin{
@@ -76,12 +122,50 @@
 </style>
 
 <script>
-	export default {
-	  servicename: 'register',
-	  data () {
-	    return {
-	      msg: 'Welcome to Your Vue.js App'
-	    }
-	  }
-	}
+import Vue from 'vue'
+import VuePassword from 'vue-password'
+
+
+
+export default {
+	data: function (){
+		return {
+			user: {
+				name:'',
+				email: '',
+				password: ''
+			},
+			
+		};
+	},
+	methods: {
+		submit() {
+		    axios.get('http://192.168.150.242:8080/hello')
+		    .then( function (response)  {
+		    	console.log('response: ', response);
+		    	debugger;
+		    })
+		    .catch(function (error) {
+		      console.log('error: ', error);
+		      debugger;
+		    })
+		 },
+		 // submit() {
+		 //    axios.post('http://192.168.150.242:8080/login', this.user)
+		 //    .then( function (response)  {
+		 //    	console.log('response: ', response);
+		 //    })
+		 //    .catch(function (error) {
+		 //      console.log('error: ', error);
+		 //    })
+		 // },
+		 // showValue(event, index){
+		 // 	this.serviceAvailability[index] = true;
+		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
+		 // },
+		
+
+	},
+	
+}
 </script>
