@@ -28,5 +28,10 @@ public class ServiceService {
     public void AddService(ServiceCompany serviceCompany){
         serviceDao.save(serviceCompany);
     }
-
+    public void Delete(Long id){
+        serviceDao.delete(id);
+    }
+    public ServiceCompany findOne(Long id){
+        return serviceDao.findOne(id);
+    }
 }

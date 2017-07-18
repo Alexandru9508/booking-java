@@ -20,18 +20,4 @@ public class BookingController {
     BookingService bookingService;
 
 
-    //DeleteBooking
-    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{idbooking}")
-    public void deleteBooking(@PathVariable Long idcompany) {
-        if (idcompany != null) {
-            bookingService.deleteBooking(idcompany);
-            System.out.println("Deleted!");
-        }
-    }
-    //addBooking
-    @RequestMapping("/booking/add")
-    public  void addBooking(Booking booking){
-        bookingService.addBooking(booking);
-    }
-    //allBookings
 }
