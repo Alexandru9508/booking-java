@@ -45,6 +45,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 // import Vue from 'vue'
 // import VuePassword from 'vue-password'
 
@@ -74,7 +75,7 @@ export default {
 		 //    })
 		 // },
 		 submit() {
-		    axios.post('http://192.168.150.242:8080/register', this.user)
+             this.$http.post('http://192.168.150.242:8080/register', this.user)
 		    .then( function (response)  {
 		    	console.log('response: ', response);
 		    })
@@ -87,6 +88,34 @@ export default {
 		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
 		 // },
 		
+=======
+	import axios from 'axios';
+	export default {
+
+		data: function (){
+			return {
+				user: {
+					email: '',
+					password: ''
+				},
+
+			};
+		},
+		methods: {
+			submit() {
+				axios.get('http://192.168.150.242:8080/login')
+				.then( function (response)  {
+					console.log('response: ', response);
+				})
+				.catch(function (error) {
+					console.log('error: ', error);
+				})
+			}
+
+		}
+	}
+
+>>>>>>> fa968126cf560d6b8dc1bdfa7bf6203f6f4872a2
 
 	},
 	
