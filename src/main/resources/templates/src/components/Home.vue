@@ -9,6 +9,9 @@
     	<router-link to="Recover">Recover</router-link>
     	<router-link to="Register">Register</router-link>
     	<router-link to="Login">Login</router-link>
+        <router-link to="Companylist">Companylist</router-link>
+
+
     	<p>asdasda</p>
 	</div>
 

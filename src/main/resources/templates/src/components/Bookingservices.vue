@@ -83,17 +83,18 @@
     }
 
     .add-button{
-      width: 2.1em;  height: 2.3em;
-      text-align: middle;
-      background-size: 100%  non-reapeat ;
-      background-image: url(../assets/pen.png)
-    }
+    width: 2.3em;  height: 2.5em;
+    text-align: middle;
+    background-size: cover;
+    background-image: url(../assets/pen.png)
 
-    .delete-button{
-      width: 2.1em;  height: 2.3em;
-      background-size: 100% non-reapeat ;
-      background-image: url(../assets/tr.png)
-    }
+  }
+
+  .delete-button{
+    width: 2.3em;  height: 2.5em;
+    background-size: cover;
+    background-image: url(../assets/tr.png)
+  }
 
     .nav-bar {
       font-size: 12px ;

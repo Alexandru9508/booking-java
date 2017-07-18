@@ -19,4 +19,8 @@ export default {
   color: #2c3e50;
 
 }
+
+.hidden {
+	display: none;
+}
 </style>
