@@ -42,7 +42,7 @@
 
 		     	</form>
 		     	<!-- button -->
-		     	<button type="submit" id="submit ">LOGIN</button></br>
+		     	<button type="button" id="submit" @click="submit()">LOGIN</button></br>
 		     	<div class="goToRecover">
 	    			<router-link to="Recover">Recover password</router-link>
 				</div>
@@ -64,7 +64,7 @@ p{
 	font-size: 180%;
 	width: 28%;
 }
-#loginButton{
+#submit{
 	margin-top: 5%;
 	font-size: 190%;
 	width: 28%;
@@ -112,8 +112,7 @@ p{
 
 <script>
 	import axios from 'axios';
-
-export default {
+	export default {
 	data: function (){
 		return {
 			user: {
@@ -124,38 +123,20 @@ export default {
 		};
 	},
 	methods: {
-		// submit() {
-		//     axios.get('http://192.168.150.242:8080/hello')
-		//     .then( function (response)  {
-		//     	console.log('response: ', response);
-		//     	debugger;
-		//     })
-		//     .catch(function (error) {
-		//       console.log('error: ', error);
-		//       debugger;
-		//     })
-		//  },
-		 submit() {
-		    axios.post('http://192.168.150.242:8080/login', this.user)
+		submit() {
+		    axios.get('http://192.168.150.242:8080/hello')
 		    .then( function (response)  {
 		    	console.log('response: ', response);
-		    	this.email = response.user
+		    	debugger;
 		    })
 		    .catch(function (error) {
 		      console.log('error: ', error);
+		      debugger;
 		    })
-		 },
-		 // showValue(event, index){
-		 // 	this.serviceAvailability[index] = true;
-		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
-		 // },
-		
+		 }
+		}
+	}
 
-	},
-	
-}
 
-	
-	
 </script>
-</script>
+

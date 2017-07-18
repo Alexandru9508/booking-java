@@ -16,7 +16,7 @@
         		<span v-show="errors.has('email')" class="help">{{ errors.first('email') }}</span>
     			</p>
 			</div>
-		     	<button type="submit" id="submit">RECOVER</button><br>
+		     	<button type="button" id="submit" @click="submit()">RECOVER</button><br>
 		     	
 	     </div>
 	   </div>
@@ -85,26 +85,26 @@ export default {
 		};
 	},
 	methods: {
-		// submit() {
-		//     axios.get('http://192.168.150.242:8080/hello')
-		//     .then( function (response)  {
-		//     	console.log('response: ', response);
-		//     	debugger;
-		//     })
-		//     .catch(function (error) {
-		//       console.log('error: ', error);
-		//       debugger;
-		//     })
-		//  },
-		 submit() {
-		    axios.post('http://192.168.150.242:8080/login', this.user)
+		submit() {
+		    axios.get('http://192.168.150.242:8080/hello')
 		    .then( function (response)  {
 		    	console.log('response: ', response);
+		    	debugger;
 		    })
 		    .catch(function (error) {
 		      console.log('error: ', error);
+		      debugger;
 		    })
 		 },
+		 // submit() {
+		 //    axios.post('http://192.168.150.242:8080/login', this.user)
+		 //    .then( function (response)  {
+		 //    	console.log('response: ', response);
+		 //    })
+		 //    .catch(function (error) {
+		 //      console.log('error: ', error);
+		 //    })
+		 // },
 		 // showValue(event, index){
 		 // 	this.serviceAvailability[index] = true;
 		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
