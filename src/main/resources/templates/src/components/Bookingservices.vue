@@ -1,6 +1,8 @@
   <template>
     <div class="nmm">
-      <nav>
+
+
+       <nav>
         <ul class="nav-bar">
           <li <a class="float-left"</a>
             <li><a href="UploadLogo.vue">PROFILE</a></li>
@@ -8,61 +10,115 @@
             <li><a href="Booking.vue">BOOKING</a></li>
             <li><a href="Bookingservices.vue">DASHBOARD</a></li>
           </ul>
-        </nav>  
+        </nav>   
+        <!-- <b-navbar toggleable type="inverse" variant="success">
+          <b-nav-toggle target="nav_collapse"></b-nav-toggle>
+          <b-link class="navbar-brand" to="#">
+            <span id="booking-app">Booking App</span>
+          </b-link>
+          <b-collapse is-nav id="nav_collapse"> 
+            <b-nav is-nav-bar class="ml-auto">
+              <b-nav is-nav-bar>
+                <b-nav-item>DASHBOARD</b-nav-item>
+                <b-nav-item>BOOKINGS</b-nav-item>
+                <b-nav-item>CALENDAR</b-nav-item>
+                <b-nav-item>PROFILE</b-nav-item>
+              </b-nav>
+            </b-nav>
+          </b-collapse>
+        </b-navbar> -->
         
-          <div class="bar-buton">
-            <button class="btn buton" href="#">+</button>
-          </div>
-          
-          <div class="nameoftheservice">
-            <div class="list>">
-              <div class="describeservices">
-                <div class="parent">
-                  <h6 id="colLeft">Name of the service</h6>
-                  <div id="colCenter"></div>
-                  <div class="add-delete-button">
-                    <div id="colRight">
-                      <b-button class="add-button" href="">
+        <div class="bar-buton">
+          <button class="btn buton" href="#">+</button>
+        </div>  
+        <div v-for="company in companies.body">        
+        <div class="nameoftheservice">
+          <div class="list>">
+            
+             <div class="describeservices">
+              <div class="parent">
+                <h6 id="colLeft">{{company.servicename}}</h6>
+                <div id="colCenter"></div>
+                <div class="add-delete-button">
+                  <div id="colRight">
+                    <b-button class="add-button" href="">
 
-                      </b-button>
-                    </div>
-                    <div id="colRight">
-                      <b-button class="delete-button"  href="">
+                    </b-button>
+                  </div>
+                  <div id="colRight">
+                    <b-button class="delete-button"  href="">
 
-                      </b-button>
+                    </b-button>
 
-                    </div>
                   </div>
                 </div>
-                <div class="describe">
-                <p> Disrupt jean shorts viral hella meh, plaid cupidatat magna art party. Echo Park adipisicing literally narwhal. Williamsburg leggings church-key, craft beer forage cornhole jean shorts blue bottle pariatur. Officia sapiente bespoke, locavore plaid cray voluptate deep v ex vinyl tote bag chillwave swag occaecat. Sed banh mi 3 wolf moon single-origin coffee quis tempor. Hoodie pitchfork pork belly aliqua, shabby chic elit consequat freegan ethical try-hard mixtape. Schlitz banjo deep v ullamco blog, umami nulla sint elit skateboard Godard odio.</p>
-                </div>
-                <table class="price">
-                  <tr>
-                    <th>Mon-Fri, 08:00 - 16:00</th>
-                    <th>6 available</th> 
-                    <th>hour  1hour </th>
-                    <th>210 Lei</th>
-                  </tr>
-                  <tr class="pricedescribe">
-                    <td>Avalibility</td>
-                    <td>Spaces</td> 
-                    <td>Duration</td>
-                    <td>Price</td>
-                  </tr>
-                </table>              
               </div>
-            </div>
+              <div class="describe">
+                descriere: {{company.servicedescription}}
+              </div>
+              <table class="price">
+                <tr>
+                  <th>Mon-Fri, 08:00 - 16:00</th>
+                  <th>{{company.space}} available</th> 
+                  <th>{{company.duration}} hour </th>
+                  <th>{{company.price}} Lei</th>
+                </tr>
+                <tr class="pricedescribe">
+                  <td>Avalibility</td>
+                  <td>Spaces</td> 
+                  <td>Duration</td>
+                  <td>Price</td>
+                </tr>
+              </table>              
+            </div> 
           </div>
+        </div>
+        </div>
+
+
+
         
       </div>
     </template>
+
+  <script>
+    export default {
+      data() {
+        return {
+          companies: [],
+          description: [] 
+
+        }
+      },
+      methods: {
+        getServices() {
+          this.$http.get('http://192.168.150.242:9000/company/services')
+          .then(response => {
+            debugger;
+            this.companies = response;
+            // return response.json()
+          })
+          .then(response => {
+            debugger;
+            // this.companies = response;
+          })
+          .then(error => {
+            debugger;
+            console.log('error: ', error);
+          });
+        }
+      },
+      created() {
+        this.getServices();
+      }
+    }
   </script>
+
   <style>
 
 
     .describe{
-      
+
       margin-top: 10px;
     }
 
@@ -83,18 +139,18 @@
     }
 
     .add-button{
-    width: 2.3em;  height: 2.5em;
-    text-align: middle;
-    background-size: cover;
-    background-image: url(../assets/pen.png)
+      width: 2.3em;  height: 2.5em;
+      text-align: middle;
+      background-size: cover;
+      background-image: url(../assets/pen.png)
 
-  }
+    }
 
-  .delete-button{
-    width: 2.3em;  height: 2.5em;
-    background-size: cover;
-    background-image: url(../assets/tr.png)
-  }
+    .delete-button{
+      width: 2.3em;  height: 2.5em;
+      background-size: cover;
+      background-image: url(../assets/tr.png)
+    }
 
     .nav-bar {
       font-size: 12px ;
@@ -141,8 +197,8 @@
       margin-bottom: 20px;
     }
     .buton:hover {
-    background: #bf6cce;
-}
+      background: #bf6cce;
+    }
 
 
 
@@ -247,13 +303,3 @@
     }
 
   </style>
-  <script>
-    export default {
-      servicename: 'bookingservices',
-      data () {
-        return {
-          msg: 'Welcome to Your Vue.js App'
-        }
-      }
-    }
-  </script>
