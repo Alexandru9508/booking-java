@@ -24,25 +24,25 @@
             <label class="labelPassword">Password</label>
             <p class="control has-icon has-icon-right">
                 <input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" name="password" placeholder="" class="inputEmail">
-                <p>
+                </p>
                 <p>
                 <i v-show="errors.has('password')" class="fa fa-warning"></i>
   
                 <span v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</span>
                 </p>
-            </p>
+            
         </div>
-	     	</form>
+	     	
 	     	<!-- button -->
 	     	<button type="submit" id="submit" @click="submit()">LOGIN</button></br>
 	     	
 	   		 <div class="goToLogin">
-    			<router-link to="login">recover password</router-link>
+    			<router-link to="login">Recover password</router-link>
 			</div>
-			</div>
-     </div>
-  </div>
+		</div>
+	</div>
 </template>
+
 
 <script>
 // import Vue from 'vue'
@@ -51,6 +51,8 @@
 
 
 export default {
+	
+
 	data: function (){
 		return {
 			user: {
@@ -74,7 +76,7 @@ export default {
 		 //    })
 		 // },
 		 submit() {
-		    axios.post('http://192.168.150.242:8080/register', this.user)
+		    this.$http.post('http://192.168.150.242:9000/login', this.user)
 		    .then( function (response)  {
 		    	console.log('response: ', response);
 		    })
@@ -95,6 +97,9 @@ export default {
 </script>
 
 <style type="text/css">
+link {
+    text-decoration: none;
+}
 p{
 	color:#990000;
 }
