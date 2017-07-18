@@ -57,6 +57,59 @@
 </template>
 
 
+<script>
+import Vue from 'vue'
+import VuePassword from 'vue-password'
+
+
+
+export default {
+	data: function (){
+		return {
+			user: {
+				name:'',
+				email: '',
+				password: ''
+			},
+			
+		};
+	},
+	methods: {
+		// submit() {
+		 //    axios.get('http://192.168.150.242:8080/hello')
+		 //    .then( function (response)  {
+		 //    	console.log('response: ', response);
+		 //    	debugger;
+		 //    })
+		 //    .catch(function (error) {
+		 //      console.log('error: ', error);
+		 //      debugger;
+		 //    })
+		 // },
+		 submit() {
+		    axios.post('http://192.168.150.242:8080/register', this.user)
+		    .then( function (response)  {
+		    	console.log('response: ', response);
+		    })
+		    .catch(function (error) {
+		      console.log('error: ', error);
+		    })
+		 },
+		 // showValue(event, index){
+		 // 	this.serviceAvailability[index] = true;
+		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
+		 // },
+		
+
+	},
+	
+}
+
+</script>
+
+
+
+
 <style type="text/css">
 p{
 	color:#990000;
@@ -120,52 +173,3 @@ p{
 }
 </style>
 
-<script>
-import Vue from 'vue'
-import VuePassword from 'vue-password'
-
-
-
-export default {
-	data: function (){
-		return {
-			user: {
-				name:'',
-				email: '',
-				password: ''
-			},
-			
-		};
-	},
-	methods: {
-		// submit() {
-		 //    axios.get('http://192.168.150.242:8080/hello')
-		 //    .then( function (response)  {
-		 //    	console.log('response: ', response);
-		 //    	debugger;
-		 //    })
-		 //    .catch(function (error) {
-		 //      console.log('error: ', error);
-		 //      debugger;
-		 //    })
-		 // },
-		 submit() {
-		    axios.post('http://192.168.150.242:8080/login', this.user)
-		    .then( function (response)  {
-		    	console.log('response: ', response);
-		    })
-		    .catch(function (error) {
-		      console.log('error: ', error);
-		    })
-		 },
-		 // showValue(event, index){
-		 // 	this.serviceAvailability[index] = true;
-		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
-		 // },
-		
-
-	},
-	
-}
-
-</script>
