@@ -5,12 +5,6 @@ package com.assist.bookingjava.Service;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Service;
 
-        import org.springframework.web.bind.annotation.RequestParam;
-
-        import org.springframework.web.bind.annotation.PathVariable;
-        import org.springframework.web.bind.annotation.RequestMapping;
-        import org.springframework.web.bind.annotation.RequestMethod;
-
 
         import java.util.ArrayList;
         import java.util.List;
@@ -34,7 +28,6 @@ public class CompanyService {
         companyDao.findAll().forEach(comapny :: add);
         return comapny;
     }
-    //update:description,logo,companyName;
 
     public Company updateComapany(Company company){
         return companyDao.save(company);
@@ -47,12 +40,15 @@ public class CompanyService {
 
         return companyDao.findByEmail(email);
     }
+
+    public Company findById(Company company) {
+        return companyDao.findByIdcompany(company.getIdcompany());
+    }
+ 
     public Company login (Company company) {
         return companyDao.findByEmail(company.getEmail());
     }
-    public Company log (Company company) {
-        return  companyDao.findByEmail(company.getEmail());
-    }
+   
     public Company getOneCompany(String name){
 
         return companyDao.findByCompanyname(name);

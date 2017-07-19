@@ -1,19 +1,8 @@
 <template>
 	<div class="container-fluid">
-		<!-- <div class="header clearfix">
-			<h2 class="addNewService">Add new service</h2>
-			
-			<a class="addCServiceCircle" href="#">
-				<img src="../assets/Selection_002.png">
-				<span>Add service</span>
-			</a>
-		</div> -->
-
 		<div class="row">
 			<div class="form_container clearfix">
 				<form class=" serviceForm">
-<!-- 					<h6 style="color:grey; text-align: left;">SERVICE DETAILS</h6>
- -->
 					<div class="clearfix" style="margin-top:50px;">
 						<div class="form-group float-left">
 							<a class="logoImage" href="#">
@@ -25,10 +14,6 @@
 								</button>
 
 							</a>
-							<!-- <label for="exampleInputServiceName"><h5>Service name</h5></label>
-							<input type="text" class="form-control"> -->
-							
-								<!-- <button @click="open"></button> -->
 						</div>
 
 						<div class="form-group form-group-company-name "><!--daca este vreo problema , adauga float-right dupa company name-->
@@ -37,7 +22,7 @@
 						    
 						        <p class="control has-icon has-icon-right">
 
-						 
+
 						            <input name="companyname" v-model="company.companyname" v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('companyname') }" type="text" placeholder="" class="form-control">
 						            
 						            <i v-show="errors.has('companyname')" class="fa fa-warning"></i>
@@ -55,12 +40,12 @@
 							<label for="exampleTextarea"><h5>Service description</h5></label>
 							<p class="control has-icon has-icon-right">
 
-								<textarea name="description" v-model="company.description"  v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('description') }" type="text" placeholder="" class="form-control" id="exampleTextarea" rows="5" required></textarea>
+
+							<textarea name="description" v-model="company.description"  v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('description') }" type="text" placeholder="" class="form-control" id="exampleTextarea" rows="5" required></textarea>
 
 								<i v-show="errors.has('description')" class="fa fa-warning"></i>
 						            
-						            
-						            <span v-show="errors.has('description')" class="help is-danger">{{ errors.first('description') }}</span>
+					            <span v-show="errors.has('description')" class="help is-danger">{{ errors.first('description') }}</span>
 						            </p>
 
 							<button class="btn btn-primary sign-out" type="submit">Sign out</button>
@@ -70,17 +55,8 @@
 						</div>
 
 						<div class="form-group form-group-company-description float-right">
-							<!-- <label for="exampleInputCompanyDescription"><h5>Company description</h5></label>
-							<textarea class="form-control" id="exampleTextarea" rows="5"></textarea> -->
-							<!-- <input type="text" class="form-control"> -->
-
-							<!-- <label for="exampleInputPrice"><h5>Price</h5></label>
-							<input type="text" class="form-control"> -->
 						</div>
 					</div>
-
-					<!-- <h6 style="color:grey; text-align: left;">AVAILABILITY</h6> -->
-
 				</form>	
 			</div>
 		</div>	
@@ -90,34 +66,34 @@
 
 <script>
 	export default {
-/*		name: 'uploadLogo',*/
 		data () {
 			return {
-				/*msg: 'Welcome to Your Vue.js App',*/
-				company:{
-					companyname: '',
-					description: '',
-					logo: ''
-			}
-			}
-		},
-		methods: {		
-		  submit() {
-		    this.$http.post('http://192.168.150.242:9000/updateCompany/88', this.company)
-		    .then( function (response)  {
-		    	console.log('response: ', response);
-		    })
-		    .catch(function (error) {
-		      console.log('error: ', error);
-		    })
-		 },
-		 
-		
 
-	},
-					}
+				company: {},
+				};
+			},
+			methods: {		
+			  	submit() {
 
-	
+				    this.$http.post('http://192.168.150.242:9000/addCompanyInfo', this.company)
+				    .then( function (response)  {
+				    	console.log('response: ', response);
+				    })
+				    .catch(function (error) {
+				      console.log('error: ', error);
+				    })
+			 	},
+				 initCompany() {
+				 	if(localStorage.company) {
+				 		this.company = JSON.parse(localStorage.company);
+				 	}
+				 	
+				 }
+			},
+			created() {
+				this.initCompany();
+			}
+	}
 </script>
 
 <style scoped>
@@ -168,19 +144,6 @@ p{
 .tabledata {
 	border: 1px solid #ce7ede;
 }
-/*h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}*/
 
 a {
 	color: #ce7ede;
