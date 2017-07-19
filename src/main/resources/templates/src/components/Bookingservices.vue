@@ -2,32 +2,9 @@
     <div class="nmm">
 
 
-       <nav>
-        <ul class="nav-bar">
-          <li <a class="float-left"</a>
-            <li><a href="UploadLogo.vue">PROFILE</a></li>
-            <li><a href="calendar.vue">CALENDAR</a></li>
-            <li><a href="Booking.vue">BOOKING</a></li>
-            <li><a href="Bookingservices.vue">DASHBOARD</a></li>
-          </ul>
-        </nav>   
-        <!-- <b-navbar toggleable type="inverse" variant="success">
-          <b-nav-toggle target="nav_collapse"></b-nav-toggle>
-          <b-link class="navbar-brand" to="#">
-            <span id="booking-app">Booking App</span>
-          </b-link>
-          <b-collapse is-nav id="nav_collapse"> 
-            <b-nav is-nav-bar class="ml-auto">
-              <b-nav is-nav-bar>
-                <b-nav-item>DASHBOARD</b-nav-item>
-                <b-nav-item>BOOKINGS</b-nav-item>
-                <b-nav-item>CALENDAR</b-nav-item>
-                <b-nav-item>PROFILE</b-nav-item>
-              </b-nav>
-            </b-nav>
-          </b-collapse>
-        </b-navbar> -->
-        
+
+ <nav-bar></nav-bar>
+                 
         <div class="bar-buton">
           <button class="btn buton" href="#">+</button>
         </div>  
@@ -82,6 +59,9 @@
     </template>
 
   <script>
+  import NavBar from './navbar.vue';
+
+
     export default {
       data() {
         return {
@@ -89,7 +69,11 @@
           description: [] 
 
         }
+         
       },
+       components: {
+          NavBar,
+        },
       methods: {
         getServices() {
           this.$http.get('http://192.168.150.242:9000/company/services')
@@ -110,11 +94,18 @@
       },
       created() {
         this.getServices();
-      }
+      },
+
     }
   </script>
 
   <style>
+
+
+  /*=========Nav bar*/
+
+
+ 
 
 
     .describe{
@@ -152,33 +143,7 @@
       background-image: url(../assets/tr.png)
     }
 
-    .nav-bar {
-      font-size: 12px ;
-      list-style-type: none;
-      margin: 0;
-      padding-right: 13px;
-      padding-top: 20px;
-      overflow: hidden;
-      background-color: #8875e4;
-    }
 
-    .nav-bar li {
-      float: right;
-    }
-
-    .nav-bar li a {
-      padding-top: 20px;
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
-
-
-    .nav-bar a:hover {
-      font-weight:bold;
-    }
 
     .bar-buton
     {
@@ -217,11 +182,13 @@
       border-radius: 2px;
       color:rgb(209, 69, 233);
 
+
     }
 
     .list
     {
-      float: left;      
+      float: left; 
+
     }
 
     table
@@ -231,6 +198,8 @@
       width: 500px;
       background-color: white;
       color:#d145e9;
+      padding-bottom: 100px;
+
     }
 
     .price {

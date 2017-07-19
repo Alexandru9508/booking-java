@@ -13,11 +13,15 @@ import Companyname from '@/components/Companyname'
 import Companylist from '@/components/Companylist'
 
 
+
 Vue.use(Router)
 
 export default new Router({
 
-	routes: [
+
+  routes: [
+
+
 	{
 		path: '/addService',
 		name: 'AddService',
