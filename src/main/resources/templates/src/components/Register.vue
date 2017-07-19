@@ -107,6 +107,11 @@ export default {
 
 </script>
 
+
+
+
+
+
 <style type="text/css">
 p{
 	color:#990000;

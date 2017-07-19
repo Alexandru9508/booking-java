@@ -27,8 +27,10 @@ public class Company {
 
     public Company(){}
 
-
-
+    public Company(String email,String password){
+        this.email=email;
+        this.password=password;
+    }
     public Company(String username, String password, String email, String description, String companyname, String logo) {
         this.username = username;
         this.password = password;
