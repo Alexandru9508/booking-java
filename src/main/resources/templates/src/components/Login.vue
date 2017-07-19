@@ -53,7 +53,6 @@ export default {
 	data: function (){
 		return {
 			user: {
-				// name:'',
 				email: '',
 				password: ''
 			},
@@ -62,32 +61,20 @@ export default {
 	},
 	methods: {
 		
-		// submit() {
-		 //    axios.get('http://192.168.150.242:8080/hello')
-		 //    .then( function (response)  {
-		 //    	console.log('response: ', response);
-		 //    	debugger;
-		 //    })
-		 //    .catch(function (error) {
-		 //      console.log('error: ', error);
-		 //      debugger;
-		 //    })
-		 // },
 		 submit() {
 		    this.$http.post('http://192.168.150.242:9000/login', this.user)
 		    .then( function (response)  {
-		    	console.log('response: ', response);
+		    	return response.json();
+		    	
+		    })
+		    .then( response => {
+		    	localStorage.setItem('company', JSON.stringify(response));
+    	  		location.href = '#uploadLogo';
 		    })
 		    .catch(function (error) {
 		      console.log('error: ', error);
 		    })
 		 },
-		 // showValue(event, index){
-		 // 	this.serviceAvailability[index] = true;
-		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
-		 // },
-		
-
 	},
 	
 }
