@@ -73,6 +73,7 @@ p{
 
 </style>
 
+
 <script>
 export default {
 	data: function (){
@@ -115,3 +116,4 @@ export default {
 	
 }
 </script>
+
