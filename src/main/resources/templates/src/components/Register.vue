@@ -12,7 +12,7 @@
 	     <div class="column is-12">
         <label class="labelName">Name</label>
         <p class="control has-icon has-icon-right">
-            <input name="name" v-model="user.name" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="inputName">
+            <input name="username" v-model="user.username" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="inputName">
             <i v-show="errors.has('name')" class="fa fa-warning"></i>
             </p>
             <p>
@@ -35,7 +35,7 @@
 			 <div class="column is-12">
             <label class="labelPassword">Password</label>
             <p class="control has-icon has-icon-right">
-                <input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" placeholder="" class="inputEmail">
+                <input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" name="password" placeholder="" class="inputEmail">
                 <p>
                 <p>
                 <i v-show="errors.has('password')" class="fa fa-warning"></i>
@@ -46,7 +46,7 @@
         </div>
 	     	</form>
 	     	<!-- button -->
-	     	<button type="submit" id="submit" @click="submit()">Sign Up</button></br>
+	     	<button type="submit" id="submit" @click="submit()">Register</button></br>
 	     	
 	   		 <div class="goToLogin">
     			<router-link to="login">You already have an account?</router-link>
@@ -56,6 +56,55 @@
   </div>
 </template>
 
+<script>
+// import Vue from 'vue'
+// import VuePassword from 'vue-password'
+
+
+
+export default {
+	data: function (){
+		return {
+			user: {
+				username:'',
+				email: '',
+				password: ''
+			},
+			
+		};
+	},
+	methods: {
+		// submit() {
+		 //    axios.get('http://192.168.150.242:8080/hello')
+		 //    .then( function (response)  {
+		 //    	console.log('response: ', response);
+		 //    	debugger;
+		 //    })
+		 //    .catch(function (error) {
+		 //      console.log('error: ', error);
+		 //      debugger;
+		 //    })
+		 // },
+		 submit() {
+		     this.$http.post('http://192.168.150.242:9000/register', this.user)
+		    .then( function (response)  {
+		    	console.log('response: ', response);
+		    })
+		    .catch(function (error) {
+		      console.log('error: ', error);
+		    })
+		 },
+		 // showValue(event, index){
+		 // 	this.serviceAvailability[index] = true;
+		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
+		 // },
+		
+
+	},
+	
+}
+
+</script>
 
 <style type="text/css">
 p{
@@ -120,52 +169,3 @@ p{
 }
 </style>
 
-<script>
-import Vue from 'vue'
-import VuePassword from 'vue-password'
-
-
-
-export default {
-	data: function (){
-		return {
-			user: {
-				name:'',
-				email: '',
-				password: ''
-			},
-			
-		};
-	},
-	methods: {
-		// submit() {
-		 //    axios.get('http://192.168.150.242:8080/hello')
-		 //    .then( function (response)  {
-		 //    	console.log('response: ', response);
-		 //    	debugger;
-		 //    })
-		 //    .catch(function (error) {
-		 //      console.log('error: ', error);
-		 //      debugger;
-		 //    })
-		 // },
-		 submit() {
-		    axios.post('http://192.168.150.242:8080/login', this.user)
-		    .then( function (response)  {
-		    	console.log('response: ', response);
-		    })
-		    .catch(function (error) {
-		      console.log('error: ', error);
-		    })
-		 },
-		 // showValue(event, index){
-		 // 	this.serviceAvailability[index] = true;
-		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
-		 // },
-		
-
-	},
-	
-}
-
-</script>

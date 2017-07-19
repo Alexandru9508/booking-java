@@ -2,145 +2,206 @@
 
 	<div class="content">
 		<div id="company-list">	
-			<h3>Company list</h3>
+			<h3 id="companylist-title">Company list</h3>
 		</div>
-		<div class="company-list-description">
-			<div class="table-title">
-				<div class="table-content-white-title">
-					<div class="content">
-						<table class="title-white">
-							<tr>
-								<th>Name</th>
-								<th>Email</th> 
-								<th>Phone No </th>
-								<th>Avaibility</th>
-							</tr>
-						</table>
-						
-					</div>
-				</div>
-			</div>
 		
+		<div class="table-head">				
+			<table class="title">
+				<tr>
+					<th>Name</th>
+					<th>Description</th> 		
+					<th>Avaibility</th>
+
+				</tr>
+			</table>	
+
+		</div>
+		
+			<!-- <div class="table-description">					
+				<table class="title">
+					<tr>
+						<th>Name:{{ companies }}</th>
+						<th>Description: {{ description }} </th>
+						<th><p>					
+					<button class="btn btn-default" type="button" @click="showServices(company)">
+						Show
+					</button>
+				</p></th>
+					</tr>
+				</table>							
+			</div> -->
 
 
+			<div class="table-description">
+				<div v-for="company in companies.body">	
+					<table class="title">
+						<tr>
+							<th>
+								Name:{{ company.companyname }}
+							</th>
+							<th>
+								Description:{{ company.description }}
+								
+							</th>
+							<th>
+								<button class="btn btn-default" type="button" @click="showServices(company)">
+									Show
+								</button>
+							</th>
+							
+						</tr>
 
-	</div>
+					</table>										
+
+				</div>			
+			</div>
+
+		</div>
+	</template>
 
 
+	<script>
+    export default {
+      data() {
+        return {
+          companies: [],
+          description: [] 
 
+        }
+      },
+      methods: {
+        getServices() {
+          this.$http.get('http://192.168.150.242:9000/hello')
+          .then(response => {
+            this.companies = response;
+            // return response.json()
+          })
+          .then(response => {
+            // this.companies = response;
+          })
+          .then(error => {
+            console.log('error: ', error);
+          });
+        }
+      },
+      created() {
+        this.getServices();
+      }
+    }
+  </script>
 
+	<style>
 
-	<ul>
-		<li v-for="company in companies">
-			<p>
-				{{ name }}
-				<button class="btn btn-default" type="button" @click="showServices(company)">
-					Show
-				</button>
-			</p>
-		</li>
-	</ul>
+		.table-head{
 
+			background-color: #f9ebfc;
 
-	</div>
-</template>
-
-
-<script>
-	export default {
-		data() {
-			return {
-				companies: []
-			}
-		},
-		methods: {
-			getCompanies(){
-				this.$http.get('http://192.168.150.242:8080/').then(response => {
-				    console.log('response success:', response);
-				    this.companies = response;
-				  }, response => {
-				    console.log('response error: ', response);
-				  });
-			},
-			showServices(company){
-				debugger;
-
-			}
-		},
-		created(){
-			this.getServices();
 		}
-	}
-</script>
-
-
-	
 
 
 
+		#companylist-title{
+			color:#d145e9 ;
 
 
-
-<style>
-
-.title-white {
-    width:100%;
-    color: #565656;
-    border:0;
-    font-size: 15px;
-    margin-bottom: 
-  }
-
-  .title-white th {
-    border:none;
-  }
-
-  .title-white td {
-    border-top: none;
-  }
-
-	.content{
-		margin: auto;
-	}
-
-	#company-list{
-		text-align: center;
-	}
-	
-
-	#colLeft {
-		display: inline;
-		float: left;
-		font-weight: bold;
-	}
-	#colLefttop {
-
-		float: left;
-		font-weight: bold;
-	}
-
-	#colCenter {
-		float: left;
-		display: inline;
-		overflow: none;
-		white-space: nowrap;
-	}
-
-	#colRight {
-		display: inline;
-		float: right;
-		margin-right:  20px;
-
-	} 
-
-
-
-
-	@media (max-width: 1000px) {
-		.form-group {
-			float: none;
-			margin-right: 0;
 		}
-	}
 
-</style>
+		.table-head{
+
+			padding-left: 10px;
+			border-radius: 3%;
+			padding-top: 20px;
+			margin: auto;
+			width: 50%
+		}
+
+		.title {
+
+			width:100%;
+			color: #565656;
+			border:0;
+			font-size: 30px;
+			margin-bottom: 
+		}
+
+		.title th {
+			border:none;
+		}
+
+		.title td {
+			border-top: none;
+		}
+
+		/*table bottom*/
+
+
+		.table-description{
+
+			background-color: #e8e7f8;
+			padding-left: 10px;
+			border-radius: 3%;
+			padding-top: 20px;
+			margin: auto;
+			width: 50%
+		}
+
+		.title {
+			width:100%;
+			color: #565656;
+			border:0;
+			font-size: 15px;
+			margin-bottom: 
+		}
+
+		.title th {
+			border:none;
+		}
+
+		.title td {
+			border-top: none;
+		}
+
+		.content{
+			margin: auto;
+		}
+
+		#company-list{
+			margin-top: 40px;
+			margin-bottom: 40px;
+			text-align: center;
+		}
+
+
+		#colLeft {
+			display: inline;
+			float: left;
+			font-weight: bold;
+		}
+		#colLefttop {
+
+			float: left;
+			font-weight: bold;
+		}
+
+		#colCenter {
+			float: left;
+			display: inline;
+			overflow: none;
+			white-space: nowrap;
+		}
+
+		#colRight {
+			display: inline;
+			float: right;
+			margin-right:  20px;
+
+		} 
+
+		@media (max-width: 1000px) {
+			.form-group {
+				float: none;
+				margin-right: 0;
+			}
+		}
+
+	</style>
