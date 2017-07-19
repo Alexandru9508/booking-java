@@ -29,6 +29,11 @@ public class HelloController {
         return customerService.getAllCompany();
     }
 
+    @RequestMapping("/private")
+    public String getAllsaCompany() {
+        return "Private";
+    }
+
     @RequestMapping("/hello/addUser")
     public String addCustomer() {
         customerService.addCompany(new Company("alexd", "asdaad", "sdass", "sdf", "sdf", "sdffff"));

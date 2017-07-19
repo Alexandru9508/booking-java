@@ -24,7 +24,7 @@
 							<div class="column is-12">
 						    
 						        <p class="control has-icon has-icon-right">
-						            <input name="name"  v-validate.initial="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="form-control">
+						            <input name="name"  v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="form-control">
 						            
 						            <i v-show="errors.has('name')" class="fa fa-warning"></i>
 						            
@@ -52,7 +52,7 @@
 							<div class="form-group  form-group-service-description float-left">
 								<label for="exampleTextarea"><h5>Service description</h5></label>
 								<p class="control has-icon has-icon-right">
-								<textarea name="description" v-validate.initial="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('description') }" type="text" placeholder="" class="form-control" id="exampleTextarea" rows="5" required></textarea>
+								<textarea name="description" v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('description') }" type="text" placeholder="" class="form-control" id="exampleTextarea" rows="5" required></textarea>
 								<i v-show="errors.has('description')" class="fa fa-warning"></i>
 						            
 						            
@@ -66,7 +66,7 @@
 								<div class="column is-12">
 						    
 						        <p class="control has-icon has-icon-right">
-						            <input name="spaces" v-validate.initial="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('spaces') }" type="text" placeholder="" class="form-control">
+						            <input name="spaces" v-validate.initial="'required|number'" :class="{'input': true, 'is-danger': errors.has('spaces') }" type="number" placeholder="" class="form-control">
 						            
 						            <i v-show="errors.has('spaces')" class="fa fa-warning"></i>
 						            
@@ -82,7 +82,7 @@
 								<div class="column is-12">
 					        
 					        <p class="control has-icon has-icon-right">
-					            <input name="price" v-validate="'required|numeric'" :class="{'input': true, 'is-danger': errors.has('duration') }" type="text" placeholder="" class="form-control">
+					            <input name="price" v-validate="'required|numeric'" :class="{'input': true, 'is-danger': errors.has('duration') }" type="number" placeholder="" class="form-control">
 					            <i v-show="errors.has('price')" class="fa fa-warning"></i>
 					            <span v-show="errors.has('price')" class="help is-danger">{{ errors.first('price') }}</span>
 					        </p>

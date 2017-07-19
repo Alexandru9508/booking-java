@@ -1,43 +1,53 @@
 <template>
 
  
- 	<div class="form-group">
- 	 <div class="all">
- 	<div class="image">
- 		<img src="../assets/bookingLogo.png" />
- 	</div>
-	   
-
-	    	<!-- email -->
-	     		
-		    <div class="column is-12">
-    			<label class="labelEmail" for="email">Email address:</label>
-    			<p :class="{ 'control': true }">
-        		<input v-model="user.email" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" class="inputEmail">
-        		</p>
-        		<p>
-        		<span v-show="errors.has('email')" class="help">{{ errors.first('email') }}</span>
-    			</p>
-			</div>
-	     		<!-- password -->
-			 <div class="column is-12">
-            <label class="labelPassword">Password</label>
-            <p class="control has-icon has-icon-right">
-                <input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" name="password" placeholder="" class="inputEmail">
-                </p>
-                <p>
-                <i v-show="errors.has('password')" class="fa fa-warning"></i>
-  
-                <span v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</span>
-                </p>
-            
-        </div>
-	     	
-	     	<!-- button -->
-	     	<button type="submit" id="submit" @click="submit()">LOGIN</button></br>
-	     	
-	   		 <div class="goToLogin">
-    			<router-link to="login">Recover password</router-link>
+	<div class="form-group">
+    	<div class="all">
+ 	    	<div class="image">
+ 	      	<img src="../assets/bookingLogo.png" />
+ 	    	</div>
+	   		
+	   			<div id="vue-instance">
+ 					<!-- <div v-if="isLoggedIn">
+    					Welcome to coligo!
+    					<button @click="submit" type="submit">Logout</button>
+  					</div> -->
+	    	<!-- email -->	
+		    		<!-- <div v-else> -->
+				  		<div class="column is-12">
+			        		<label class="labelEmail" for="email">Email address:</label>
+			    			<p :class="{ 'control': true }">
+			        			<input v-model="user.email" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" placeholder="" class="inputEmail">
+			        		</p>
+			        		<p>
+			        			<span v-show="errors.has('email')" class="help">{{ errors.first('email') }}
+			        			</span>
+			    			</p>
+						</div>
+				     		<!-- password -->
+						<div class="column is-12">
+			            	<label class="labelPassword">Password</label>
+			            	<p class="control has-icon has-icon-right">
+			                <input v-model="user.password" v-validate="'required|min:6'" :class="{'input': true, 'is-danger': errors.has('password') }" type="password" name="password" placeholder="" class="inputEmail">
+			            	</p>
+			            	<p>
+			            		<i v-show="errors.has('password')" class="fa fa-warning"></i>
+			  
+			            		<span v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</span>
+			            	</p>
+			            
+			        	</div>
+				     	
+				     	<!-- button -->
+				     	
+				     	<button type="submit" id="submit" @click="submit()" >LOGIN</button>
+				     		 <!-- </div> -->
+				     	<!-- onclick="window.location.href='#/register'" -->
+				     	
+						</div>
+				<div class="goToLogin">
+			    			<router-link to="recover">Recover password</router-link>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -53,40 +63,29 @@ export default {
 	data: function (){
 		return {
 			user: {
-				// name:'',
 				email: '',
-				password: ''
+				password: '',
+				// isLoggedIn: false 
 			},
-			
 		};
 	},
 	methods: {
 		
-		// submit() {
-		 //    axios.get('http://192.168.150.242:8080/hello')
-		 //    .then( function (response)  {
-		 //    	console.log('response: ', response);
-		 //    	debugger;
-		 //    })
-		 //    .catch(function (error) {
-		 //      console.log('error: ', error);
-		 //      debugger;
-		 //    })
-		 // },
 		 submit() {
 		    this.$http.post('http://192.168.150.242:9000/login', this.user)
 		    .then( function (response)  {
-		    	console.log('response: ', response);
+		    	return response.json();
+		    	
+		    })
+		    .then( response => {
+		    	localStorage.setItem('company', JSON.stringify(response));
+    	  		location.href = '#uploadLogo';
+
 		    })
 		    .catch(function (error) {
 		      console.log('error: ', error);
 		    })
 		 },
-		 // showValue(event, index){
-		 // 	this.serviceAvailability[index] = true;
-		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
-		 // },
-		
 
 	},
 	
@@ -124,12 +123,8 @@ p{
 .all{
 	text-align: center;
 }
-.image {
-	
-	margin-top:8.2%;
-	margin-bottom: 4%;
-
-
+.image {	
+	margin-top:1%;
 }
 .labelName {
 	margin-top: 2%;

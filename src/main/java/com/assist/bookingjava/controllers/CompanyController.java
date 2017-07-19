@@ -27,8 +27,11 @@ public class CompanyController {
             companyService.addCompany(new Company(company.getUsername(),hashed_password,company.getEmail()));
 
         }catch (Exception ex) {
+
             return "User already exists!";
+
         }
+
         return "Data Saved!";
     }
     @RequestMapping(value = "/addCompanyInfo",method = RequestMethod.POST)
@@ -80,30 +83,36 @@ public class CompanyController {
           companyUser = companyService.recoverPassword(email);
 
             String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+
             StringBuilder salt = new StringBuilder();
+
             Random rnd = new Random();
+
             while (salt.length() < 18) { // length of the random string.
+
                 int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+
                 salt.append(SALTCHARS.charAt(index));
             }
+
 
             String generateString = salt.toString();
 
             String salt1 = BCrypt.gensalt(12);
+
             String hashed_password = BCrypt.hashpw(generateString,salt1);
+
             companyUser.setPassword(hashed_password);
 
             companyService.updateComapany(new Company(companyUser.getIdcompany(), companyUser.getUsername(), companyUser.getPassword(),
                     companyUser.getEmail(), companyUser.getDescription(), companyUser.getCompanyname(), companyUser.getLogo()));
 
-
-
         }catch (Exception er){
-            return "Email not found";
+            return "Email was not found in the database!";
         }
 
 
-        return "The user pass is: "+ companyUser.getPassword();
+        return "The user password is: "+ companyUser.getPassword();
     }
     @RequestMapping(value = "/info/{name}",method = RequestMethod.GET)
     public Company infoCompany(@PathVariable String name){

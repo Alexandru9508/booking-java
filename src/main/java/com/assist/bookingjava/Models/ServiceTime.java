@@ -16,25 +16,27 @@ public class ServiceTime {
     String dayStop;
     String hourStart;
     String hourStop;
-    Long id_service;
+ //   Long id_service;
 
 
     @ManyToOne
     @JoinColumn(name = "idservice")
-    private ServiceCompany service;
+    private ServiceCompany idservice;
 
 
-
+    public void setIdservice(ServiceCompany idservice) {
+        this.idservice = idservice;
+    }
 
     public ServiceTime(){}
 
-    public ServiceTime(Long id, String dayStart, String dayStop, String hourStart, String hourStop, Long id_service) {
+    public ServiceTime(Long id, String dayStart, String dayStop, String hourStart, String hourStop, ServiceCompany idservice) {
         this.id = id;
         this.dayStart = dayStart;
         this.dayStop = dayStop;
         this.hourStart = hourStart;
         this.hourStop = hourStop;
-        this.id_service = id_service;
+        this.idservice = idservice;
     }
 
     public Long getId() {
@@ -57,8 +59,8 @@ public class ServiceTime {
         return hourStop;
     }
 
-    public Long getId_service() {
-        return id_service;
+    public ServiceCompany getIdservice() {
+        return idservice;
     }
 
     public void setId(Long id) {
@@ -81,20 +83,11 @@ public class ServiceTime {
         this.hourStop = hourStop;
     }
 
-    public void setId_service(Long id_service) {
-        this.id_service = id_service;
+
+
+    public void setServiceDetails(ServiceCompany idservice) {
+        this.idservice = idservice;
     }
 
-    @Override
-    public String toString() {
-        return "ServiceAdd{" +
-                "id=" + id +
-                ", dayStart='" + dayStart + '\'' +
-                ", dayStop='" + dayStop + '\'' +
-                ", hourStart='" + hourStart + '\'' +
-                ", hourStop='" + hourStop + '\'' +
-                ", id_service=" + id_service +
-                ", Service=" + service +
-                '}';
-    }
+
 }
