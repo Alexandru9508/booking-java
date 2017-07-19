@@ -31,7 +31,7 @@ public class CompanyController {
         return "Data Saved!";
     }
     //update:description,logo,companyName;
-    @RequestMapping(value="/updateCompany", method = RequestMethod.PUT)
+    @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
     public String updateCompany(@RequestBody Company company) {
         try {
             companyService.updateComapany(company);

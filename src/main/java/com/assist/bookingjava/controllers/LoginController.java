@@ -26,8 +26,5 @@ public class LoginController {
        else
            return "Wrong Email/Password";
     }
-    @RequestMapping("/log")
-    public Company check(Company company){
-        return companyService.login(company);
-    }
+
 }
