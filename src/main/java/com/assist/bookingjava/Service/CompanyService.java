@@ -43,16 +43,19 @@ public class CompanyService {
         companyDao.delete(idcompany);
     }
     public Company recoverPassword(String email){
+
         return companyDao.findByEmail(email);
     }
 
-    public Company login (Company company) {
-        return  companyDao.findByEmail(company.getEmail());
-    }
     public Company findById(Company company){
         return companyDao.findByIdcompany(company.getIdcompany());
+ 
+    public Company login (Company company) {
+        return companyDao.findByEmail(company.getEmail());
     }
+   
     public Company getOneCompany(String name){
+
         return companyDao.findByCompanyname(name);
     }
 

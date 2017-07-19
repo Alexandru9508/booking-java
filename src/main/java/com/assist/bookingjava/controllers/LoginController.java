@@ -18,7 +18,9 @@ public class LoginController {
     CompanyService companyService;
 
 
+     
 
+ 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public Company log(@RequestBody Company company){
         boolean passMatch=BCrypt.checkpw(company.getPassword(),companyService.login(company).getPassword());
@@ -32,3 +34,12 @@ public class LoginController {
 
 
 }
+ 
+                return "Invalid!";
+
+            }
+        }
+    }
+
+
+ 
