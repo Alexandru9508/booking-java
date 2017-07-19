@@ -20,12 +20,12 @@ public class LoginController {
 
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String log(@RequestBody Company company){
+    public Company log(@RequestBody Company company){
         boolean passMatch=BCrypt.checkpw(company.getPassword(),companyService.login(company).getPassword());
        if(passMatch)
-           return "Succes!";
+           return companyService.login(company);
        else
-           return "Wrong Email/Password";
+           return new Company();
     }
 
 }
