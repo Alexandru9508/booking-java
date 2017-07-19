@@ -21,7 +21,7 @@
 								<!-- <span>Add service</span> -->
 								
 								<button class="btn btn-primary uploadLogo" type="submit">
-									<input v-ref:file-input type="file" style="width : 250px; color : black;">
+									<input type="file" style="width : 250px; color : black;">
 								</button>
 
 							</a>
@@ -59,7 +59,7 @@
 						            </p>
 
 							<button class="btn btn-primary sign-out" type="submit">Sign out</button>
-							<button type="button" class="btn btn-success">Save</button>
+							<button type="button" class="btn btn-success" @click="submit()">Save</button>
 
 							<!-- <button class="btn btn-primary save" type="submit">Save</button> -->
 						</div>
@@ -88,15 +88,28 @@
 		name: 'uploadLogo',
 		data () {
 			return {
-				msg: 'Welcome to Your Vue.js App'
+				msg: 'Welcome to Your Vue.js App',
+				name: '',
+				description: ''
 			}
-		}
-	}
-	/*methods: {
-  open() {
-    this.$els.file-input.click()
-  }
-}*/
+		},
+		methods: {		
+		  submit() {
+		    this.$http.post('http://localhost:9000/', this.user)
+		    .then( function (response)  {
+		    	console.log('response: ', response);
+		    })
+		    .catch(function (error) {
+		      console.log('error: ', error);
+		    })
+		 },
+		 
+		
+
+	},
+					}
+
+	
 </script>
 
 <style scoped>
