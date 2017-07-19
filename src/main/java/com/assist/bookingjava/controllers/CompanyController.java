@@ -31,14 +31,17 @@ public class CompanyController {
         }
         return "Data Saved!";
     }
-    @RequestMapping(value = "/addCompanyInfo",method = RequestMethod.PUT)
+    @RequestMapping(value = "/addCompanyInfo",method = RequestMethod.POST)
     public String addCompany(@RequestBody Company company){
         Company company1;
+        String path = "./src/main/resources/images/" + company.getLogo();
+
+
         try {
 
             company1 = companyService.findById(company);
             companyService.updateComapany(new Company(company1.getIdcompany(), company1.getUsername(), company1.getPassword(),
-                    company1.getEmail(), company.getDescription(), company.getCompanyname(), company.getLogo()));
+                    company1.getEmail(), company.getDescription(), company.getCompanyname(), path));
         }catch (Exception e){
             return e.getMessage();
         }
@@ -111,4 +114,6 @@ public class CompanyController {
         public List<Company> getAllCompany() {
         return companyService.getAllCompany();
         }
+
+
 }

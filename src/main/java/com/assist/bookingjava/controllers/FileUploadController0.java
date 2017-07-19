@@ -25,7 +25,7 @@ public class FileUploadController0 {
 
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    //@Mapping(value="/upload", ) // //new annotation since 4.3
+
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
 
@@ -44,7 +44,9 @@ public class FileUploadController0 {
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "'");
 
-        } catch (IOException e) {
+
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 

@@ -90,15 +90,16 @@
 			return {
 				/*msg: 'Welcome to Your Vue.js App',*/
 				company:{
+				    idcompany:95,
 					companyname: '',
 					description: '',
-					logo: 'ddd'
+					logo: ''
 			}
 			}
 		},
 		methods: {		
 		  submit() {
-		    this.$http.post('http://192.168.150.242:9000/updateCompany/66', this.company)
+		    this.$http.post('http://192.168.150.242:9000/addCompanyInfo', this.company)
 		    .then( function (response)  {
 		    	console.log('response: ', response);
 		    })
