@@ -92,13 +92,13 @@
 				company:{
 					companyname: '',
 					description: '',
-					logo: ''
+					logo: 'ddd'
 			}
 			}
 		},
 		methods: {		
 		  submit() {
-		    this.$http.post('http://192.168.150.242:9000/updateCompany/88', this.company)
+		    this.$http.post('http://192.168.150.242:9000/updateCompany/66', this.company)
 		    .then( function (response)  {
 		    	console.log('response: ', response);
 		    })
