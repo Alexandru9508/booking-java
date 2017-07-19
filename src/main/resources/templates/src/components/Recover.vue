@@ -38,7 +38,8 @@ p{
 }
 
 #submit{
-	margin-top: 5%;
+	border-radius: 3%;
+	margin-top: 1%;
 	font-size: 190%;
 	width: 28%;
 	background-color:#DA6CE9;
@@ -51,7 +52,7 @@ p{
 }
 .image {
 	
-	margin-top:8.2%;
+	margin-top:1%;
 	margin-bottom: 4%;
 }
 

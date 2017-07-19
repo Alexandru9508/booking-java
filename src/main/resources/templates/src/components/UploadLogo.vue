@@ -36,14 +36,15 @@
 							<div class="column is-12">
 						    
 						        <p class="control has-icon has-icon-right">
-						            <input name="name" v-model="name" v-validate.initial="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="form-control">
-						            
+						            <input name="name" v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="form-control">
+						          </p>
+						          <p> 
 						            <i v-show="errors.has('name')" class="fa fa-warning"></i>
 						            
 						            
 						            <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
-						            
-						        </p>
+						            </p>
+						        
 						    </div>
 							
 						</div>
@@ -51,7 +52,7 @@
 						<div class="form-group  form-group-service-description float-left">
 							<label for="exampleTextarea"><h5>Service description</h5></label>
 							<p class="control has-icon has-icon-right">
-								<textarea name="description" v-model="description"  v-validate.initial="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('description') }" type="text" placeholder="" class="form-control" id="exampleTextarea" rows="5" required></textarea>
+								<textarea name="description" v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('description') }" type="text" placeholder="" class="form-control" id="exampleTextarea" rows="5" required></textarea>
 								<i v-show="errors.has('description')" class="fa fa-warning"></i>
 						            
 						            

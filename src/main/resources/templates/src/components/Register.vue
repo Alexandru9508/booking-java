@@ -13,11 +13,11 @@
 	     <div class="column is-12">
         <label class="labelName">Name</label>
         <p class="control has-icon has-icon-right">
-            <input name="username" v-model="user.username" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="inputName">
-            <i v-show="errors.has('name')" class="fa fa-warning"></i>
+            <input name="username" v-model="user.username" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('username') }" type="text" placeholder="" class="inputName">
+            <i v-show="errors.has('username')" class="fa fa-warning"></i>
             </p>
             <p>
-            <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
+            <span v-show="errors.has('username')" class="help is-danger">{{ errors.first('username') }}</span>
         </p>
     </div>
 
@@ -151,13 +151,21 @@ p{
 
 }
 .labelPassword{
-	margin-top: 2%;
+	margin-top: 1%;
 	margin-left: -22%;
 	width: 20%
 }
 .goToLogin{
 	margin-top: 1%;
+	text-decoration: none;
 
+}
+
+a:hover {
+    color: purple;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 18px;
 }
 
 /*Responsive*/
