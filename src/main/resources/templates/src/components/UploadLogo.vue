@@ -21,7 +21,7 @@
 							<div class="column is-12">
 						    
 						        <p class="control has-icon has-icon-right">
-						            <input name="companyname" v-model="company.companyname" v-validate.initial="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('companyname') }" type="text" placeholder="" class="form-control">
+						            <input name="companyname" v-model="company.companyname" v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('companyname') }" type="text" placeholder="" class="form-control">
 						            
 						            <i v-show="errors.has('companyname')" class="fa fa-warning"></i>
 						            
@@ -36,7 +36,7 @@
 						<div class="form-group  form-group-service-description float-left">
 							<label for="exampleTextarea"><h5>Service description</h5></label>
 							<p class="control has-icon has-icon-right">
-								<textarea name="description" v-model="company.description"  v-validate.initial="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('description') }" type="text" placeholder="" class="form-control" id="exampleTextarea" rows="5" required></textarea>
+								<textarea name="description" v-model="company.description"  v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('description') }" type="text" placeholder="" class="form-control" id="exampleTextarea" rows="5" required></textarea>
 								<i v-show="errors.has('description')" class="fa fa-warning"></i>
 						            
 						            
