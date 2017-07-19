@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by doroftei on 14.07.2017.
@@ -71,11 +72,34 @@ public class CompanyController {
     @ResponseBody
     public String getByEmail(@PathVariable  String email) {
         Company companyUser;
+
         try {
           companyUser = companyService.recoverPassword(email);
+
+            String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder salt = new StringBuilder();
+            Random rnd = new Random();
+            while (salt.length() < 18) { // length of the random string.
+                int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+                salt.append(SALTCHARS.charAt(index));
+            }
+
+            String generateString = salt.toString();
+
+            String salt1 = BCrypt.gensalt(12);
+            String hashed_password = BCrypt.hashpw(generateString,salt1);
+            companyUser.setPassword(hashed_password);
+
+            companyService.updateComapany(new Company(companyUser.getIdcompany(), companyUser.getUsername(), companyUser.getPassword(),
+                    companyUser.getEmail(), companyUser.getDescription(), companyUser.getCompanyname(), companyUser.getLogo()));
+
+
+
         }catch (Exception er){
             return "Email not found";
         }
+
+
         return "The user pass is: "+ companyUser.getPassword();
     }
     @RequestMapping(value = "/info/{name}",method = RequestMethod.GET)
