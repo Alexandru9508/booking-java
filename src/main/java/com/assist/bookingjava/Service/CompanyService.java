@@ -44,22 +44,17 @@ public class CompanyService {
         companyDao.delete(idcompany);
     }
     public Company recoverPassword(String email){
+
         return companyDao.findByEmail(email);
     }
-    public String login (Company company) {
-        System.out.println(company.getEmail()+"  "+company.getPassword());
-        Company newCompany= companyDao.findByEmailAndPassword(company.getEmail(), company.getPassword());
-        System.out.println(newCompany.getEmail()+"    "+newCompany.getPassword());
-        if(company.getPassword().equals(newCompany.getPassword()) &&
-                company.getEmail().equals(newCompany.getEmail()))
-            return "Ok";
-        else
-            return "Login Failed!";
+    public Company login (Company company) {
+        return companyDao.findByEmail(company.getEmail());
     }
     public Company log (Company company) {
-        return  companyDao.findByEmailAndPassword(company.getEmail(), company.getPassword());
+        return  companyDao.findByEmail(company.getEmail());
     }
     public Company getOneCompany(String name){
+
         return companyDao.findByCompanyname(name);
     }
 
