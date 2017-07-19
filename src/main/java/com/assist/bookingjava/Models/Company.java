@@ -1,6 +1,7 @@
 package com.assist.bookingjava.Models;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by doroftei on 13.07.2017.
@@ -24,6 +25,8 @@ public class Company {
     @Column(unique = true)
     String companyname;
     String logo;
+
+
 
     public Company(){}
 
@@ -56,6 +59,14 @@ public class Company {
         this.companyname = companyname;
         this.logo = logo;
     }
+
+
+
+    public void setIdcompany(long idcompany) {
+
+        this.idcompany = idcompany;
+    }
+
 
 
     public long getIdcompany() {
