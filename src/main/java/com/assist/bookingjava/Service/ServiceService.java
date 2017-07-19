@@ -1,6 +1,7 @@
 package com.assist.bookingjava.Service;
 
 import com.assist.bookingjava.DataBase.ServiceDao;
+import com.assist.bookingjava.Models.Company;
 import com.assist.bookingjava.Models.ServiceCompany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +19,9 @@ public class ServiceService {
     @Autowired
     private ServiceDao serviceDao;
 
-    public List<ServiceCompany> getAll(String name){
+    public List<ServiceCompany> getAll(Company idcompany){
         List<ServiceCompany> services=new ArrayList<>();
-        serviceDao.findByIdcompany_Companyname(name)
+        serviceDao.findByIdcompany(idcompany)
                 .forEach(services::add);
         return services;
     }

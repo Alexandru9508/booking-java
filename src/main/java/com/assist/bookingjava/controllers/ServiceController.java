@@ -21,9 +21,10 @@ public class ServiceController {
     @Autowired
     ServiceService serviceService;
 
-    @RequestMapping(value = "/company/{name}/services", method = RequestMethod.GET)
-    public List<ServiceCompany> getAll(@PathVariable String name){
-        return serviceService.getAll(name);
+    @RequestMapping(value = "/company/{idcompnay}/services", method = RequestMethod.GET)
+    public List<ServiceCompany> getAll(@PathVariable Company idcompnay){
+        return serviceService.getAll(idcompnay);
+
     }
 
     @RequestMapping(value = "/Delete/Service/{id}",method = RequestMethod.GET)
