@@ -30,6 +30,21 @@ public class CompanyController {
         }
         return "Data Saved!";
     }
+    @RequestMapping(value = "/addCompanyInfo",method = RequestMethod.PUT)
+    public String addCompany(@RequestBody Company company){
+        Company company1;
+        try {
+
+            company1 = companyService.findById(company);
+            companyService.updateComapany(new Company(company1.getIdcompany(), company1.getUsername(), company1.getPassword(),
+                    company1.getEmail(), company.getDescription(), company.getCompanyname(), company.getLogo()));
+        }catch (Exception e){
+            return e.getMessage();
+        }
+         return "Done";
+    }
+
+
     //update:description,logo,companyName;
     @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
     public String updateCompany(@RequestBody Company company) {

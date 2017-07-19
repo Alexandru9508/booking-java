@@ -34,7 +34,6 @@ public class CompanyService {
         companyDao.findAll().forEach(comapny :: add);
         return comapny;
     }
-    //update:description,logo,companyName;
 
     public Company updateComapany(Company company){
         return companyDao.save(company);
@@ -47,12 +46,14 @@ public class CompanyService {
 
         return companyDao.findByEmail(email);
     }
+
+    public Company findById(Company company){
+        return companyDao.findByIdcompany(company.getIdcompany());
+ 
     public Company login (Company company) {
         return companyDao.findByEmail(company.getEmail());
     }
-    public Company log (Company company) {
-        return  companyDao.findByEmail(company.getEmail());
-    }
+   
     public Company getOneCompany(String name){
 
         return companyDao.findByCompanyname(name);
