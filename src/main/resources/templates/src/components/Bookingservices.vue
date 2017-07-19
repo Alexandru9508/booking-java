@@ -8,10 +8,10 @@
         <div class="bar-buton">
           <button class="btn buton" href="#">+</button>
         </div>  
-        <div v-for="company in companies.body">        
+        <div v-for="company in companies.body">  
+        <div class="box">
         <div class="nameoftheservice">
-          <div class="list>">
-            
+          <div class="list>">            
              <div class="describeservices">
               <div class="parent">
                 <h6 id="colLeft">{{company.servicename}}</h6>
@@ -51,6 +51,7 @@
           </div>
         </div>
         </div>
+        </div>
 
 
 
@@ -79,6 +80,7 @@
           this.$http.get('http://192.168.150.242:9000/company/services')
           .then(response => {
             debugger;
+            
             this.companies = response;
             // return response.json()
           })
@@ -105,7 +107,9 @@
   /*=========Nav bar*/
 
 
- 
+    .box{
+       padding-bottom: 40px;
+    }
 
 
     .describe{
@@ -160,6 +164,7 @@
       margin-left: 66%;
       margin-top: 20px;
       margin-bottom: 20px;
+
     }
     .buton:hover {
       background: #bf6cce;
@@ -174,7 +179,6 @@
 
     .parent
     {
-
       width: 100%;
       height: 40px;
       padding-top: 10px;
@@ -189,6 +193,7 @@
     {
       float: left; 
 
+
     }
 
     table
@@ -198,8 +203,6 @@
       width: 500px;
       background-color: white;
       color:#d145e9;
-      padding-bottom: 100px;
-
     }
 
     .price {

@@ -62,7 +62,7 @@ export default new Router({
       component: Bookingservices
     },
     {
-      path: '/companyname',
+      path: '/company/:id',
       name: 'Companyname',
       component: Companyname
     },
