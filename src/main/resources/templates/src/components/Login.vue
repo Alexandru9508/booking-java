@@ -39,9 +39,12 @@
 			        	</div>
 				     	
 				     	<!-- button -->
-				     	<button type="submit" id="submit" @click="submit()">LOGIN</button></br>
-				     		<!--  </div> -->
-						
+				     	
+				     	<button type="submit" id="submit" @click="submit()" >LOGIN</button>
+				     		 <!-- </div> -->
+				     	<!-- onclick="window.location.href='#/register'" -->
+				     	
+						</div>
 				<div class="goToLogin">
 			    			<router-link to="recover">Recover password</router-link>
 				</div>
@@ -63,29 +66,22 @@ export default {
 				// name:'',
 				email: '',
 				password: '',
-				isLoggedIn: false
-
+				// isLoggedIn: false 
 			},
+			
+
 			
 		};
 	},
 	methods: {
 		
-		// submit() {
-		//     this.$http.get('http://192.168.150.242:8080/login', this.user)
-		//     .then( function (response)  {
-		//     	console.log('response: ', response);
-		    	
-		//     })
-		//     .catch(function (error) {
-		//       console.log('error: ', error);
-		      
-		//     })
-		//  },
+	
+		
 		 submit() {
 		    this.$http.post('http://192.168.150.242:9000/login', this.user)
 		    .then( function (response)  {
 		    	console.log('response: ', response);
+		    	
 		    })
 		    .catch(function (error) {
 		      console.log('error: ', error);
@@ -95,7 +91,17 @@ export default {
 		 // 	this.serviceAvailability[index] = true;
 		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
 		 // },
-		
+			// submit() {
+		 //    this.$http.get('http://192.168.150.242:8080/login', this.user)
+		 //    .then( function (response)  {
+		 //    	console.log('response: ', response);
+		    	
+		 //    })
+		 //    .catch(function (error) {
+		 //      console.log('error: ', error);
+		      
+		 //    })
+		 // },
 
 	},
 	

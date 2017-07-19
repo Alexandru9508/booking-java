@@ -21,7 +21,7 @@
 								<!-- <span>Add service</span> -->
 								
 								<button class="btn btn-primary uploadLogo" type="submit">
-									<input type="file" style="width : 250px; color : black;">
+									<input type="file"  style="width : 250px; color : black;">
 								</button>
 
 							</a>
@@ -36,15 +36,17 @@
 							<div class="column is-12">
 						    
 						        <p class="control has-icon has-icon-right">
-						            <input name="name" v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="form-control">
-						          </p>
-						          <p> 
-						            <i v-show="errors.has('name')" class="fa fa-warning"></i>
+
+						 
+						            <input name="companyname" v-model="company.companyname" v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('companyname') }" type="text" placeholder="" class="form-control">
+						            
+						            <i v-show="errors.has('companyname')" class="fa fa-warning"></i>
 						            
 						            
-						            <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
-						            </p>
-						        
+						            <span v-show="errors.has('companyname')" class="help is-danger">{{ errors.first('companyname') }}</span>
+						            
+						        </p>
+
 						    </div>
 							
 						</div>
@@ -52,7 +54,9 @@
 						<div class="form-group  form-group-service-description float-left">
 							<label for="exampleTextarea"><h5>Service description</h5></label>
 							<p class="control has-icon has-icon-right">
-								<textarea name="description" v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('description') }" type="text" placeholder="" class="form-control" id="exampleTextarea" rows="5" required></textarea>
+
+								<textarea name="description" v-model="company.description"  v-validate.initial="'required'" :class="{'input': true, 'is-danger': errors.has('description') }" type="text" placeholder="" class="form-control" id="exampleTextarea" rows="5" required></textarea>
+
 								<i v-show="errors.has('description')" class="fa fa-warning"></i>
 						            
 						            
@@ -86,17 +90,20 @@
 
 <script>
 	export default {
-		name: 'uploadLogo',
+/*		name: 'uploadLogo',*/
 		data () {
 			return {
-				msg: 'Welcome to Your Vue.js App',
-				name: '',
-				description: ''
+				/*msg: 'Welcome to Your Vue.js App',*/
+				company:{
+					companyname: '',
+					description: '',
+					logo: ''
+			}
 			}
 		},
 		methods: {		
 		  submit() {
-		    this.$http.post('http://localhost:9000/', this.user)
+		    this.$http.post('http://192.168.150.242:9000/updateCompany/88', this.company)
 		    .then( function (response)  {
 		    	console.log('response: ', response);
 		    })
@@ -114,7 +121,9 @@
 </script>
 
 <style scoped>
-
+p{
+	color:#990000;
+}
 
 
 .uploadLogo{

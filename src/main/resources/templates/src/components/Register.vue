@@ -95,6 +95,7 @@ export default {
 		      console.log('error: ', error);
 		    })
 		 },
+		 
 		 // showValue(event, index){
 		 // 	this.serviceAvailability[index] = true;
 		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
