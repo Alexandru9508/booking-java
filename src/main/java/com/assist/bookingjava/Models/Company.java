@@ -45,6 +45,8 @@ public class Company {
         this.password = password;
         this.email = email;
     }
+
+
     public Company(Long idcompany,String username, String password, String email, String description, String companyname, String logo){
         this.idcompany=idcompany;
         this.username = username;
