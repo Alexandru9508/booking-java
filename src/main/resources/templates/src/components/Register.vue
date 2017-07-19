@@ -4,7 +4,8 @@
  	<div class="form-group">
  	 <div class="all">
  	<div class="image">
- 		<img src="../assets/bookingLogo.png" />
+ 		
+ 		<img src="../assets/bookingLogo.png">
  	</div>
 	    <div class="form">
 	    	<form> 
@@ -12,11 +13,11 @@
 	     <div class="column is-12">
         <label class="labelName">Name</label>
         <p class="control has-icon has-icon-right">
-            <input name="username" v-model="user.username" v-validate="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text" placeholder="" class="inputName">
-            <i v-show="errors.has('name')" class="fa fa-warning"></i>
+            <input name="username" v-model="user.username" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('username') }" type="text" placeholder="" class="inputName">
+            <i v-show="errors.has('username')" class="fa fa-warning"></i>
             </p>
             <p>
-            <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
+            <span v-show="errors.has('username')" class="help is-danger">{{ errors.first('username') }}</span>
         </p>
     </div>
 
@@ -94,6 +95,7 @@ export default {
 		      console.log('error: ', error);
 		    })
 		 },
+		 
 		 // showValue(event, index){
 		 // 	this.serviceAvailability[index] = true;
 		 // 	console.log('this.serviceAvailability[index]: ', this.serviceAvailability);
@@ -128,40 +130,48 @@ p{
 	width: 28%;
 }
 #submit{
-	margin-top: 5%;
+	margin-top: 1%;
 	font-size: 190%;
 	width: 28%;
 	background-color:#DA6CE9;
 	border:0px;
+	border-radius: 5%;
 	color:#ffffff;
 }
 .all{
 	text-align: center;
 }
-.image {
-	
-	margin-top:8.2%;
-	margin-bottom: 4%;
-
-
+.image {	
+	margin-top:1%;
 }
+
 .labelName {
-	margin-top: 2%;
+	
 	margin-left: -24%;
 	width: 20%
 }
 .labelEmail{
-	margin-top: 2%;
+	
 	margin-left: -19%;
 	width: 20%	
+
 }
 .labelPassword{
-	margin-top: 2%;
+	margin-top: 1%;
 	margin-left: -22%;
 	width: 20%
 }
 .goToLogin{
-	margin-top: 2%;
+	margin-top: 1%;
+	text-decoration: none;
+
+}
+
+a:hover {
+    color: purple;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 18px;
 }
 
 /*Responsive*/
