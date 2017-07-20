@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by alex on 14.07.2017.
  */
 @Entity
-@Table(name = "servicetime")
+@Table(name = "service_time")
 public class ServiceTime {
 
     @Id
@@ -16,11 +16,9 @@ public class ServiceTime {
     String dayStop;
     String hourStart;
     String hourStop;
- //   Long id_service;
 
 
     @ManyToOne
-    @JoinColumn(name = "idservice")
     private ServiceCompany idservice;
 
 
@@ -30,13 +28,13 @@ public class ServiceTime {
 
     public ServiceTime(){}
 
-    public ServiceTime(Long id, String dayStart, String dayStop, String hourStart, String hourStop, ServiceCompany idservice) {
+    public ServiceTime(Long id, String dayStart, String dayStop, String hourStart, String hourStop, Long idservice) {
         this.id = id;
         this.dayStart = dayStart;
         this.dayStop = dayStop;
         this.hourStart = hourStart;
         this.hourStop = hourStop;
-        this.idservice = idservice;
+        this.idservice=new ServiceCompany(id,"","",0,0,0);
     }
 
     public Long getId() {
