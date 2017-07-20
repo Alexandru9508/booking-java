@@ -42,7 +42,7 @@ public class CompanyController {
         }
 
 
-    @RequestMapping(value = "/addCompanyInfo",method = RequestMethod.PUT)
+    @RequestMapping(value = "/addCompanyInfo",method = RequestMethod.POST)
     public String addCompany(@RequestBody Company company){
         Company company1;
         try {
@@ -76,7 +76,7 @@ public class CompanyController {
             return "Company deleted!";
     }
 
-    @RequestMapping(value = "/recover/{email}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/recover/{email}", method = RequestMethod.POST)
     @ResponseBody
     public String getByEmail(@PathVariable  String email, @RequestBody Company company) {
         try {
@@ -92,33 +92,7 @@ public class CompanyController {
 
         return "Your password has been sent!";
     }
-    @RequestMapping(value = "/info/{id}",method = RequestMethod.GET)
-    public Company infoCompany(@PathVariable Long id){
-        return companyService.getOneCompany(id);}
 
-    public String getByEmail(@PathVariable  String email) {
-        Company companyUser;
-        try {
-          companyUser = companyService.recoverPassword(email);
-            String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            StringBuilder salt = new StringBuilder();
-            Random rnd = new Random();
-            while (salt.length() < 18) {
-                int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-                salt.append(SALTCHARS.charAt(index));
-            }
-            String generateString = salt.toString();
-            String salt1 = BCrypt.gensalt(12);
-            String hashed_password = BCrypt.hashpw(generateString,salt1);
-            companyUser.setPassword(hashed_password);
-            companyService.updateComapany(new Company(companyUser.getIdcompany(), companyUser.getUsername(),
-                    companyUser.getPassword(), companyUser.getEmail(), companyUser.getDescription(),
-                    companyUser.getCompanyname(), companyUser.getLogo()));
-        }catch (Exception er){
-            return "Email was not found in the database!";
-        }
-        return "The user password is: "+ companyUser.getPassword();
-    }
 
     @RequestMapping(value = "/info/{name}",method = RequestMethod.GET)
     public Company infoCompany(@PathVariable String name){
