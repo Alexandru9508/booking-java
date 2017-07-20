@@ -48,7 +48,11 @@ public class CompanyService {
     public Company login (Company company) {
         return companyDao.findByEmail(company.getEmail());
     }
-   
+
+    public Company getOneCompany(Long id) {
+
+        return companyDao.findByIdcompany(id);
+    }
     public Company getOneCompany(String name){
         return companyDao.findByCompanyname(name);
     }

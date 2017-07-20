@@ -3,8 +3,10 @@ package com.assist.bookingjava.controllers;
 import com.assist.bookingjava.DataBase.CompanyDao;
 import com.assist.bookingjava.Models.Company;
 import com.assist.bookingjava.Service.CompanyService;
+import com.assist.bookingjava.Service.RecoverService;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,24 +20,32 @@ public class CompanyController {
 
     @Autowired
     CompanyService companyService;
-
+    @Autowired
+    RecoverService recoverService;
+   //add:name,email,password
     @RequestMapping(value="/register", method = RequestMethod.POST)
     public String addNewCompany(@RequestBody Company company) {
-        try{
-            String salt = BCrypt.gensalt(12);
-            String hashed_password = BCrypt.hashpw(company.getPassword(),salt);
-            companyService.addCompany(new Company(company.getUsername(),hashed_password,company.getEmail()));
-        }catch (Exception ex) {
-            return "User already exists!";
+
+            try {
+
+               // String salt = BCrypt.gensalt(12);
+               // String hashed_password = BCrypt.hashpw(company.getPassword(), salt);
+                companyService.addCompany(new Company(company.getUsername(), company.getPassword(), company.getEmail()));
+
+            } catch (Exception ex) {
+
+                return "User already exists!";
+
+            }
+
+            return "Data Saved!";
         }
-        return "Data Saved!";
-    }
+
 
     @RequestMapping(value = "/addCompanyInfo",method = RequestMethod.PUT)
     public String addCompany(@RequestBody Company company){
         Company company1;
         try {
-
             company1 = companyService.findById(company);
             companyService.updateComapany(new Company(company1.getIdcompany(), company1.getUsername(), company1.getPassword(),
                     company1.getEmail(), company.getDescription(), company.getCompanyname(), company.getLogo()));
@@ -66,8 +76,26 @@ public class CompanyController {
             return "Company deleted!";
     }
 
-    @RequestMapping(value = "/recover/{email}", method = RequestMethod.GET)
+    @RequestMapping(value = "/recover/{email}", method = RequestMethod.PUT)
     @ResponseBody
+    public String getByEmail(@PathVariable  String email, @RequestBody Company company) {
+        try {
+
+            recoverService.sendNotification(company);
+
+        }catch (MailException e){
+
+            return "Mail error!" + e.getMessage();
+
+        }
+
+
+        return "Your password has been sent!";
+    }
+    @RequestMapping(value = "/info/{id}",method = RequestMethod.GET)
+    public Company infoCompany(@PathVariable Long id){
+        return companyService.getOneCompany(id);}
+
     public String getByEmail(@PathVariable  String email) {
         Company companyUser;
         try {
@@ -95,10 +123,14 @@ public class CompanyController {
     @RequestMapping(value = "/info/{name}",method = RequestMethod.GET)
     public Company infoCompany(@PathVariable String name){
         return companyService.getOneCompany(name);
+
     }
 
     @RequestMapping(value = "/allCompanys",method = RequestMethod.GET)
         public List<Company> getAllCompany() {
         return companyService.getAllCompany();
         }
+
+
+
 }
