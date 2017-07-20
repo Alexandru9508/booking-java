@@ -111,9 +111,9 @@ public class CompanyController {
 
         return "The user password is: "+ companyUser.getPassword();
     }
-    @RequestMapping(value = "/info/{name}",method = RequestMethod.GET)
-    public Company infoCompany(@PathVariable String name){
-        return companyService.getOneCompany(name);
+    @RequestMapping(value = "/info/{id}",method = RequestMethod.GET)
+    public Company infoCompany(@PathVariable Long id){
+        return companyService.getOneCompany(id);
     }
 
     @RequestMapping(value = "/allCompanys",method = RequestMethod.GET)
