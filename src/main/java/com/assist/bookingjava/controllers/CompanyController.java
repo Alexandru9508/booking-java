@@ -3,8 +3,10 @@ package com.assist.bookingjava.controllers;
 import com.assist.bookingjava.DataBase.CompanyDao;
 import com.assist.bookingjava.Models.Company;
 import com.assist.bookingjava.Service.CompanyService;
+import com.assist.bookingjava.Service.RecoverService;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +19,8 @@ import java.util.Random;
 public class CompanyController {
     @Autowired
     CompanyService companyService;
+    @Autowired
+    RecoverService recoverService;
    //add:name,email,password
     @RequestMapping(value="/register", method = RequestMethod.POST)
     public String addNewCompany(@RequestBody Company company) {
@@ -72,46 +76,21 @@ public class CompanyController {
             return "Company deleted!";
     }
 
-    @RequestMapping(value = "/recover/{email}", method = RequestMethod.GET)
+    @RequestMapping(value = "/recover/{email}", method = RequestMethod.PUT)
     @ResponseBody
-    public String getByEmail(@PathVariable  String email) {
-        Company companyUser;
+    public String getByEmail(@PathVariable  String email, @RequestBody Company company) {
         try {
-          companyUser = companyService.recoverPassword(email);
 
-         /*   String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            recoverService.sendNotification(company);
 
-            StringBuilder salt = new StringBuilder();
+        }catch (MailException e){
 
-            Random rnd = new Random();
-
-            while (salt.length() < 18) { // length of the random string.
-
-                int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-
-                salt.append(SALTCHARS.charAt(index));
-            }
-
-
-            String generateString = salt.toString();
-
-        //    String salt1 = BCrypt.gensalt(12);
-
-        //    String hashed_password = BCrypt.hashpw(generateString,salt1);
-
-         //   companyUser.setPassword(hashed_password);
-         */
-            companyService.updateComapany(new Company(companyUser.getIdcompany(), companyUser.getUsername(), companyUser.getPassword(),
-                    companyUser.getEmail(), companyUser.getDescription(), companyUser.getCompanyname(), companyUser.getLogo()));
-
-        }catch (Exception er){
-
-            return "Email was not found in the database!";
+            return "Mail error!" + e.getMessage();
 
         }
 
 
-        return "The user password is: "+ companyUser.getPassword();
+        return "Your password has been sent!";
     }
     @RequestMapping(value = "/info/{id}",method = RequestMethod.GET)
     public Company infoCompany(@PathVariable Long id){
