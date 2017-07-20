@@ -17,21 +17,21 @@ public class LoginController {
     @Autowired
     CompanyService companyService;
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public Company log(@RequestBody Company company){
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public Company log(@RequestBody Company company) {
 
-        boolean passMatch=BCrypt.checkpw(company.getPassword(),companyService.login(company).getPassword());
+        boolean passMatch = BCrypt.checkpw(company.getPassword(), companyService.login(company).getPassword());
 
-       if(passMatch) {
+        if (passMatch) {
 
-           return companyService.login(company);
-       }
-       else
+            return companyService.login(company);
 
-           return new Company();
+        } else
+            passMatch = false;
+
+        return new Company();
+
     }
-
-
 }
  
 
