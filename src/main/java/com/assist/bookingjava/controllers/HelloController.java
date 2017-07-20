@@ -38,28 +38,6 @@ public class HelloController {
         return "Done";
     }
 
-/*
-    @RequestMapping("/service")
-    public List<ServiceCompany> getAllService() {
-
-        return serviceService.getService();
-    }
-
-    @RequestMapping("/service/add")
-    public String addService() {
-        serviceService.addService(new ServiceCompany("alexd", "asdaad", 22, 55, 66));
-        return "Done";
-    }
-
-<<<<<<< HEAD
-
-    @RequestMapping("/service/delete")
-    public String deleteService(@RequestParam long idservice) {
-        serviceService.deleteService(idservice);
-        return "Task deleted";
-    }
-*/
-
 
 
 }
