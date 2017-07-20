@@ -11,9 +11,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 
 import java.util.List;
 
-/**
- * Created by frunza on 07.07.2017.
- */
+
 @RestController
 public class HelloController {
 
