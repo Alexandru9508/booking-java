@@ -20,16 +20,15 @@ public class ServiceCompany {
     @JoinColumn(name="idcompany")
     private Company idcompany;
 
-    @NotEmpty
-
+    //@NotEmpty
     String servicename;
-    @NotEmpty
+    //@NotEmpty
     String servicedescription;
-    @NotEmpty
+   // @NotEmpty
     int space;
-    @NotEmpty
+   // @NotEmpty
     int price;
-    @NotEmpty
+    //@NotEmpty
     int duration;
 
     public ServiceCompany(){}

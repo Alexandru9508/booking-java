@@ -29,7 +29,7 @@ public class ServiceController {
         serviceService.Delete(id);
     }
 
-    @RequestMapping(value = "/company/{id}/service", method = RequestMethod.POST)
+    @RequestMapping(value = "/company/{id}", method = RequestMethod.POST)
     public String addServices(@RequestBody ServiceCompany companyService, @PathVariable Long id){
         companyService.setIdcompany (new Company(id,"","", "","", "", ""));
         serviceService.AddService(companyService);
