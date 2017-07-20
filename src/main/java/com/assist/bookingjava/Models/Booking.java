@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "booking")
 public class Booking {
+
      @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
      long idbooking;
@@ -16,11 +17,14 @@ public class Booking {
      String customerPhone;
      String bookingDay;
      String bookingHour;
+
      @ManyToOne
     @JoinColumn(name = "idservice")
     private ServiceCompany service;
 
-     public Booking(){}
+     public Booking(){
+     }
+
     public Booking( String customerName, String customerEmail, String customerPhone, String bookingDay, String bookingHour, Long service) {
         this.customerName = customerName;
         this.customerEmail = customerEmail;
@@ -29,6 +33,7 @@ public class Booking {
         this.bookingHour = bookingHour;
         this.service=new ServiceCompany(service,"","",0,0,0);
     }
+
     public Booking(String customerName, String customerEmail, String customerPhone, String bookingDay, String bookingHour){
         this.customerName = customerName;
         this.customerEmail = customerEmail;
@@ -36,6 +41,7 @@ public class Booking {
         this.bookingDay = bookingDay;
         this.bookingHour = bookingHour;
     }
+
     public long getIdbooking() {
         return idbooking;
     }

@@ -36,8 +36,8 @@ public class CompanyService {
     public void deleteCompany(Long idcompany) {
         companyDao.delete(idcompany);
     }
-    public Company recoverPassword(String email){
 
+    public Company recoverPassword(String email){
         return companyDao.findByEmail(email);
     }
 
@@ -50,7 +50,6 @@ public class CompanyService {
     }
    
     public Company getOneCompany(String name){
-
         return companyDao.findByCompanyname(name);
     }
 

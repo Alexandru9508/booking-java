@@ -33,5 +33,4 @@ public class BookingService {
     public void addBooking(Booking booking){
         bookingDao.save(booking);
     }
-
 }
