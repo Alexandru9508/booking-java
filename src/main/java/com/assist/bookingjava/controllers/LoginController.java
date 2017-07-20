@@ -14,16 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class LoginController {
+
     @Autowired
     CompanyService companyService;
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public Company log(@RequestBody Company company){
-        companyService.
-           return new Company();
+        return  companyService.login(company);
     }
-
-
 }
  
 
