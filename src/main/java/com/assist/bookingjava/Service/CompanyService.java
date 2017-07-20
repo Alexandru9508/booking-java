@@ -54,4 +54,8 @@ public class CompanyService {
         return companyDao.findByIdcompany(id);
     }
 
+    public Company findByEmail(String email) {
+        return companyDao.findByEmail(email);
+    }
+
 }
