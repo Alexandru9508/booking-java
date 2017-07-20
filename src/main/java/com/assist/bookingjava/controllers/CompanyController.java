@@ -22,9 +22,7 @@ public class CompanyController {
     @RequestMapping(value="/register", method = RequestMethod.POST)
     public String addNewCompany(@RequestBody Company company) {
         try{
-            String salt = BCrypt.gensalt(12);
-            String hashed_password = BCrypt.hashpw(company.getPassword(),salt);
-            companyService.addCompany(new Company(company.getUsername(),hashed_password,company.getEmail()));
+            companyService.addCompany(company);
         }catch (Exception ex) {
             return "User already exists!";
         }
