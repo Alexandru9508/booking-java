@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "companyService")
 public class ServiceCompany {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long idservice;
@@ -18,13 +19,11 @@ public class ServiceCompany {
     @JoinColumn(name="idcompany")
     private Company idcompany;
 
-
     String servicename;
     String servicedescription;
     int space;
     int price;
     int duration;
-
 
     public ServiceCompany(){}
 
@@ -36,6 +35,7 @@ public class ServiceCompany {
         this.duration = duration;
         this.idcompany=new Company(Companyid,"","", "","", "", "");
     }
+
     public ServiceCompany(long id,String servicename,String servicedescription, int space, int price, int duration){
         this.idservice=id;
         this.servicename=servicename;

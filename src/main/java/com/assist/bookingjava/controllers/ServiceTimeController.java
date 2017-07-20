@@ -18,10 +18,8 @@ public class ServiceTimeController {
 
     @RequestMapping(method = RequestMethod.POST,value = "/serviceCompany/{id}/addServiceInfo")
     public String setCompanyService(@RequestBody ServiceTime serviceTime , @PathVariable Long id){
-
         serviceTime.setServiceDetails(new ServiceCompany(id,"","",0,0,0));
         service.addServiceTime(serviceTime);
-
         return "Your service informations has been saved!";
 
     }

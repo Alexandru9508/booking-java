@@ -15,25 +15,22 @@ import java.util.Random;
  */
 @RestController
 public class CompanyController {
+
     @Autowired
     CompanyService companyService;
-   //add:name,email,password
+
     @RequestMapping(value="/register", method = RequestMethod.POST)
     public String addNewCompany(@RequestBody Company company) {
         try{
-
             String salt = BCrypt.gensalt(12);
             String hashed_password = BCrypt.hashpw(company.getPassword(),salt);
             companyService.addCompany(new Company(company.getUsername(),hashed_password,company.getEmail()));
-
         }catch (Exception ex) {
-
             return "User already exists!";
-
         }
-
         return "Data Saved!";
     }
+
     @RequestMapping(value = "/addCompanyInfo",method = RequestMethod.PUT)
     public String addCompany(@RequestBody Company company){
         Company company1;
@@ -48,8 +45,6 @@ public class CompanyController {
          return "Done";
     }
 
-
-    //update:description,logo,companyName;
     @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
     public String updateCompany(@RequestBody Company company) {
         try {
@@ -75,42 +70,28 @@ public class CompanyController {
     @ResponseBody
     public String getByEmail(@PathVariable  String email) {
         Company companyUser;
-
         try {
           companyUser = companyService.recoverPassword(email);
-
             String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-
             StringBuilder salt = new StringBuilder();
-
             Random rnd = new Random();
-
-            while (salt.length() < 18) { // length of the random string.
-
+            while (salt.length() < 18) {
                 int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-
                 salt.append(SALTCHARS.charAt(index));
             }
-
-
             String generateString = salt.toString();
-
             String salt1 = BCrypt.gensalt(12);
-
             String hashed_password = BCrypt.hashpw(generateString,salt1);
-
             companyUser.setPassword(hashed_password);
-
-            companyService.updateComapany(new Company(companyUser.getIdcompany(), companyUser.getUsername(), companyUser.getPassword(),
-                    companyUser.getEmail(), companyUser.getDescription(), companyUser.getCompanyname(), companyUser.getLogo()));
-
+            companyService.updateComapany(new Company(companyUser.getIdcompany(), companyUser.getUsername(),
+                    companyUser.getPassword(), companyUser.getEmail(), companyUser.getDescription(),
+                    companyUser.getCompanyname(), companyUser.getLogo()));
         }catch (Exception er){
             return "Email was not found in the database!";
         }
-
-
         return "The user password is: "+ companyUser.getPassword();
     }
+
     @RequestMapping(value = "/info/{name}",method = RequestMethod.GET)
     public Company infoCompany(@PathVariable String name){
         return companyService.getOneCompany(name);
