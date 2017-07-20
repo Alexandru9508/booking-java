@@ -72,15 +72,15 @@ export default {
 	methods: {
 		
 		 submit() {
-		    this.$http.post('http://192.168.150.242:9000/login', this.user)
+		    this.$http.post(`${process.env['API_URL']}/login`, this.user)
 		    .then( function (response)  {
-		    	return response.json();
-		    	
+		    	console.log('response: ', response);
+		    	return response.json();		    	
 		    })
 		    .then( response => {
 		    	localStorage.setItem('company', JSON.stringify(response));
     	  		location.href = '#uploadLogo';
-
+    	  		console.log(response);
 		    })
 		    .catch(function (error) {
 		      console.log('error: ', error);
