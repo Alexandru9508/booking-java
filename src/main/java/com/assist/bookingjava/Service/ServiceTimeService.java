@@ -1,8 +1,6 @@
 package com.assist.bookingjava.Service;
 
-import com.assist.bookingjava.DataBase.AddServiceDao;
 import com.assist.bookingjava.DataBase.ServiceTimeDao;
-import com.assist.bookingjava.Models.ServiceCompany;
 import com.assist.bookingjava.Models.ServiceTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

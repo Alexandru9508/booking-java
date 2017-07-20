@@ -7,5 +7,4 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface  ServiceTimeDao extends CrudRepository<ServiceTime, Long> {
-    List<ServiceTime>findByIdservice(ServiceCompany id);
 }

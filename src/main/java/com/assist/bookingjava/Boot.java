@@ -44,7 +44,6 @@ class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter {
     UserDetailsService userDetailsService() {
         return email -> {
             Company company = companyService.findByEmail(email);
-
             if (company != null) {
                 return new User(company.getUsername(), company.getPassword(), true, true, true, true,
                         AuthorityUtils.createAuthorityList("USER"));
@@ -63,7 +62,11 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/login","/allCompanys", "/hello").permitAll()
+                .antMatchers("/login","/allCompanys", "/hello","/register","/addCompanyInfo","/updateCompany/{id}",
+                        "/deleteCompany/{id}","/recover/{email}","/info/{name}","/allCompanys","/services/bookings",
+                        "/service/{name}/bookings","/service/{id}/addbooking","/company/{idcompnay}/services", "/Delete/Service/{id}",
+                        "/company/{id}/service","/company/service/{id}","/company/services","/serviceCompany/{id}/addServiceInfo",
+                        "/serviceCompany/time").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable();
