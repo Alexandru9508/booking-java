@@ -1,5 +1,6 @@
 <template>
 	<div class="container-fluid">
+	<nav-bar></nav-bar>
 		<div class="row">
 			<div class="form_container clearfix">
 				<form class=" serviceForm">
@@ -7,10 +8,12 @@
 						<div class="form-group float-left">
 							<a class="logoImage" href="#">
 								<img src="../assets/image-logo.png">
-								<!-- <span>Add service</span> -->
-								
 								<button class="btn btn-primary uploadLogo" type="submit">
-									<input type="file"  style="width : 250px; color : black;">
+									<!-- <input name="logo"  type="file"  style="width : 250px; color : black;"> -->
+									<form enctype="multipart/form-data" action="/upload" method="post">
+                           
+                           <input type="file" name="logo" accept="image/*"/>
+</form>
 								</button>
 
 							</a>
@@ -50,8 +53,6 @@
 
 							<button class="btn btn-primary sign-out" type="submit">Sign out</button>
 							<button type="button" class="btn btn-success" @click="submit()">Save</button>
-
-							<!-- <button class="btn btn-primary save" type="submit">Save</button> -->
 						</div>
 
 						<div class="form-group form-group-company-description float-right">
@@ -65,19 +66,27 @@
 </template>
 
 <script>
+import NavBar from './navbar.vue';
 	export default {
 		data () {
 			return {
 
-				company: {},
+				company: {
+					// logo: '',
+					// companyname: '',
+					// description: ''
+
+				},
 				};
 			},
 			methods: {		
 			  	submit() {
 
-				    this.$http.post('http://192.168.150.242:9000/addCompanyInfo', this.company)
+				    this.$http.post(`${process.env['API_URL']}/addCompanyInfo`, this.company)
 				    .then( function (response)  {
 				    	console.log('response: ', response);
+				    	location.href = '#companylist';
+				    	console.log(response);
 				    })
 				    .catch(function (error) {
 				      console.log('error: ', error);
@@ -90,6 +99,9 @@
 				 	
 				 }
 			},
+			components: {
+         NavBar,
+       },
 			created() {
 				this.initCompany();
 			}
@@ -192,16 +204,6 @@ a {
 	width: 49%;
 	display: table;
 }
-
-/*.form-group-availability {
-    margin: auto;
-    width: 100%;
-    height: 458px;
-    border: 1px solid #ce7ede;
-    border-radius: 10px;
-    box-sizing: border-box;
-}*/
-
 /*Responsive*/
 
 @media (max-width: 1000px) {
@@ -210,45 +212,4 @@ a {
 		margin-right: 0;
 	}
 }
-
-/*form h5 {
-	text-align: left;
-	text-transform: uppercase;
-	color: #ddd;
-}
-
-.form-group-service-name{
-	float: left;
-	width: 450px;
-	height: 30px;
-	padding: 10px;
-
-}
-.form-group-service-duration{
-
-	float: right;
-	display: inline-block;
-	width: 450px;
-	height: 30px;
-	padding: 10px;
-
-
-}
-.form-group-service-description{
-	clear: left;
-	margin-top: 120px;
-	width: 450px;
-}
-
-
-.form-group-spaces{
-
-	float: right;
-	display: inline-block;
-	width: 450px;
-	height: 30px;
-	padding: 10px;
-}
-*/
-
 </style>

@@ -20,8 +20,6 @@ export default new Router({
 
 
   routes: [
-
-
 	{
 		path: '/addService',
 		name: 'AddService',
