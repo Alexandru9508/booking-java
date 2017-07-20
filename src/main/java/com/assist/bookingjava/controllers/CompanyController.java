@@ -20,20 +20,22 @@ public class CompanyController {
    //add:name,email,password
     @RequestMapping(value="/register", method = RequestMethod.POST)
     public String addNewCompany(@RequestBody Company company) {
-        try{
 
-            String salt = BCrypt.gensalt(12);
-            String hashed_password = BCrypt.hashpw(company.getPassword(),salt);
-            companyService.addCompany(new Company(company.getUsername(),hashed_password,company.getEmail()));
+            try {
 
-        }catch (Exception ex) {
+                String salt = BCrypt.gensalt(12);
+                String hashed_password = BCrypt.hashpw(company.getPassword(), salt);
+                companyService.addCompany(new Company(company.getUsername(), hashed_password, company.getEmail()));
 
-            return "User already exists!";
+            } catch (Exception ex) {
 
+                return "User already exists!";
+
+            }
+
+            return "Data Saved!";
         }
 
-        return "Data Saved!";
-    }
     @RequestMapping(value = "/addCompanyInfo",method = RequestMethod.PUT)
     public String addCompany(@RequestBody Company company){
         Company company1;
@@ -120,4 +122,7 @@ public class CompanyController {
         public List<Company> getAllCompany() {
         return companyService.getAllCompany();
         }
+
+
+
 }

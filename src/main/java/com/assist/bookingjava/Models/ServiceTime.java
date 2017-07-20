@@ -1,5 +1,7 @@
 package com.assist.bookingjava.Models;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 
 /**
@@ -12,9 +14,13 @@ public class ServiceTime {
     @Id
             @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+    @NotEmpty
     String dayStart;
+    @NotEmpty
     String dayStop;
+    @NotEmpty
     String hourStart;
+    @NotEmpty
     String hourStop;
 
 
