@@ -18,9 +18,12 @@ public class LoginController {
     @Autowired
     CompanyService companyService;
 
+
+
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public Company log(@RequestBody Company company){
         return  companyService.login(company);
+
     }
 }
  

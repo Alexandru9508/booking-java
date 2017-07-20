@@ -1,5 +1,7 @@
 package com.assist.bookingjava.Models;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,11 +17,15 @@ public class Company {
     long idcompany;
 
     @Column(unique = true)
+   // @NotEmpty
     String username;
+    //@NotEmpty
     String password;
 
     @Column(unique = true)
+   // @NotEmpty
     String email;
+
     String description;
 
     @Column(unique = true)

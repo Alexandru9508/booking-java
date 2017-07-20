@@ -24,9 +24,9 @@ public class BookingController {
         return bookingService.AllBookings();
     }
 
-    @RequestMapping(method = RequestMethod.GET,value = "/service/{name}/bookings")
-    public List<Booking> AllServiceBookings(@PathVariable  String name){
-        return bookingService.AllBookingsForService(name);
+    @RequestMapping(method = RequestMethod.GET,value = "/service/{id}/bookings")
+    public List<Booking> AllServiceBookings(@PathVariable  Long id){
+        return bookingService.AllBookingsForService(id);
     }
 
     @RequestMapping(method = RequestMethod.POST,value = "/service/{id}/addbooking")

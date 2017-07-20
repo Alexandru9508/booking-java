@@ -1,5 +1,7 @@
 package com.assist.bookingjava.Models;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 
 /**
@@ -12,11 +14,18 @@ public class Booking {
      @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
      long idbooking;
-     String customerName;
+
+    @NotEmpty
+    String customerName;
+     @NotEmpty
      String customerEmail;
-     String customerPhone;
-     String bookingDay;
-     String bookingHour;
+    @NotEmpty
+    String customerPhone;
+    @NotEmpty
+    String bookingDay;
+    @NotEmpty
+    String bookingHour;
+
 
      @ManyToOne
     @JoinColumn(name = "idservice")

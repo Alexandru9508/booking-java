@@ -1,5 +1,6 @@
 package com.assist.bookingjava.Models;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Required;
 
 import javax.persistence.*;
@@ -19,10 +20,15 @@ public class ServiceCompany {
     @JoinColumn(name="idcompany")
     private Company idcompany;
 
+    //@NotEmpty
     String servicename;
+    //@NotEmpty
     String servicedescription;
+   // @NotEmpty
     int space;
+   // @NotEmpty
     int price;
+    //@NotEmpty
     int duration;
 
     public ServiceCompany(){}
