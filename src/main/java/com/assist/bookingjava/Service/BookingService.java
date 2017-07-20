@@ -23,9 +23,9 @@ public class BookingService {
         return bookings;
     }
 
-    public List<Booking> AllBookingsForService(String name){
+    public List<Booking> AllBookingsForService(Long id){
         List<Booking>bookings=new ArrayList<>();
-        bookingDao.findByService_Servicename(name).
+        bookingDao.findByIdbooking(id).
         forEach(bookings::add);
         return bookings;
     }
@@ -33,5 +33,4 @@ public class BookingService {
     public void addBooking(Booking booking){
         bookingDao.save(booking);
     }
-
 }

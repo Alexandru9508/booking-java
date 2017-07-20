@@ -1,8 +1,9 @@
 package com.assist.bookingjava.Service;
 
-import com.assist.bookingjava.DataBase.AddServiceDao;
+import com.assist.bookingjava.DataBase.ServiceTimeDao;
 import com.assist.bookingjava.Models.ServiceTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,26 +11,33 @@ import java.util.List;
 /**
  * Created by alex on 14.07.2017.
  */
+@Service
 public class ServiceTimeService {
 
     @Autowired
-    private AddServiceDao addServiceDao;
+    ServiceTimeDao serviceTimeDao;
 
 
     public ServiceTime getService(long id) {
-        return addServiceDao.findOne(id);
-    }
-    public void addServiceDao(ServiceTime service){
-
-        addServiceDao.save(service);
+        return serviceTimeDao.findOne(id);
     }
 
-    public List<ServiceTime> getService() {
+    public void addServiceDao(ServiceTime service) {
+
+        serviceTimeDao.save(service);
+    }
+
+    public List<ServiceTime> getAllService() {
         List<ServiceTime> services = new ArrayList<>();
-        addServiceDao.findAll().forEach(services :: add);
+        serviceTimeDao.findAll().forEach(services::add);
         return services;
     }
 
+    public void addServiceTime(ServiceTime serviceTime) {
+        serviceTimeDao.save(serviceTime);
+
+
+    }
 
 
 
