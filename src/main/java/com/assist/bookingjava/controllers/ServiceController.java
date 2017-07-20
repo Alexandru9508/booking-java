@@ -35,6 +35,7 @@ public class ServiceController {
         serviceService.AddService(companyService);
         return "Saved!";
     }
+
     @RequestMapping(value = "/company/service/{id}",method = RequestMethod.GET)
     public ServiceCompany Serviceinfo(@PathVariable Long id ){
         return serviceService.findOne(id);

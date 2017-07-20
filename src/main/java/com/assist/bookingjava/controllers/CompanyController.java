@@ -17,6 +17,7 @@ import java.util.Random;
  */
 @RestController
 public class CompanyController {
+
     @Autowired
     CompanyService companyService;
     @Autowired
@@ -27,9 +28,9 @@ public class CompanyController {
 
             try {
 
-                String salt = BCrypt.gensalt(12);
-                String hashed_password = BCrypt.hashpw(company.getPassword(), salt);
-                companyService.addCompany(new Company(company.getUsername(), hashed_password, company.getEmail()));
+               // String salt = BCrypt.gensalt(12);
+               // String hashed_password = BCrypt.hashpw(company.getPassword(), salt);
+                companyService.addCompany(new Company(company.getUsername(), company.getPassword(), company.getEmail()));
 
             } catch (Exception ex) {
 
@@ -39,6 +40,7 @@ public class CompanyController {
 
             return "Data Saved!";
         }
+
 
     @RequestMapping(value = "/addCompanyInfo",method = RequestMethod.PUT)
     public String addCompany(@RequestBody Company company){
@@ -53,8 +55,6 @@ public class CompanyController {
          return "Done";
     }
 
-
-    //update:description,logo,companyName;
     @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
     public String updateCompany(@RequestBody Company company) {
         try {
@@ -94,7 +94,36 @@ public class CompanyController {
     }
     @RequestMapping(value = "/info/{id}",method = RequestMethod.GET)
     public Company infoCompany(@PathVariable Long id){
-        return companyService.getOneCompany(id);
+        return companyService.getOneCompany(id);}
+
+    public String getByEmail(@PathVariable  String email) {
+        Company companyUser;
+        try {
+          companyUser = companyService.recoverPassword(email);
+            String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder salt = new StringBuilder();
+            Random rnd = new Random();
+            while (salt.length() < 18) {
+                int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+                salt.append(SALTCHARS.charAt(index));
+            }
+            String generateString = salt.toString();
+            String salt1 = BCrypt.gensalt(12);
+            String hashed_password = BCrypt.hashpw(generateString,salt1);
+            companyUser.setPassword(hashed_password);
+            companyService.updateComapany(new Company(companyUser.getIdcompany(), companyUser.getUsername(),
+                    companyUser.getPassword(), companyUser.getEmail(), companyUser.getDescription(),
+                    companyUser.getCompanyname(), companyUser.getLogo()));
+        }catch (Exception er){
+            return "Email was not found in the database!";
+        }
+        return "The user password is: "+ companyUser.getPassword();
+    }
+
+    @RequestMapping(value = "/info/{name}",method = RequestMethod.GET)
+    public Company infoCompany(@PathVariable String name){
+        return companyService.getOneCompany(name);
+
     }
 
     @RequestMapping(value = "/allCompanys",method = RequestMethod.GET)

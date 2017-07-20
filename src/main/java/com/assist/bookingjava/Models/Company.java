@@ -12,33 +12,33 @@ import java.util.List;
 @Table(name = "company")
 public class Company {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long idcompany;
-
 
     @Column(unique = true)
     @NotEmpty
     String username;
     @NotEmpty
     String password;
+
     @Column(unique = true)
     @NotEmpty
     String email;
     String description;
+
     @Column(unique = true)
     String companyname;
     String logo;
 
-
-
-    public Company(){}
+    public Company(){
+    }
 
     public Company(String email,String password){
         this.email=email;
         this.password=password;
     }
+
     public Company(String username, String password, String email, String description, String companyname, String logo) {
         this.username = username;
         this.password = password;
@@ -54,7 +54,6 @@ public class Company {
         this.email = email;
     }
 
-
     public Company(Long idcompany,String username, String password, String email, String description, String companyname, String logo){
         this.idcompany=idcompany;
         this.username = username;
@@ -65,14 +64,9 @@ public class Company {
         this.logo = logo;
     }
 
-
-
     public void setIdcompany(long idcompany) {
-
         this.idcompany = idcompany;
     }
-
-
 
     public long getIdcompany() {
         return idcompany;

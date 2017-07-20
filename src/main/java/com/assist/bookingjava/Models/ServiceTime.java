@@ -12,8 +12,9 @@ import javax.persistence.*;
 public class ServiceTime {
 
     @Id
-            @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+
     @NotEmpty
     String dayStart;
     @NotEmpty
@@ -23,10 +24,8 @@ public class ServiceTime {
     @NotEmpty
     String hourStop;
 
-
     @ManyToOne
     private ServiceCompany idservice;
-
 
     public void setIdservice(ServiceCompany idservice) {
         this.idservice = idservice;
@@ -86,8 +85,6 @@ public class ServiceTime {
     public void setHourStop(String hourStop) {
         this.hourStop = hourStop;
     }
-
-
 
     public void setServiceDetails(ServiceCompany idservice) {
         this.idservice = idservice;
