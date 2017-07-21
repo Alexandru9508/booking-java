@@ -1,5 +1,6 @@
 package com.assist.bookingjava.Models;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Required;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "companyService")
 public class ServiceCompany {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long idservice;
@@ -18,13 +20,16 @@ public class ServiceCompany {
     @JoinColumn(name="idcompany")
     private Company idcompany;
 
-
+    //@NotEmpty
     String servicename;
+    //@NotEmpty
     String servicedescription;
+   // @NotEmpty
     int space;
+   // @NotEmpty
     int price;
+    //@NotEmpty
     int duration;
-
 
     public ServiceCompany(){}
 
@@ -36,6 +41,7 @@ public class ServiceCompany {
         this.duration = duration;
         this.idcompany=new Company(Companyid,"","", "","", "", "");
     }
+
     public ServiceCompany(long id,String servicename,String servicedescription, int space, int price, int duration){
         this.idservice=id;
         this.servicename=servicename;

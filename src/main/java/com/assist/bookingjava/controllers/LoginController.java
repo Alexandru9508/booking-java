@@ -14,25 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class LoginController {
+
     @Autowired
     CompanyService companyService;
 
 
-     
 
- 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public Company log(@RequestBody Company company){
-        boolean passMatch=BCrypt.checkpw(company.getPassword(),companyService.login(company).getPassword());
-       if(passMatch) {
+        return  companyService.login(company);
 
-           return companyService.login(company);
-       }
-       else
-           return new Company();
     }
-
-
 }
  
 
