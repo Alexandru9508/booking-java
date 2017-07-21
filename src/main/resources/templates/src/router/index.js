@@ -11,16 +11,19 @@ import Recover from '@/components/Recover'
 import Bookingservices from '@/components/Bookingservices'
 import Companyname from '@/components/Companyname'
 import Companylist from '@/components/Companylist'
-
+import NotFound from '@/components/NotFound'
 
 
 Vue.use(Router)
 
-export default new Router({
-
-
+const router= new Router({
+ mode: 'history',
   routes: [
-
+{
+      path: '/',
+      name: 'Home',
+      component: Home
+  },
 
 	{
 		path: '/addService',
@@ -36,11 +39,7 @@ export default new Router({
 		path: '/bookingPersonDetails',
 		name: 'BookingPersonDetails',
 		component: BookingPersonDetails
-	},{
-      path: '/',
-      name: 'Home',
-      component: Home
-  },
+	},
     {
       path: '/register',
       name: 'Register',
@@ -70,7 +69,33 @@ export default new Router({
       path: '/companylist',
       name: 'Companylist',
       component: Companylist
+    },
+    {
+      path: '*',
+      name: 'NotFound',
+      component: NotFound,
     }
 	]
   
 })
+
+router.beforeEach((to, from, next) => {
+
+      if (to.path === "/login" && localStorage.getItem('token')) { 
+        next('/uploadLogo')
+      }
+
+    if (to.path === "/") {
+      if (localStorage.getItem('token')) {
+        next('/uploadLogo');
+      } else {
+        next('/login');
+      }
+    } else {
+      next()
+    }
+});
+
+
+
+export default router;

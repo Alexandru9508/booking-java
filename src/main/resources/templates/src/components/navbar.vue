@@ -1,6 +1,6 @@
  
 <template>
-<div>
+<div id="menu">
  <b-navbar toggleable type="inverse" class="menu">
           <b-nav-toggle target="nav_collapse"></b-nav-toggle>
           <b-link class="navbar-brand" to="#">
@@ -18,29 +18,30 @@
           </b-collapse>
         </b-navbar>
         </div>
+        </div>
         </template>
 
         <style>
 
         .menu
 {
-  background-color: #d145e9;
+  background-color: #8875e4;
 
 }
 
-a{
+#menu a{
   color:white;
   text-transform: none;
 }
 
-a:focus{
+#menu a:focus{
   text-decoration: none;
   color:white;
   font-size: 18px;
 }
 
 
-a:hover { 
+#menu a:hover { 
     color: white;
     text-decoration: none;
     font-size: 18px;

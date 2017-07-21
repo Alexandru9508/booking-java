@@ -55,6 +55,7 @@
 
 
 <script>
+import basicAuthToken from 'basic-auth-token';
 
 
 export default {
@@ -74,12 +75,16 @@ export default {
 		 submit() {
 		    this.$http.post('http://192.168.150.242:9000/login', this.user)
 		    .then( function (response)  {
+		    	if (JSON.parse(response.bodyText).idcompany) { // if this property is on the response object, it means Auth was succesful
+			    	localStorage.setItem('token', basicAuthToken(this.user, this.password));
+
+		    	}
 		    	return response.json();
 		    	
 		    })
 		    .then( response => {
 		    	localStorage.setItem('company', JSON.stringify(response));
-    	  		location.href = '#uploadLogo';
+		 		this.$router.push('/uploadLogo');
 
 		    })
 		    .catch(function (error) {
