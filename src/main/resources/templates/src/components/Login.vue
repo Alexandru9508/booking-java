@@ -48,6 +48,9 @@
 				<div class="goToLogin">
 			    			<router-link to="recover">Recover password</router-link>
 				</div>
+				<div class="goToRegister">
+			    			<router-link to="register">Don't have an account? Click here to register</router-link>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -55,6 +58,7 @@
 
 
 <script>
+import basicAuthToken from 'basic-auth-token';
 
 
 export default {
@@ -72,15 +76,20 @@ export default {
 	methods: {
 		
 		 submit() {
-		    this.$http.post('http://192.168.150.242:9000/login', this.user)
+		    this.$http.post(`${process.env['API_URL']}/login`, this.user)
 		    .then( function (response)  {
+		    	if (JSON.parse(response.bodyText).idcompany) { // if this property is on the response object, it means Auth was succesful
+			    	localStorage.setItem('token', basicAuthToken(this.user, this.password));
+
+		    	}
 		    	return response.json();
 		    	
 		    })
 		    .then( response => {
 		    	localStorage.setItem('company', JSON.stringify(response));
-    	  		location.href = '#uploadLogo';
-
+		 		this.$router.push('/uploadLogo');
+		    	console.log('response: ', response);
+		    	return response.json();		    	
 		    })
 		    .catch(function (error) {
 		      console.log('error: ', error);
@@ -144,6 +153,10 @@ p{
 .goToLogin{
 	margin-top: 2%;
 }
+.goToRegister{
+	margin-top: 2%;
+}
+
 
 /*Responsive*/
 

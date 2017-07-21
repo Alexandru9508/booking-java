@@ -75,21 +75,24 @@ export default {
 		};
 	},
 	methods: {
-		// submit() {
-		 //    axios.get('http://192.168.150.242:8080/hello')
-		 //    .then( function (response)  {
-		 //    	console.log('response: ', response);
-		 //    	debugger;
-		 //    })
-		 //    .catch(function (error) {
-		 //      console.log('error: ', error);
-		 //      debugger;
-		 //    })
-		 // },
-		 submit() {
-		     this.$http.post('http://192.168.150.242:9000/register', this.user)
+		submit() {
+		    axios.get('http://192.168.150.242:8080/hello')
 		    .then( function (response)  {
 		    	console.log('response: ', response);
+		    	debugger;
+		    })
+		    .catch(function (error) {
+		      console.log('error: ', error);
+		      debugger;
+		    })
+		 },
+		 submit() {
+		     this.$http.post(`${process.env['API_URL']}/register`, this.user)
+		    .then( function (response)  {
+		 		this.$router.push('/login');
+		    })
+		    .then( response => {
+    	  		location.href = '#login';
 		    })
 		    .catch(function (error) {
 		      console.log('error: ', error);

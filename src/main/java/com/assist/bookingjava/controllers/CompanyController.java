@@ -12,12 +12,24 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.*;
+import sun.misc.BASE64Encoder;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by doroftei on 14.07.2017.
  */
 @RestController
 public class CompanyController {
+
+    public static final String uploadingdir = System.getProperty("user.dir") + "/uploadingdir/";
 
     @Autowired
     CompanyService companyService;
@@ -102,8 +114,6 @@ public class CompanyController {
 
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("intershipassist@gmail.com"));
-
-
             String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
             StringBuilder salt = new StringBuilder();
             Random rnd = new Random();
@@ -147,10 +157,11 @@ public class CompanyController {
     public List<Company> getAllCompany() {
         return companyService.getAllCompany();
     }
-
-    @RequestMapping(value = "/uplodeImage",method = RequestMethod.POST)
+   @RequestMapping(value = "/uplodeImage",method = RequestMethod.POST)
     public String uploadFile(@RequestParam("file") MultipartFile multipartFile){
         return "SUCCES";
     }
 
 }
+
+

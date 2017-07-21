@@ -66,7 +66,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/deleteCompany/{id}","/recover","/info/{name}","/allCompanys","/services/bookings",
                         "/service/{name}/bookings","/service/{id}/addbooking","/company/{idcompnay}/services", "/Delete/Service/{id}",
                         "/company/{id}/service","/company/service/{id}","/company/services","/serviceCompany/{id}/addServiceInfo",
-                        "/serviceCompany/time","/uplodeImage","/company/{id}").permitAll()
+                        "/serviceCompany/time","/uploads","/company/{id}").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable();
