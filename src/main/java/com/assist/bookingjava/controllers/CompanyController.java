@@ -4,11 +4,14 @@ package com.assist.bookingjava.controllers;
 import com.assist.bookingjava.Models.Company;
 import com.assist.bookingjava.Service.CompanyService;
 import com.assist.bookingjava.Service.FileService;
-import com.assist.bookingjava.Service.RecoverService;
-import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.*;
 import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
@@ -31,27 +34,26 @@ public class CompanyController {
     @Autowired
     CompanyService companyService;
 
-    @Autowired
-    RecoverService recoverService;
+
 
     @Autowired
     private FileService fileService;
 
 
-    @RequestMapping(value="/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String addNewCompany(@RequestBody Company company) {
-            try {
-               // String salt = BCrypt.gensalt(12);
-               // String hashed_password = BCrypt.hashpw(company.getPassword(), salt);
-                companyService.addCompany(new Company(company.getUsername(), company.getPassword(), company.getEmail()));
-            } catch (Exception ex) {
-                return "User already exists!";
-            }
-            return "Data Saved!";
+        try {
+            // String salt = BCrypt.gensalt(12);
+            // String hashed_password = BCrypt.hashpw(company.getPassword(), salt);
+            companyService.addCompany(new Company(company.getUsername(), company.getPassword(), company.getEmail()));
+        } catch (Exception ex) {
+            return "User already exists!";
         }
+        return "Data Saved!";
+    }
 
-    @RequestMapping(value = "/addCompanyInfo",method = RequestMethod.POST)
-    public String addCompany(@RequestBody Company company){
+    @RequestMapping(value = "/addCompanyInfo", method = RequestMethod.POST)
+    public String addCompany(@RequestBody Company company) {
         Company company1;
 
         try {
@@ -59,20 +61,20 @@ public class CompanyController {
             company1 = companyService.findById(company);
             companyService.updateComapany(new Company(company1.getIdcompany(), company1.getUsername(), company1.getPassword(),
                     company1.getEmail(), company.getDescription(), company.getCompanyname(), company1.getLogo()));
-        }catch (Exception e){
+        } catch (Exception e) {
             return e.getMessage();
         }
-         return "Done";
+        return "Done";
     }
 
-    @RequestMapping(value="/updateCompany/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/updateCompany/{id}", method = RequestMethod.PUT)
     public String updateCompany(@RequestBody Company company) {
         try {
             companyService.updateComapany(company);
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             return "Error";
         }
-        return"Succes";
+        return "Succes";
     }
 
     @RequestMapping(value = "/deleteCompany/{id}", method = RequestMethod.DELETE)
@@ -80,28 +82,70 @@ public class CompanyController {
     public String deleteCompany(@PathVariable Long idcompany) {
         try {
             companyService.deleteCompany(idcompany);
-        }catch (Exception err){
+        } catch (Exception err) {
             return "Failed";
         }
-            return "Company deleted!";
+        return "Company deleted!";
     }
 
-    @RequestMapping(value = "/recover/{email}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/recover", method = RequestMethod.POST)
     @ResponseBody
-    public String getByEmail(@PathVariable  String email, @RequestBody Company company) {
+    public String getByEmail(@RequestBody Company company) {
+        Company companyUserEmail =   companyService.findByEmail(company.getEmail());
+
+        final String username = "intershipassist@gmail.com";
+        final String password = "bookingapplication";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
         try {
-            recoverService.sendNotification(company);
-        }catch (MailException e){
 
-            return "Mail error!" + e.getMessage();
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("intershipassist@gmail.com"));
+            String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder salt = new StringBuilder();
+            Random rnd = new Random();
+            while (salt.length() < 18) { // length of the random string.
+                int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+                salt.append(SALTCHARS.charAt(index));
+            }
+            String newPassword = salt.toString();
 
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(companyUserEmail.getEmail()));
+            message.setSubject("Your new password!");
+            message.setText("Hello "+companyUserEmail.getUsername().toUpperCase()+" ,your new password is: " + newPassword);
+            companyService.updateComapany(new Company(companyUserEmail.getIdcompany(), companyUserEmail.getUsername(), newPassword,
+                    companyUserEmail.getEmail(), companyUserEmail.getDescription(), companyUserEmail.getCompanyname(), companyUserEmail.getLogo()));
+
+            Transport.send(message);
+
+
+        } catch (MessagingException e) {
+
+            throw new RuntimeException(e);
         }
-        return "Your password has been sent!";
+
+        return "Mail sent!";
+
     }
 
     @RequestMapping(value = "/info/{id}",method = RequestMethod.GET)
     public Company infoCompany(@PathVariable Long id){
         return companyService.getOneCompany(id);}
+
 
     @RequestMapping(value = "/info/{name}",method = RequestMethod.GET)
     public Company infoCompany(@PathVariable String name){
@@ -110,8 +154,14 @@ public class CompanyController {
     }
 
     @RequestMapping(value = "/allCompanys",method = RequestMethod.GET)
-        public List<Company> getAllCompany() {
+    public List<Company> getAllCompany() {
         return companyService.getAllCompany();
-        }
+    }
+   @RequestMapping(value = "/uplodeImage",method = RequestMethod.POST)
+    public String uploadFile(@RequestParam("file") MultipartFile multipartFile){
+        return "SUCCES";
+    }
 
 }
+
+
