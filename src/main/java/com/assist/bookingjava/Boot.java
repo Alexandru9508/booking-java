@@ -63,7 +63,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/login","/allCompanys", "/hello","/register","/addCompanyInfo","/updateCompany/{id}",
-                        "/deleteCompany/{id}","/recover/{email}","/info/{name}","/allCompanys","/services/bookings",
+                        "/deleteCompany/{id}","/recover","/info/{name}","/allCompanys","/services/bookings",
                         "/service/{name}/bookings","/service/{id}/addbooking","/company/{idcompnay}/services", "/Delete/Service/{id}",
                         "/company/{id}/service","/company/service/{id}","/company/services","/serviceCompany/{id}/addServiceInfo",
                         "/serviceCompany/time","/uplodeImage","/company/{id}").permitAll()
