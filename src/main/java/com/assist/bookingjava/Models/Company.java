@@ -17,14 +17,15 @@ public class Company {
     long idcompany;
 
     @Column(unique = true)
-    @NotEmpty
+   // @NotEmpty
     String username;
-    @NotEmpty
+    //@NotEmpty
     String password;
 
     @Column(unique = true)
-    @NotEmpty
+   // @NotEmpty
     String email;
+
     String description;
 
     @Column(unique = true)
