@@ -48,6 +48,9 @@
 				<div class="goToLogin">
 			    			<router-link to="recover">Recover password</router-link>
 				</div>
+				<div class="goToRegister">
+			    			<router-link to="register">Don't have an account? Click here to register</router-link>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -144,6 +147,10 @@ p{
 .goToLogin{
 	margin-top: 2%;
 }
+.goToRegister{
+	margin-top: 2%;
+}
+
 
 /*Responsive*/
 
