@@ -113,9 +113,6 @@ public class CompanyController {
             }
             String saltStr = salt.toString();
 
-
-
-
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(companyUserEmail.getEmail()));
             message.setSubject("Sebicaaaa iti iau gatul!!!!");
@@ -135,9 +132,6 @@ public class CompanyController {
         return "Mail sent!";
 
     }
-
-
-
 
     @RequestMapping(value = "/info/{id}",method = RequestMethod.GET)
     public Company infoCompany(@PathVariable Long id){
@@ -159,7 +153,5 @@ public class CompanyController {
     public String uploadFile(@RequestParam("file") MultipartFile multipartFile){
         return "SUCCES";
     }
-
-
 
 }
