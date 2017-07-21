@@ -111,24 +111,23 @@ public class CompanyController {
                 int index = (int) (rnd.nextFloat() * SALTCHARS.length());
                 salt.append(SALTCHARS.charAt(index));
             }
-            String saltStr = salt.toString();
+            String newPassword = salt.toString();
 
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(companyUserEmail.getEmail()));
-            message.setSubject("Sebicaaaa iti iau gatul!!!!");
-            message.setText("Hello, your new password is: " + saltStr);
-
-
-
-            companyService.updateComapany(new Company(companyUserEmail.getIdcompany(), companyUserEmail.getUsername(), saltStr,
+            message.setSubject("Your new password!");
+            message.setText("Hello "+companyUserEmail.getUsername().toUpperCase()+" ,your new password is: " + newPassword);
+            companyService.updateComapany(new Company(companyUserEmail.getIdcompany(), companyUserEmail.getUsername(), newPassword,
                     companyUserEmail.getEmail(), companyUserEmail.getDescription(), companyUserEmail.getCompanyname(), companyUserEmail.getLogo()));
 
             Transport.send(message);
 
 
         } catch (MessagingException e) {
+
             throw new RuntimeException(e);
         }
+
         return "Mail sent!";
 
     }
