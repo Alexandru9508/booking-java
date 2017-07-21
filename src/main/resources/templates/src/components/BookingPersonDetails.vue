@@ -1,164 +1,238 @@
 <template>
-	<div class="container-fluid">
-		<!-- <div class="header clearfix">
-			<h2 class="addNewService">Add new service</h2>
-			
-			<a class="addCServiceCircle" href="#">
-				<img src="../assets/Selection_002.png">
-				<span>Add service</span>
-			</a>
-		</div> -->
 
-		<div class="row">
-			<div class="form_container clearfix">
-				<form class=" serviceForm">
-					<h2 class="titleService" style="margin-top: 50px; margin-bottom:50px;">Make your booking</h2>
-<!-- 					<h6 style="color:grey; text-align: center;">SERVICE DETAILS</h6>
+	<div>
 
-  --> 	
-  									<span style="color: grey;">PERSONAL DETAILS</span>
-					<div class="clearfix" style="margin-top:50px;">
-						<div class="form-group float-left">
-							<!-- <a class="logoImage" href="#">
-								<img src="../assets/image-logo.png">
-								<span>Add service</span>
-								
-								<button class="btn btn-primary uploadLogo" type="submit">
-									<input v-ref:file-input type="file" style="width : 250px; color : black;">
-								</button>
-							
-							</a> -->
-							<label for="exampleInputServiceName"><h5>Name</h5></label>
-							<input type="text" class="form-control box-size" required>
-						
-								<!-- <button @click="open"></button> -->
-						</div>
+	<h5>{{booking.body}}</h5>
 
-						<div class="form-group form-group-company-name float-right"><!--daca este vreo problema , adauga float-right dupa company name-->
-							<label for="exampleInputCompanyName"><h5>Email</h5></label>
-							<input type="text" class="form-control box-size" required>
-						</div>
 
-						<div class="form-group  form-group-service-description float-left">
-							<!-- <label for="exampleTextarea"><h5>Service description</h5></label>
-							<textarea class="form-control" id="exampleTextarea" rows="5" required></textarea>
-							<button class="btn btn-primary sign-out" type="submit">Sign out</button>
-							<button type="button" class="btn btn-success">Save</button> -->
+<nav-bar></nav-bar>
 
-							<!-- <button class="btn btn-primary save" type="submit">Save</button> -->
-							<label for="exampleInputPrice"><h5>Phone Number</h5></label>
-							<input type="text" class="form-control box-size" required>
-						</div>
-
-						<div class="form-group form-group-company-description float-right">
-							<button type="submit" class="form-control btn btn-next">NEXT</button>
-							<!-- <label for="exampleInputCompanyDescription"><h5>Company description</h5></label>
-							<textarea class="form-control" id="exampleTextarea" rows="5"></textarea> -->
-							<!-- <input type="text" class="form-control"> -->
-
-							<!-- <label for="exampleInputPrice"><h5>Price</h5></label>
-							<input type="text" class="form-control"> -->
-
-						</div>
-					</div>
-				</form>	
-			</div>
-		</div>	
+<div class="content">
+	<div id="company-list">	
+		<h3 id="companylist-title">Company list</h3>
 	</div>
+
+<div class="box">
+<div class="tbl-header">
+<table cellpadding="0" cellspacing="0" border="0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>          
+      <th>View info</th>          
+    </tr>
+  </thead>
+</table>
+</div>
+
+
+
+
+
+<h6>    </h6>
+<h6>          </h6>
+<h6>          </h6>
+<h6>           </h6>
+
+</div>
+
+
+
+<div v-for="booking in booking.body">	
+<div class="tbl-content">
+<table cellpadding="0" cellspacing="0" border="0">
+  <tbody>
+    <tr>
+
+      <td>{{booking.customerName}} </td>
+
+
+
+      <td>{{booking.customerPhone}}</td>
+      <td>{{booking.idbooking}}</td>
+      <td>{{booking.bookingHour}}</td>
+
+
+
+
+
+
+
+
+
+      <td>
+
+      <div class="row">
+<template v-for="variant in ['secondary']">
+    <div class="col-md-4 pb-2" v-for="size in ['sm']">
+    <b-button c :size="size" :variant="variant" href="">
+        <a id="linkservices" :href="'/company/' + company.idcompany">Go to company</a>
+    </b-button>
+    </div>
+</template>
+</div>
+
+
+		</td>     
+    </tr>        
+  </tbody>
+</table>
+</div>
+</div> -->
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </template>
 
+
+
 <script>
-	export default {
-		name: 'bookingPersonDetails',
-		data () {
-			return {
-				msg: 'Welcome to Your Vue.js App'
-			}
+import NavBar from './navbar.vue';
+export default {
+	data() {
+		return {
+			booking: [],
+			description: [] 
+
 		}
+	},
+	components: {
+      NavBar,
+    },
+
+	methods: {
+		getServices() {
+
+
+			 this.$http.get('http://192.168.150.242:9000/services/bookings')
+			// this.$http.get('http://192.150.242:9000/allCompanys')
+			.then(response => {
+				this.booking = response;
+// return response.json()
+})
+			.then(response => {
+// this.companies = response;
+})
+			.then(error => {
+				console.log('error: ', error);
+			});
+		}
+	},
+	created() {
+		this.getServices();
 	}
-	/*methods: {
-  open() {
-    this.$els.file-input.click()
-  }
-}*/
+}
 </script>
 
-<style scoped>
-.box-size{
-	width: 100%;
+<style>
+
+.box{
+	border-radius: 3%;
+margin: auto;
+width: 50%;
+background: -webkit-linear-gradient(top, #d145e9, #8e0567);
+background: linear-gradient(to bottom, #d145e9, #8e0567);
+font-family: 'Roboto', sans-serif;
 
 }
 
-.titleService{
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+a
+{
+	color: gray;
+}
+
+
+
+.btn-secondary{
+	background-color: white;
+
+}
+
+table{
+width:100%;
+margin: auto;
+table-layout: fixed;
+}
+.tbl-header{
+background-color: rgba(255,255,255,0.3);
+}
+
+.tbl-content{
+
+overflow-x:auto;
+margin-top: 0px;
+border: 1px solid rgba(255,255,255,0.3);
+}
+.box th{
+padding: 20px 15px;
+text-align: left;
+font-weight: 500;
+font-size: 15px;
+color: #fff;
+text-transform: uppercase;
+}
+.box td{
+padding: 15px;
+text-align: left;
+vertical-align:middle;
+font-weight: 300;
+font-size: 12px;
+color: #fff;
+border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+
+/* demo styles */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+#companylist-title {
+	font: bold 34px "Century Schoolbook", Georgia, Times, serif;
+	width:100%;
+	color: #d145e9;
+	border:0;
+	font-size: 30px;
+	margin:auto;
+	padding-top: 30px;
+	padding-bottom: 30px;
 	text-align: center;
-	color:#d07edf;
-	font-weight: bold;
-}
-
-.btn-next{
-	margin-top: 39px;
-	color: white;
-    /*margin: auto;*/
-    float: right;
-    /* padding: 0.6rem 11.5rem;
-         */    background-color: #d07edf;
-    border-color: grey;
-     width: 100%;
-    /*background-color: rgb(208, 126, 223);
-    border-color: grey;*/
-}
-.btn-next:hover{
-	background-color: #bf6cce;
-	cursor: pointer;
 }
 
 
-.tabledata {
-	border: 1px solid #ce7ede;
-}
-
-
-a {
-	color: #ce7ede;
-	text-decoration: none;
-}
-
-
-.clearfix {
-	display: table;
-	width: 100%;
-}
-.header{
-	width: 50%;
-	margin: auto;
-}
-
-.form_container {
-	width: 50%;
-	display: block;
-	margin: 0 auto;
-	min-width: 600px;
-}
-
-.form-group {
-
-	/*float: left;*/
-	
-	width: 40%;
-	display: table;
-}
-
-/*.form-group-availability {
-    margin: auto;
-    width: 100%;
-    height: 458px;
-    border: 1px solid #ce7ede;
-    border-radius: 10px;
-    box-sizing: border-box;
-}*/
-
-/*Responsive*/
 
 @media (max-width: 1000px) {
 	.form-group {
@@ -166,45 +240,5 @@ a {
 		margin-right: 0;
 	}
 }
-
-/*form h5 {
-	text-align: left;
-	text-transform: uppercase;
-	color: #ddd;
-}
-
-.form-group-service-name{
-	float: left;
-	width: 450px;
-	height: 30px;
-	padding: 10px;
-
-}
-.form-group-service-duration{
-
-	float: right;
-	display: inline-block;
-	width: 450px;
-	height: 30px;
-	padding: 10px;
-
-
-}
-.form-group-service-description{
-	clear: left;
-	margin-top: 120px;
-	width: 450px;
-}
-
-
-.form-group-spaces{
-
-	float: right;
-	display: inline-block;
-	width: 450px;
-	height: 30px;
-	padding: 10px;
-}
-*/
 
 </style>

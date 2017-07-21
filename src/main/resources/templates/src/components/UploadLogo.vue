@@ -51,7 +51,7 @@
 					            <span v-show="errors.has('description')" class="help is-danger">{{ errors.first('description') }}</span>
 						            </p>
 
-							<button class="btn btn-primary sign-out" type="submit">Sign out</button>
+							<button class="btn btn-primary sign-out" type="submit" @click="signOut">Sign out</button>
 							<button type="button" class="btn btn-success" @click="submit()">Save</button>
 						</div>
 
@@ -97,6 +97,10 @@ import NavBar from './navbar.vue';
 				 		this.company = JSON.parse(localStorage.company);
 				 	}
 				 	
+				 },
+				 signOut() {
+ 				 	localStorage.removeItem('token');
+			 		this.$router.push('/login');
 				 }
 			},
 			components: {

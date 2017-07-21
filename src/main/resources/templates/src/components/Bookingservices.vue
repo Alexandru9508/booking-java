@@ -9,7 +9,7 @@
           <button class="btn buton" href="#">+</button>
         </div>  
         <div v-for="company in companies.body">  
-        <div class="box">
+        <div class="boxCompanyServices">
         <div class="nameoftheservice">
           <div class="list>">            
              <div class="describeservices">
@@ -24,9 +24,7 @@
                   </div>
                   <div id="colRight">
                     <b-button class="delete-button"  href="">
-
                     </b-button>
-
                   </div>
                 </div>
               </div>
@@ -51,11 +49,7 @@
           </div>
         </div>
         </div>
-        </div>
-
-
-
-        
+        </div>        
       </div>
     </template>
 
@@ -107,7 +101,7 @@
   /*=========Nav bar*/
 
 
-    .box{
+    .boxCompanyServices{
        padding-bottom: 40px;
     }
 
@@ -196,7 +190,7 @@
 
     }
 
-    table
+    .price table
 
     .nameoftheservice {
       margin: auto;
