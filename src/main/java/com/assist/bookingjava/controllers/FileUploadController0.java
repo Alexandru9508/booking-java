@@ -2,6 +2,10 @@ package com.assist.bookingjava.controllers;
 
 
 
+import com.assist.bookingjava.DataBase.CompanyDao;
+import com.assist.bookingjava.Models.Company;
+import com.assist.bookingjava.Service.CompanyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -19,15 +23,17 @@ import java.util.StringJoiner;
 @RestController
 public class FileUploadController0 {
 
+    @Autowired
+    CompanyService companyService;
     //Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "./src/main/resources/images/";
 
 
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/uploads", method = RequestMethod.POST)
     //@Mapping(value="/upload", ) // //new annotation since 4.3
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+                                   RedirectAttributes redirectAttributes,Company company) {
 
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
@@ -39,6 +45,9 @@ public class FileUploadController0 {
             // Get the file and save it somewhere
             byte[] bytes = file.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+            Company logo=companyService.findById(company);
+            logo.setLogo(path.toString());
+            companyService.addCompany(logo);
             Files.write(path, bytes);
 
             redirectAttributes.addFlashAttribute("message",

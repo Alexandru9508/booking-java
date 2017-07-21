@@ -9,8 +9,6 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
@@ -19,9 +17,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -29,6 +25,8 @@ import java.util.Random;
  */
 @RestController
 public class CompanyController {
+
+    public static final String uploadingdir = System.getProperty("user.dir") + "/uploadingdir/";
 
     @Autowired
     CompanyService companyService;
@@ -105,30 +103,6 @@ public class CompanyController {
     public Company infoCompany(@PathVariable Long id){
         return companyService.getOneCompany(id);}
 
-    public String getByEmail(@PathVariable  String email) {
-        Company companyUser;
-        try {
-          companyUser = companyService.recoverPassword(email);
-            String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            StringBuilder salt = new StringBuilder();
-            Random rnd = new Random();
-            while (salt.length() < 18) {
-                int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-                salt.append(SALTCHARS.charAt(index));
-            }
-            String generateString = salt.toString();
-            String salt1 = BCrypt.gensalt(12);
-            String hashed_password = BCrypt.hashpw(generateString,salt1);
-            companyUser.setPassword(hashed_password);
-            companyService.updateComapany(new Company(companyUser.getIdcompany(), companyUser.getUsername(),
-                    companyUser.getPassword(), companyUser.getEmail(), companyUser.getDescription(),
-                    companyUser.getCompanyname(), companyUser.getLogo()));
-        }catch (Exception er){
-            return "Email was not found in the database!";
-        }
-        return "The user password is: "+ companyUser.getPassword();
-    }
-
     @RequestMapping(value = "/info/{name}",method = RequestMethod.GET)
     public Company infoCompany(@PathVariable String name){
         return companyService.getOneCompany(name);
@@ -140,8 +114,4 @@ public class CompanyController {
         return companyService.getAllCompany();
         }
 
-    @RequestMapping(value = "/uplodeImage",method = RequestMethod.POST)
-    public String uploadFile(@RequestParam("file") MultipartFile multipartFile){
-        return "SUCCES";
-    }
 }
