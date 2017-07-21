@@ -24,6 +24,20 @@ Vue.use(VueResource);
 Vue.use(VeeValidate);
 Vue.component(VuePassword);
 
+
+Vue.http.interceptors.push((request, next) => {
+	// console.log("Intercepting");
+	// console.log(localStorage.getItem('token'))
+	const token = localStorage.getItem('token');
+	console.log("TOKEN", token);
+	if (token) {
+		request.headers.set('Authorization', `Basic ${token}`);
+		request.headers.set('Accept', 'application/json');
+	}
+  // request.headers.set('Accept', 'application/json')
+  next()
+});
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
