@@ -100,9 +100,6 @@ public class CompanyController {
 
         try {
 
-
-
-
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("intershipassist@gmail.com"));
 
@@ -135,7 +132,7 @@ public class CompanyController {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
-        return "Mail sent";
+        return "Mail sent!";
 
     }
 
